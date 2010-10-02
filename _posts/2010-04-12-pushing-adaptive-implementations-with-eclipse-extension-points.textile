@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Pushing Adaptive Implementations with Eclipse's Extension Points"
-permalink: eclipse/pushing-adaptive-implementations-with-eclipse-extension-points.html
 categories: eclipse
 ---
 

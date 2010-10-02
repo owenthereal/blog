@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Planning for CodeFaces 1.1.1
-permalink: codefaces/planning_for_codefaces.html
 categories: codefaces
 ---
 

@@ -1,0 +1,30 @@
+---
+layout: post
+title: Projects
+categories: 
+---
+
+h3. <a href="http://codefaces.org" target="_blank">CodeFaces</a>
+
+
+CodeFaces is a web-based source control client that targets at easing the pain of navigating codes from a source control system on a browser. It allows connecting to multiple source control systems and structurally navigating codes on a unified web interface.
+
+h3. <a href="http://code.google.com/p/aurorasdk/" target="_blank">Aurora</a>
+
+
+The goal of this project is to develop a web based Integrated Development Environment (IDE). The client only needs a web browser and an internet connection. By connecting to the server, an IDE looking page is downloaded by the browser that looks like and has the functionality of an IDE environment. The client is able to access previous code stored in the database or create new projects, compile the code and run it. Also, the client is able to download the executable output of the compiler from the server to local disk. The project is implemented by Google Web Toolkit (GWT). 
+
+h3. <a href="http://sourceforge.net/projects/fitpro/" target="_blank">Eclipse FITpro plug-in</a>
+
+
+FITpro is built upon the Framework for Integrated Test (Fit). It provides integration with Eclipse and MS VS, and web UI. FITpro advanced features include code generation, suite support, and test to fixture links.
+
+h3. <a href="http://ijws.it/" target="_blank">I Just Wanna Say It</a>
+
+
+"I Just Wanna Say It" is a restful service that converts text to speech and allows you to social bookmark it.
+
+h3. <a href="http://wordpress.org/extend/plugins/github-gist/" target="_blank">GitHub Gist WordPress Plugin</a>
+
+
+GitHub Gist WordPress Plugin allows you to embed GitHub Gists from http://gist.github.com/ in a post or page.

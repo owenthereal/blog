@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Running Eclipse Java Compiler with Ant
-permalink: eclipse/running-eclipse-java-compiler-with-ant.html
 categories: eclipse
 ---
 

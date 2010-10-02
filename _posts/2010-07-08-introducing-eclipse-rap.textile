@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Introducing Eclipse RAP
-permalink: eclipse/introducing-eclipse-rap.html
 categories: eclipse
 ---
 

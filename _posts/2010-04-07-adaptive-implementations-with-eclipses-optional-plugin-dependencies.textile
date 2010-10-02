@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Adaptive Implementations with Eclipse's Optional Plugin Dependencies
-permalink: eclipse/adaptive-implementations-with-eclipses-optional-plugin-dependencies.html
 categories: eclipse
 ---
 

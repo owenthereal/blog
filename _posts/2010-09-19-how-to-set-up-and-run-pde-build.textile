@@ -1,7 +1,6 @@
 ---
 layout: post
 title: How to set up and run PDE build
-permalink: eclipse/how-to-set-up-and-run-pde-build.html
 categories: eclipse
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Judicious Serialization
-permalink: java/judicious-serialization.html
 categories: java
 ---
 

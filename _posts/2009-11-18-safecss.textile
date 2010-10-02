@@ -1,7 +1,6 @@
 ---
 layout: post
 title: safecss
-permalink: uncategorized/safecss.html
 categories: Uncategorized
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Patching with Class Shadowing and Maven
-permalink: java/patching-with-class-shadowing-and-maven.html
 categories: java
 ---
 

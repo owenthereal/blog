@@ -4,6 +4,7 @@ subtitle: = Blog.new(:kind => "geek")
 markdown: rdiscount
 auto: true
 pygments: true
+permalink: /:year/:month/:day/:title.html
 
 # Absolute base URL for this site without trailing slash
 url: http://localhost:4000

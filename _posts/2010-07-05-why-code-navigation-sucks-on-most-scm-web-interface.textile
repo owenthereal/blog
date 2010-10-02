@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Why code navigation sucks on most SCM's web interfaces?
-permalink: human-computer-interface/why-code-navigation-sucks-on-most-scm-web-interface.html
 categories: human computer interface
 ---
 
