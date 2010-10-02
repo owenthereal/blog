@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<h1>Tags</h1>
+{% for tag in site.tags %}
+  {% comment %}
+    Since site.tags is a has tag here is a pair of
+    [ tag name, list of posts ]
+  {% endcomment %}
+  {% assign t = tag.first %}
+  <a id="{{ t | cgi_escape }}" href="#{{ t | cgi_escape }}"><h2>{{ t }}</h2></a>
+  {% assign posts = tag.last %}
+  {% include postlist.html %}
+{% endfor %}

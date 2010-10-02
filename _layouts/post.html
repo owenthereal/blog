@@ -1,27 +1,38 @@
 ---
 layout: default
 ---
-<div id="post">
-{{ content }}
-</div>
-
-<div id="related">
-  <h2>Related Postsdd</h2>
-  <ul class="posts">
-    {% for post in site.related_posts limit:3 %}
-      <li><span>{{ post.date | date_to_string }} -- {{ post.categories }} -- {{ post.id }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
+<div class="hentry" id="{{ page.id }}">
+  <h2 class="entry-title">
+    <a href="{{ page.url }}">{{ page.title }}</a>
+  </h2>
+  {% if page.author %}
+  <div class="vcard">
+    Posted by <span class="fn">{{ page.author }}</span>
+  </div>
+  {% endif %}
+  <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
+  <br class="clear" />
+  <div class="entry-content">
+    {{ content }}
+  </div>
+  <ul class="meta">
+    {% if page.categories != empty %}
+      <li>Categories:{% for t in page.categories %} <a href="/{{ t | cgi_escape }}/">{{ t }}</a>{% endfor %}</li>
+    {% endif %}
+    {% if page.tags != empty %}
+      <li>Tags:{% for t in page.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}</li>
+    {% endif %}
+    <li>Meta:
+      <a href="{{ site.url }}{{ page.url }}" rel="bookmark">permalink</a>
+      <a href="{{ site.feed }}">atom</a>
+    </li>
   </ul>
-</div>
-
-<div>
-	{% for c in site.categories %}
-		<li><span>{{c}}</span></li>
-	{% endfor %}
-</div>
-
-<!-- Google Sidewiki Element -->
-<div id="sidewiki-gadget">
-<iframe name="sidewiki-gadget-frame" id="sidewiki-gadget-frame" frameBorder="0" style="border:0;margin:0;width:500px;height:500px;"></iframe>
-<script type="text/javascript">var urlEncoded = encodeURIComponent(window.location.href);document.getElementById("sidewiki-gadget-frame").src = "http://www.google.com/sidewiki/static/gadget/gadget.html#color=518aeb&entriesNumber=5&url="+ urlEncoded;</script>
+  <ul class="posts">
+    {% assign p = page.previous %}{% if p %}
+    <li><span>Previous: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
+    {% endif %}
+    {% assign p = page.next %}{% if p %}
+    <li><span>Next: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
+    {% endif %}
+  </ul>
 </div>

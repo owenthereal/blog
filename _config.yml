@@ -1,6 +1,22 @@
-auto: true
-permalink: none
-pygments: true
-lsi: true
+name: Owen Ou's Blog
+subtitle: = Blog.new(:kind => "geek")
+
 markdown: rdiscount
-url: http://owenou.com
+auto: true
+pygments: true
+
+# Absolute base URL for this site without trailing slash
+url: http://localhost:4000
+
+# Absolute URL of feed.
+# You may want to change this URL to point to a feedburner feed.
+feed: http://localhost:4000/atom.xml
+
+# Author element in atom feed. Optional.
+# If email is supplied, name is required.
+author:
+  name: Jingwen Owen Ou
+  email: jingweno@gmail.com
+
+
+
