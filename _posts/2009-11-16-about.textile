@@ -1,0 +1,10 @@
+---
+layout: post
+title: About
+permalink: about.html
+categories: Uncategorized
+---
+
+Jingwen Owen Ou is a Java samurai at daytime and a Ruby ninja at night. He has his MSc in Computer Science @ the beautiful <a href="http://www.ubc.ca/" target="_blank">University of British Columbia</a> of Canada. During his master degree, Owen focused on building tools that ease the pain of software developers: he contributed to the Eclipse's <a href="http://www.eclipse.org/mylyn/" target="_blank">Mylyn</a> project, and as his thesis topic, he built <a href="http://portal.acm.org/citation.cfm?id=1806799.1806856" target="_blank">an innovate tool</a> that reduces information overload based on developers' knowledge of the codebase.
+
+You can find Owen on <a href="http://twitter.com/JingwenOwenOu" target="_blank">Twitter</a>, <a href="http://www.linkedin.com/in/jingweno" target="_blank">Linkedin</a>, and <a href="http://github.com/jingweno" target="_blank">GitHub</a>.

@@ -1,0 +1,22 @@
+---
+layout: post
+title: Why code navigation sucks on most SCM's web interfaces?
+permalink: human-computer-interface/why-code-navigation-sucks-on-most-scm-web-interface.html
+categories: human computer interface
+---
+
+I am not surprised that you feel the same: it sucks to navigate codes on most source control system's web interfaces! Here are whys:
+<ol>
+	<li>*The display of files in most SCM's web interface is not in a tree, but in a list.* Files are in a tree structure; displaying them as a list is definitely a mismatch! The consequence of converting a tree structure to a list one is that the file context is lost during navigation.  I believe you must feel annoying when clicking back and forth in order to find more than one file on <a href="http://github.com/" target="_blank">GitHub</a>'s web interface: <a href="http://owenou.com/blog/wp-content/uploads/2010/07/github.png"><img class="size-full wp-image-179 aligncenter" title="github" src="http://owenou.com/blog/wp-content/uploads/2010/07/github.png" alt="" width="559" height="220" /></a></li>
+	<li>*There is a disconnection between opened file's context and opened file's content.* Take <a href="http://code.google.com/" target="_blank">Google Code</a>'s web interface as an example, although its display of files is in a tree structure, but after a file is opened, the context where the file belongs to is gone: only the path of the file is still kept:<a href="http://owenou.com/blog/wp-content/uploads/2010/07/google_code.png"><img class="aligncenter size-full wp-image-188" title="google_code" src="http://owenou.com/blog/wp-content/uploads/2010/07/google_code.png" alt="" width="560" height="560" /></a></li>
+	<li>*Being impossible to open multiple files at once.* File is a module to separate concerns in almost all programming languages. At most of the time, reading code only from one file is not informative enough. In a programming language sense, files have connections to each other and being able to show related file modules at once is critical to understand the application. Moreover, we have been used to exploring pages with multiple tabs on a browser, and have been used to navigate codes with multiple viewers in an IDE. This feature is definitely a must!</li>
+	<li> *There is no unified UI to navigate codes across all source control systems.* We have <a href="http://www.viewvc.org/" target="_blank">ViewVC</a>, <a href="https://git.wiki.kernel.org/index.php/Gitweb" target="_blank">Gitweb</a>, <a href="http://www.warehouseapp.com/" target="_blank">Warehouse</a>, many many... But we don't have a web interface that adapts to all kinds of version control systems.</li>
+</ol>
+If you feel there is a need to improve existing SCM's web interface, I would like to introduce to you a neat tool that <a href="http://codefaces.com/about/" target="_blank">we</a> built lately: <a href="http://codefaces.org" target="_blank">CodeFaces</a>.  CodeFaces is a source control client made for browsers. It provides an IDE-looking page to structurally navigate codes from a version control system. Here is a screencast that walks you through all its features:
+
+<center>
+<object width="390" height="235"><param name="movie" value="http://www.youtube.com/v/JNVcyi0cDQ0?fs=1&hl=en_US&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/JNVcyi0cDQ0?fs=1&hl=en_US&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="390" height="235"></embed></object>
+</center>
+<br/>
+Check out <a href="http://codefaces.org" target="_blank">http://codefaces.org</a> for more info and updates :).
+<br/>

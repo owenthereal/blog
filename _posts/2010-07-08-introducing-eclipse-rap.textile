@@ -1,0 +1,49 @@
+---
+layout: post
+title: Introducing Eclipse RAP
+permalink: eclipse/introducing-eclipse-rap.html
+categories: eclipse
+---
+
+RAP, what? The Eclipse community is expanding its range to Hip Hop :)? Not exactly, although there is a chance. <a href="http://www.eclipse.org/rap/" target="_blank">Eclipse Rich Ajax Platform</a>(RAP) is a framework that empowers developers to build rich web clients “the Eclipse way.” From the latest <a href="http://www.eclipse.org/downloads/" target="_blank">Helios download</a>, RAP Tooling has become a default component of the RCP bundle:
+<p style="text-align: center;"><img class="size-full wp-image-218 aligncenter" title="rap_download" src="http://owenou.com/blog/wp-content/uploads/2010/07/rap_download.png" alt="" width="463" height="37" />
+
+
+So what exactly is the Eclipse paradigm? Can we benefit from it?
+h4. Architecture
+
+
+RAP is to the web as RCP to the desktop. It inherits all the goodness from RCP such as workbench extension points model, event-driven SWT/JFace APIs, and componentized OSGi design. As indicated below [4], the only difference between the architecture of RAP and that of RCP is the implementation of SWT/RWT. RWT is actually a bundle providing web-specific implementation of SWT’s widgets based on the <a href="http://qooxdoo.org/" target="_blank">qooxdoo</a> toolkit. In RAP, almost no SWT API is changed.
+<p style="text-align: center;"><a href="http://owenou.com/blog/wp-content/uploads/2010/07/rap_archi.png"><img class="aligncenter size-full wp-image-217" title="rap_archi" src="http://owenou.com/blog/wp-content/uploads/2010/07/rap_archi.png" alt="" width="521" height="158" /></a>
+
+
+This architecture determines that developers can bring their RCP applications to the web with a single code base, also called single sourcing [1]. Like building a RCP application, building a RAP application is a process of building plug-ins and bundles: On the UI side, contributing widget plug-ins; On the server side, since it is powered by <a href="http://www.eclipse.org/equinox/server/" target="_blank">server-side Equinox</a>, contributing servlet plug-ins. Unsurprisingly, it also inherits the benefits of any OSGi application such as dynamically adding/removing bundles.
+
+This architecture also determines that RAP is a server-centric AJAX framework. As indicated below [3], in a server-centric framework, the application is hosted on the application server and all processing is done on the server. The client browser is only used for data presentation. Consequently, it leaves small footprints on browsers: it waits for instructions from the server to create corresponding widgets on demand. In contrast, client-centric framework such as GWT statically compiles all widgets beforehand.
+<p style="text-align: center;"><a href="http://owenou.com/blog/wp-content/uploads/2010/07/server_centric_client_centric.png"><img class="aligncenter size-full wp-image-219" title="server_centric_client_centric" src="http://owenou.com/blog/wp-content/uploads/2010/07/server_centric_client_centric.png" alt="" width="468" height="331" /></a>
+
+
+Both methods have pros and cons. Server-centric frameworks handle all communication  automatically and leaves as few as JavaScript codes on the browsers as possible, hence potentially having less security holes on the browsers. Client-centric frameworks are more flexible but require more work to step deep into low-level implementations of client-to-server communication, e.g., figuring out how to update widgets effectively in an asynchronous callback.
+h4. UI Testing
+
+
+For a Java-based rich AJAX application, while server side can be tested with JUnit, testing UI is always a headache. Like GWT, testing UI has to rely on external JavaScript libraries such as <a href="http://www.jsunit.net/" target="_blank">JsUnit</a>. But for RAP, since it’s server-centric, UI code can be tested using JUnit with the special <a href="http://www.eclipse.org/rap/noteworthy/1.1/news_M4.php#Tooling" target="_blank">RAPTestCase</a>. Moreover, since the workbench APIs haven’t been changed, all existing SWT testing tools can be reused, e.g., <a href="http://seleniumhq.org/" target="_blank">Selenium</a> or <a href="http://www.eclipse.org/swtbot/" target="_blank">SWTBot</a>.
+h4. Performance
+
+
+In general, RAP pushes more work off the client onto the server, thus communicating more information and more frequently with the server. <a href="http://eclipsesource.com/blogs/2008/09/17/the-new-eclipse-download-wizard-and-rap-performance/" target="_blank">Some</a> performance testings were available.
+h4. Deployment
+
+
+RAP is extremely easy to deploy on an OSGi based server [2], e.g., <a href="http://www.springsource.org/osgi" target="_blank">Spring dm server</a> which has moved to the <a href="http://www.eclipse.org/proposals/virgo/" target="_blank">Eclipse Virgo</a> project, because its server side implementation bases on the http OSGi standard. Deploying to a traditional J2EE such as Tomcat requires packaging an extra “<a href="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.equinox/server-side/bundles/org.eclipse.equinox.servletbridge/?root=RT_Project" target="_blank">Servlet Bridge</a>” into the war. A drawback of RAP is that it can’t be deployed to a *plain* web server such as Apache. You can do this to a GWT-based application without RPC and the generated JavaScript codes will still work fine on a browser.
+h4. Summary
+
+
+RAP is created to provide developers a possibility to bring the goodness of RCP applications to the web without the need to digging through low-level web-technologies. This greatly reduces cost by reuse of knowledge and code. It provides a thin client with a rich widget set and a stageful server-side on top of OSGi, and reuses the Eclipse workbench paradigm.  As OSGi-based web containers such as Spring dm server are getting more prevalent, RAP will definitely enjoy more popularity.
+h4. Reference
+
+
+[1] <a href="http://www.amazon.com/Eclipse-Rich-Ajax-Platform-Firstpress/dp/1430218835/ref=sr_1_1?ie=UTF8&s=books&qid=1278568095&sr=8-1" target="_blank">Eclipse Rich Ajax Platform: Bringing Rich Client to the Web</a>
+[2] <a href="http://live.eclipse.org/node/722" target="_blank">EclipseCon 09: RAP or GWT - Which Java-Based AJAX Technology is for You?</a>
+[3] <a href="http://www.zkoss.org/smalltalks/gwtZk/" target="_blank">ZK vs. GWT : Server-Centric Matters!</a>
+[4] <a href="http://eclipse.org/rap/" target="_blank">Eclipse Rich Ajax Platform (RAP)</a>

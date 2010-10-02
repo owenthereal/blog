@@ -1,0 +1,32 @@
+---
+layout: post
+title: Adaptive Implementations with Eclipse's Optional Plugin Dependencies
+permalink: eclipse/adaptive-implementations-with-eclipses-optional-plugin-dependencies.html
+categories: eclipse
+---
+
+<a href="http://www.eclipse.org/equinox/">Equinox</a> is an <a href="http://www.osgi.org">OSGI</a> implementation that allows bundles to find out what capabilities are available on the system and adapt the functionality they can provide. This adaptivity is achieved through the OSGi service registry. In this blog post, I am gonna talk about how to make use of Eclipse's optional plugin dependencies to support diverse runtime environment.
+
+Let's get started with an example: When a HTML file is clicked, it should be open with the HTML editor from <a href="http://www.eclipse.org/webtools/">WTP</a> if the plugin is installed. Otherwise open it with a text editor. (This is a real world example from <a href="http://sourceforge.net/projects/fitpro/">FITpro</a> BTW :) ).
+<ol>
+	<li>First, we need to add the WTP UI component as an *optional* dependency.
+<p style="text-align: center;"><img class="aligncenter" src="http://owenou.com/blog/wp-content/uploads/2010/04/optional_dependencies.png" alt="" width="404" height="407" />
+
+
+The MANIFEST.MF should look something like this:
+[gist]<script src="http://gist.github.com/496301.js?file=MANIFEST.MF"></script>[/gist]
+</li>
+	<li>Create a HTML editor if WTP is installed on the client, otherwise fallback to text editor. Wait...here we might have more than one solution.
+<ul>
+	<li>We might consider directly initializing the HTML editor class from WTP and if it doesn't exist, initialize the text editor. However, <a href="http://mobius.inria.fr/eclipse-doc/org/eclipse/osgi/framework/internal/core/BundleLoader.html#findClass(java.lang.String)">BundleLoader</a> won't let this happen since it throws out ClassNotFoundException if a class doesn't exist (in the case of WTP not being installed on the client), and this exception can't be caught in client implementations.</li>
+	<li>We might also consider initializing the HTML editor class through reflection. In this way, we can catch our own ClassNotFoundException and fallback to create a text editor.<br/>
+[gist]<script src="http://gist.github.com/496301.js?file=CreteHTMLTextEditor.java"></script>[/gist]
+</li>
+However...this is not quite "OSGI". Actually, Equinox provides <a href="http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.platform.doc.isv/reference/api/org/eclipse/core/runtime/IConfigurationElement.html">APIs</a> to retrieve extension configurations and initialize their implemented classes. It uses the same way to initialize classes like what we are doing here.
+	<li> We can ask Equinox for all the registered editor extensions and find out whether WTP's HTML editor is one of them. If yes, just initialize it. Otherwise, create the text editor that is available to all clients.<br/>
+[gist]<script src="http://gist.github.com/496301.js?file=CreteHTMLTextEditorOSGi.java"></script>[/gist]
+</li>
+</ul>
+</li>
+</ol>
+Now we see how flexible it is to provide an adaptive Implementation with Eclipse's optional plugin dependencies. With this power, we can also support something like upgrading a system without ruining the old working legacy components. A tips can be found <a href="http://www.developer.com/java/web/article.php/3655231/Eclipse-Tip-Use-Optional-Plug-in-Dependencies-to-Support-Diverse-Runtime-Environments.htm">here</a>.

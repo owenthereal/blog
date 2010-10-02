@@ -1,4 +1,5 @@
 .bundle
 Gemfile.lock
 _site/
-_drafts
+_drafts/
+server/
