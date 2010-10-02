@@ -6,10 +6,22 @@ layout: default
 </div>
 
 <div id="related">
-  <h2>Related Posts</h2>
+  <h2>Related Postsdd</h2>
   <ul class="posts">
     {% for post in site.related_posts limit:3 %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><span>{{ post.date | date_to_string }} -- {{ post.categories }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
+</div>
+
+<div>
+	{% for c in site.categories %}
+		<li><span>{{c}}</span></li>
+	{% endfor %}
+</div>
+
+<!-- Google Sidewiki Element -->
+<div id="sidewiki-gadget">
+<iframe name="sidewiki-gadget-frame" id="sidewiki-gadget-frame" frameBorder="0" style="border:0;margin:0;width:500px;height:500px;"></iframe>
+<script type="text/javascript">var urlEncoded = encodeURIComponent(window.location.href);document.getElementById("sidewiki-gadget-frame").src = "http://www.google.com/sidewiki/static/gadget/gadget.html#color=518aeb&entriesNumber=5&url="+ urlEncoded;</script>
 </div>

@@ -1,0 +1,5 @@
+auto: true
+permalink: none
+pygments: true
+lsi: true
+markdown: rdiscount
