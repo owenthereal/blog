@@ -5,7 +5,6 @@ title: Projects
 
 h4. <a href="http://codefaces.org" target="_blank">CodeFaces</a>
 
-
 CodeFaces is a web-based source control client that targets at easing the pain of navigating codes from a source control system on a browser. It allows connecting to multiple source control systems and structurally navigating codes on a unified web interface.
 
 h4. <a href="http://code.google.com/p/aurorasdk/" target="_blank">Aurora</a>
