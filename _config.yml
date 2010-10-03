@@ -1,5 +1,5 @@
 name: Owen Ou's Blog
-subtitle: = Blog.new(:kind => "geek")
+subtitle: Blog.new(:kind => "geek")
 
 markdown: rdiscount
 auto: true
