@@ -1,58 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  {% if page.title %}<title>{{ page.title }}</title>
-  {% else %}<title>{{ site.name }}</title>{% endif %}
-  {% if page.author %}<meta name="author" content="{{ page.author }}" />{% endif %}
-  <link href="{{ site.feed }}" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	{% if page.title %}<title>{{ page.title }}</title>
+	{% else %}<title>{{ site.name }}</title>{% endif %}
+	{% if page.author %}<meta name="author" content="{{ page.author }}" />{% endif %}
+	<link href="{{ site.feed }}" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
 
-  <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" />
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
 </head>
 
 <body>
-<div id="container">
-  <div id="header">
-    <h1><span><a href="/">{{ site.name }}</a></span></h1>
-    <h2>{{ site.subtitle }}</h2>
-  </div>
-
-  <div id="page">
-    <div id="content">
-      {{ content }}
-    </div>
-
-    <div id="sidebar">
-      <!-- search -->
-      <div id="search" class="search">
-        <form action="/search" id="sform" method="get">
-          <p><input type="text" id="q" name="q" value="" /></p>
-        </form>
-        <br />
-        <div id="loading" class="loading" style="display:none;">Searching...</div>
-        <div id="results" class="results"></div>
-      </div>
-
-      <!-- sidebar components -->
-      <div class="sidebar-node">
-        <h3>Links</h3>
-        <ul>
-          <li><a href="TODO: some link">TODO: some link</a></li>
-        </ul>
-      </div>
-    </div>
-    <br style="clear:both;" />
-  </div>
-
-  <div id="footer">
-    <hr />
-    <p><a href="/">{{ site.name }}</a></p>
-    <ul>
-      <li>made with <a href="http://github.com/vilcans/scribbish-jekyll">scribbish-jekyll</a></li>
-    </ul>
-  </div>
-</div>
+	<div id="container">
+		<div id="header">
+			<h1><span><a href="/">{{ site.name }}</a></span></h1>
+			<h2>{{ site.subtitle }}</h2>
+		</div>
+		<div id="page">
+			<div id="content">
+				{{ content }}
+			</div>
+			<div id="sidebar">
+				<div class="sidebar-node">
+					{% include search.html %}
+					{% include sidebar.html %}
+				</div>
+			</div>
+			<br style="clear:both;" />
+		</div>
+		<div id="footer">
+			<hr />
+			{% include footer.html %}
+		</div>
+	</div>
+	<a href="http://github.com/jingweno"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 </body>
 </html>

@@ -1,9 +1,7 @@
 ---
-layout: default
+layout: page
+title: Blog Posts
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  {% assign posts = site.posts %}
-  {% include postlist.html %}
-</div>
+{% assign posts = site.posts %}
+{% include postlist.html %}

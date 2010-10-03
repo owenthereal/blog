@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pushing Adaptive Implementations with Eclipse's Extension Points"
-categories: eclipse
+tags: eclipse
 ---
 
 A week ago, I blogged about <a href="http://owenou.com/blog/2010/04/07/adaptive-implementations-with-eclipses-optional-plugin-dependencies/">implementing adaptive components using Eclipse's optional plugin dependencies</a>. In that post, I gave an example on displaying HTML files with different editors based on client's environment: open the HTML file with the HTML editor from <a href="http://www.eclipse.org/webtools/">WTP</a> if the plugin is installed, otherwise fallback to open with the default text editor. The final solution was to query the existence of the WTP editor through <a href="http://www.eclipse.org/equinox/">Equinox</a>.

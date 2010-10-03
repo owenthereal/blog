@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to set up and run PDE build
-categories: eclipse
+tags: eclipse
 ---
 
 The <a href="http://www.eclipse.org/pde/">Plug-in Development Environment</a>(PDE) provides tools to build Eclipse plug-ins, fragments, features, update sites and RCP products. This post is about how to set up and run the PDE <a href="http://wiki.eclipse.org/index.php/PDEBuild">headless build</a>. Headless build means making the build outside the Eclipse IDE. You can also manually build it inside Eclipse with <a href="http://www.eclipse.org/articles/Article-PDE-Automation/automation.html">its GUI</a>.

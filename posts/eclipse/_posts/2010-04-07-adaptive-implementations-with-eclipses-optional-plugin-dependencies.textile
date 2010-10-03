@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Adaptive Implementations with Eclipse's Optional Plugin Dependencies
-categories: eclipse
+tags: eclipse
 ---
 
 <a href="http://www.eclipse.org/equinox/">Equinox</a> is an <a href="http://www.osgi.org">OSGI</a> implementation that allows bundles to find out what capabilities are available on the system and adapt the functionality they can provide. This adaptivity is achieved through the OSGi service registry. In this blog post, I am gonna talk about how to make use of Eclipse's optional plugin dependencies to support diverse runtime environment.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Patching with Class Shadowing and Maven
-categories: java
+tags: java
 ---
 
 Before we start, you may speculate about the usefulness of <a href="http://mindprod.com/jgloss/shadow.html">class shadowing</a>.  Class shadowing can be used as a trick to patch or replace behaviors of  classes at runtime, taking advantage of the first-come first-served  algorithm of Java’s class loader. If there are more than one class with  the same fully qualified name in the Java class loader, the first one  that shows up always take precedence over the rest.

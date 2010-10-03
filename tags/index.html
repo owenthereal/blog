@@ -8,7 +8,7 @@ layout: default
     [ tag name, list of posts ]
   {% endcomment %}
   {% assign t = tag.first %}
-  <a id="{{ t | cgi_escape }}" href="#{{ t | cgi_escape }}"><h2>{{ t }}</h2></a>
+  <h2><a id="{{ t | cgi_escape }}" href="#{{ t | cgi_escape }}">{{ t }}</a></h2>
   {% assign posts = tag.last %}
   {% include postlist.html %}
 {% endfor %}

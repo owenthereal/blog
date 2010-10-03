@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introducing Eclipse RAP
-categories: eclipse
+tags: eclipse
 ---
 
 RAP, what? The Eclipse community is expanding its range to Hip Hop :)? Not exactly, although there is a chance. <a href="http://www.eclipse.org/rap/" target="_blank">Eclipse Rich Ajax Platform</a>(RAP) is a framework that empowers developers to build rich web clients “the Eclipse way.” From the latest <a href="http://www.eclipse.org/downloads/" target="_blank">Helios download</a>, RAP Tooling has become a default component of the RCP bundle:

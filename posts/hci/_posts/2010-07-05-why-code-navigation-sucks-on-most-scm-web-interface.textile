@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why code navigation sucks on most SCM's web interfaces?
-categories: human computer interface
+tags: human computer interface
 ---
 
 I am not surprised that you feel the same: it sucks to navigate codes on most source control system's web interfaces! Here are whys:

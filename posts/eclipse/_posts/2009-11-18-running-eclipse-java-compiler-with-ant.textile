@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Running Eclipse Java Compiler with Ant
-categories: eclipse
+tags: eclipse
 ---
 
 <a rel="nofollow" href="http://www.eclipse.org/jdt/core/index.php" target="_blank">Eclipse Java Compiler</a> (EJC) is an <a href="http://en.wikipedia.org/wiki/Incremental_compiler" target="_blank">incremental compiler</a> that is generally faster than any JDKs. It also fixes some incompatible problems related to JDK6, e.g. <a href="http://issues.apache.org/jira/browse/OPENJPA-640" target="_blank">http://issues.apache.org/jira/browse/OPENJPA-640</a>. This post is about how to run EJC with an ant target to compile your Java projects.

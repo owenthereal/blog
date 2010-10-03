@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Judicious Serialization
-categories: java
+tags: java
 ---
 
 I was fixing a bug related to <a href="http://en.wikipedia.org/wiki/Serialization" target="_blank">Java Serialization</a> the other day: Server 1 tried to send out an email by using one of the web services from Server 2 with serialized objects passed along. It almost took me half a day to dig out the problem because the stack trace wasn’t helpful enough other than saying there were <a href="http://java.sun.com/javase/7/docs/api/java/io/Serializable.html" target="_blank">Serializable</a> exceptions. After lots of debuggings, I finally found out that the problem was one of the Serializable objects having non-Serializable attributes.

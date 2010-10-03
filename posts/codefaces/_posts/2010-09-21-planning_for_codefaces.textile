@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Planning for CodeFaces 1.1.1
-categories: codefaces
+tags: codefaces
 ---
 
 For the pass couple months, amazing things have happened to <a href="http://codefaces.org/">CodeFaces</a>: it has enough features and scalability to go live, it was listed as a demo app on Eclipse RAP's <a href="(http://www.eclipse.org/rap/demos">demo page</a>, good feedback has been heard after people using it, and constant feature requests have been documented and pushed to our backlog. That's pretty encouraging both to me and to the <a href="http://blog.codefaces.org/about/">CodeFaces Team</a>. 
