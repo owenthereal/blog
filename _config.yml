@@ -1,7 +1,6 @@
 name: Owen Ou's Blog
 subtitle: Blog.new(:kind => "geek")
 
-markdown: rdiscount
 auto: true
 pygments: true
 permalink: /:year/:month/:day/:title
