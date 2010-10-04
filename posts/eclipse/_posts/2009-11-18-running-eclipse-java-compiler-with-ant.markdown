@@ -20,7 +20,12 @@ and at the same time unzip this jar file and make *jdtCompilerAdapter.jar* avai
 3. You are now ready to test the Eclipse compiler in command line. 
 The key is to direct ant to use EJC by specifying the compiler parameter *-Dbuild.compiler* to *org.eclipse.jdt.core.JDTCompilerAdapter*. 
 Go to a Java project and type in:
-<script src="http://gist.github.com/499762.js?file=ant.sh"></script>
+
+{% highlight bash linenos %}
+ant -Dbuild.compiler=org.eclipse.jdt.core.JDTCompilerAdapter
+    -Dant.build.javac.target=1.6
+    -Dant.build.javac.source=1.6 compile
+{% endhighlight %}
 
 4. You can also set up an ant target to play around with it:
 <script src="http://gist.github.com/499762.js?file=build.xml"></script>
