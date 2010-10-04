@@ -6,11 +6,11 @@ pygments: true
 permalink: /:year/:month/:day/:title
 
 # Absolute base URL for this site without trailing slash
-url: http://localhost:4000
+url: http://owenou.com
 
 # Absolute URL of feed.
 # You may want to change this URL to point to a feedburner feed.
-feed: http://localhost:4000/atom.xml
+feed: http://owenou.com/atom.xml
 
 # Author element in atom feed. Optional.
 # If email is supplied, name is required.

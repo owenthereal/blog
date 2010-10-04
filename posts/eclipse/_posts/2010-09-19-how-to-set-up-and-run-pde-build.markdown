@@ -95,7 +95,7 @@ You should see PDE starts building :).
 
 #### Summary
 
-Setting up the PDE build looks scary at first, but once you understand [Equinox][6] a little bit more, you will find everything make a lot of sense. All you need to make the build run is creating the directory structure for the plug-ins/features to build and their dependencies, and configuring some properties. The directory structure, probably as you have already realized, is Equinox's [convention][7] of managing components.
+Setting up the PDE build looks scary at first, but once you understand [Equinox][6] a little bit more, you will find everything make a lot of sense. All you need to get it to run is creating the directory structure for the plug-ins/features to build and their dependencies, and configuring some properties. The directory structure, probably as you have already realized, is Equinox's [convention][7] of managing components.
 
 You can also set up [Ant][8] tasks or [Rake][9] tasks to automate the whole process. Like the exercise that I have done lately, I used Rake to automate the PDE build for the Eclipse [FITPro][10] plugin. The source is available here: <https://fitpro.svn.sourceforge.net/svnroot/fitpro/Eclipse/trunk/com.luxoft.eclipse.fit.runner.releng/>.
 
