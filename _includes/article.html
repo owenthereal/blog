@@ -1,0 +1,18 @@
+<div class="hentry" id="{{ article.id }}">
+	<h2 class="entry-title">
+		<a href="{{ article.url }}">{{ article.title }}</a>
+	</h2>
+	<abbr class="published" title="{{ article.date | date_to_xmlschema }}">{{ article.date | date_to_string }}</abbr>
+	<br class="clear" />
+	<div class="entry-content">
+		{{ article.content }}
+	</div>
+	<ul class="meta">
+		<li>
+			<a href="{{ site.url }}{{ article.url }}#disqus_thread">Comments</a>
+			{% if article.tags != empty %}
+			- {% for t in article.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}
+			{% endif %}
+		</li>	
+	</ul>
+</div>

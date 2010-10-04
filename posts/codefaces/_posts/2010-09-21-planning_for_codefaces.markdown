@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Planning for CodeFaces 1.1.1
-tags: codefaces, hci
+tags: codefaces hci
 ---
 
 For the pass couple months, amazing things have happened to [CodeFaces][1]: 

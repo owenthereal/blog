@@ -3,4 +3,10 @@ layout: page
 ---
 
 {% assign posts = site.posts %}
+
+{% for article in posts limit:3 %}
+	{% include article.html %}
+{% endfor %}
+
+<h1>Archives</h1>
 {% include postlist.html %}

@@ -5,28 +5,19 @@ layout: default
 	<h2 class="entry-title">
 		<a href="{{ page.url }}">{{ page.title }}</a>
 	</h2>
-	{% if page.author %}
-	<div class="vcard">
-		Posted by <span class="fn">{{ page.author }}</span>
-	</div>
-	{% endif %}
 	<abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
 	<br class="clear" />
 	<div class="entry-content">
 		{{ content }}
 	</div>
 	<ul class="meta">
-		{% if page.categories != empty %}
-		<li>Categories:{% for t in page.categories %} <a href="/{{ t | cgi_escape }}/">{{ t }}</a>{% endfor %}</li>
-		{% endif %}
-		{% if page.tags != empty %}
-		<li>Tags:{% for t in page.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}</li>
-		{% endif %}
-		<li>Meta:
-			<a href="{{ site.url }}{{ page.url }}" rel="bookmark">permalink</a>
-			<a href="{{ site.feed }}">atom</a>
+		<li>
+			<a href="{{ site.url }}{{ page.url }}#disqus_thread">Comments</a>
+			{% if page.tags != empty %}
+			- {% for t in page.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}
+			{% endif %}
 		</li>
-	</ul>
+	</ul>	
 	<ul class="posts">
 		{% assign p = page.previous %}{% if p %}
 		<li><span>Previous: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
@@ -35,5 +26,6 @@ layout: default
 		<li><span>Next: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
 		{% endif %}
 	</ul>
+
 	{% include disqus.html %}
 </div>
