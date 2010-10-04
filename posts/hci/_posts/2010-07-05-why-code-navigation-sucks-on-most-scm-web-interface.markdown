@@ -20,9 +20,7 @@ I am not surprised that you feel the same: it sucks to navigate codes on most so
 
 If you feel there is a need to improve existing SCM's web interface, I would like to introduce to you a neat tool that [we][5] built lately: [CodeFaces][6].  CodeFaces is a source control client made for browsers. It provides an IDE-looking page to structurally navigate codes from a version control system. Here is a screencast that walks you through all its features:
 
-
 <object width="390" height="235"><param name="movie" value="http://www.youtube.com/v/JNVcyi0cDQ0?fs=1&hl=en_US&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/JNVcyi0cDQ0?fs=1&hl=en_US&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="390" height="235"></embed></object>
-
 
 Check out <http://codefaces.org> for more info and updates :).
 
