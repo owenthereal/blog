@@ -83,22 +83,23 @@ body {
 
 #header a:hover,
 #header a:active {
-  color: #930; background: transparent;
+  color: #039; background: transparent;
   text-decoration: none;
 }
 
 #header h1 {
   font: bold 410% georgia, serif; 
   letter-spacing: -1px; 
-  margin: 0;
+  margin: 0; padding: 0 3px;
   float: left; 
 }
 
 #header h2 {
   font: normal 12px verdana, arial, sans-serif;  
-  margin: 2.35em 0.2em 0 0;
-  float: right;
+  margin: 2.5em 0 0 0.8em;
+  float: left;
 }
+
 @media all and (max-width: 950px) {
   #header h2, #header h1 {
     float: none;
@@ -195,35 +196,120 @@ body {
 }
 
 /* Article Entries - class names based on http://microformats.org/wiki/hatom] */
+#content {}
+
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5 { 
+  font-family: "lucidamac bold", "lucida grande", arial, sans-serif; 
+  letter-spacing: -1px;
+}
+
+#content h1 { 
+  font-size: 24px;
+  margin: 0 0 0.3em;  
+}
+
+#content h2 { 
+  font-size: 22px;
+  margin: 0 0 0.3em;  
+}
+
+#content h3 { 
+  font-size: 20px;
+  margin: 1.2em 0 0.3em;  
+}
+
+#content h4 { 
+  font-size: 18px;
+  margin: 1.2em 0 0.3em;  
+  border-bottom: 1px dotted #bbb;
+}
+
+#content h5 {
+  font-size: 18px;
+  background: #eef;
+  margin: 1.2em 0 0.3em;  
+  border-bottom: 1px dotted #aaa;
+}
+
+#content p {
+  line-height: 15px; 
+  margin: 0 0 1.2em;
+}
+
+#content ul,
+#content ol {
+  margin: 1em;
+  padding:0;
+}
+
+#content ul {
+  list-style-type: square;
+}
+
+#content li {
+  line-height: 15px; 
+  margin: 0 0 0 1em; padding: 0;
+}
+
+#content blockquote {
+  color: #555;
+  border-left: 5px solid #ccc; 
+  margin: 1.3em 1em; padding: 0 1em;
+}
+
+#content code { 
+  font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
+  color: #000;
+  background: #eee;
+}
+
+#content pre {
+  color: #000;
+  background: #ddd;
+  overflow: auto;
+  font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
+  margin: 0.9em 0; padding: 8px;
+}
+
+#content pre code {
+  background: #ddd;
+}
+
+/* Article Entries - class names based on http://microformats.org/wiki/hatom] */
 #content .hentry { 
   margin: 0 0 3em 0;
 }
 
 #content .hentry .entry-title {
-  font-size: 30px;
-  letter-spacing: -1.5px; 
+  font-size: 24px;
+  line-height: 94%;
+  letter-spacing: -0.75px; 
   margin: 0;
 }
 
 #content .hentry .entry-title a:link,
 #content .hentry .entry-title a:visited { 
-  color: #111;
+  color: #039;
   text-decoration: none;
 }
 
 #content .hentry .entry-title a:hover,
 #content .hentry .entry-title a:active { 
+  color: #000;
   background: transparent;
-  text-decoration: underline;
 }
 
-#content .hentry .entry-title .comment_count { color: #eee; }
+#content .hentry .entry-title .comment_count { display: none; }
 
 #content .hentry .vcard,
 #content .hentry .published {
   float: left;
   color: #a9a9a9;
-  font: normal 16px/14px helvetica, arial, verdana, sans-serif;
+  font: normal 12px "lucidamac bold", "lucida grande", arial, verdana, sans-serif;
   letter-spacing: -1px;
   margin: 1px 0 0.6em 2px;
 }
@@ -243,7 +329,7 @@ body {
 
 #content .hentry .entry-content { }
 
-#content .hentry ul.meta { 
+#content .hentry .meta { 
   font-size: 10px;
   background: #eee;
   margin: 0; padding: 5px;
@@ -252,7 +338,7 @@ body {
 }
 
 #content .hentry ul.meta li { 
-  line-height: 1.5em;
+  line-height: 13px;
   margin: 0; padding: 0;
 }
 
@@ -266,20 +352,24 @@ body {
 #content .hentry .meta a:hover,
 #content .hentry .meta a:active  {
   color: #fff;
+  background: #666;
 }
 
 
 /* Comments and Trackbacks */
-#content ol.comments,
-#content ol.trackbacks {
+#content ol.comments {
   list-style-type: none;
   margin: 0; padding: 0;
 }
 
-#content li.comment,
-#content li.trackback {
+#content li.comment {
   border: 2px solid #ddd;
   margin: 0 0 1.5em; padding: 1em;
+}
+
+#content li.by-author {
+  border-color: #039;
+  background-color: #f7f7ff;
 }
 
 #content li.comment.preview { 
@@ -288,20 +378,20 @@ body {
   margin: 0 0 1.5em; padding: 1em;
 }
 
-#content li.comment   .author,
-#content li.trackback .author { 
+#content li.comment .author { 
   font-weight: bold;
   margin-bottom: 1em;
 }
 
-#content li.comment   .author cite,
-#content li.trackback .author cite {
+#content li.by-author .author {
+}
+
+#content li.comment .author cite {
   font-size: 16px;
   letter-spacing: -1px;
 }
 
-#content li.comment   .author abbr, 
-#content li.trackback .author abbr { color: #999; }
+#content li.comment .author abbr { color: #999; }
 
 #content li.comment .author .gravatar { 
   margin: 0 0 0.5em 0.5em;
@@ -311,32 +401,61 @@ body {
 #content li.comment .author div {
   margin: 0 0 0.5em 0.5em;
   width: 60px; height: 60px;
-  background: url(/images/theme/gravatar.gif) no-repeat left top;
+  background: url("/images/gravatar.gif") no-repeat left top;
   float: right; 
 }
 
-#content form.comments {
+#content form#new_comment {
   background: #f2f2f2;
   border-top: 1px solid #ddd;
   padding: 1em 0.5em;
 }
 
-#content form.comments fieldset { 
+#content form#new_comment fieldset { 
   border: none;
 }
 
-#content form.comments legend { 
+#content form#new_comment legend { 
   display: none;
 }
 
-#content form.comments label { 
+#content form#new_comment label { 
   font-weight: bold;
 }
 
-#content form.comments textarea { 
+#content form#new_comment textarea { 
   width: 90%; height: 150px;
   padding: 3px;
 }
+
+#content dl.results dt {
+  font-weight: bold;
+}
+#content dl.results dd {
+  margin: 0;
+}
+
+ul#archives {
+  list-style-type: none; 
+  margin: 0 0 2em; padding: 0;
+}
+#archives li.month {
+  margin-top: 0.25em;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+#archives li.post {
+  margin-left: 1.25em;
+}
+
+#archives a:link,  #archives a:visited { color: #039;    text-decoration: none; }
+#archives a:hover, #archives a:active  { color: #00afff; text-decoration: underline; }
+
+.results a:link,  .results a:visited { color: #039;    text-decoration: none; }
+.results a:hover, .results a:active  { color: #00afff; text-decoration: underline; }
+
+.clean_link a:link,  .clean_link a:visited { color: #039;    text-decoration: none; }
+.clean_link a:hover, .clean_link a:active  { color: #00afff; text-decoration: underline; }
 
 /*--------------------------------------------------------------
  Sidebar
@@ -366,85 +485,24 @@ body {
   margin: 0 0 2em; padding: 0;
 }
 
+#sidebar p {
+	margin: 0 0 2em; padding: 0;
+}
+
 #sidebar li { 
   margin: 0;
   padding: 1px 0;
-}
-
-.feed-icon {
-  background: url(/images/theme/rss.png) no-repeat;
-  background-position: bottom right;
-  padding-right: 16px;
 }
 
 #sidebar em { font-style: normal; }
 
 /* Live-search and results */
 #sidebar .search p { 
-  margin: 0;
+  margin: 0 0 1em 0;
 }
 
 #sidebar .search p input {
   font-size: 11px; width: 92%;
-}
-
-#sidebar .search .loading {
-  background: url(/images/theme/spinner.gif) no-repeat left 50%;
-  margin: 1em 0; padding: 0 0 0 20px;
-  height: 15px;
-}
-
-#sidebar .search .results { 
-  margin: 0 0 1.25em;
-}
-
-#sidebar .search .results h3 {
-  margin-top: 1em;
-}
-
-#sidebar .search .results p { 
-  font: bold 14px "lucidamac bold", "lucida grande", verdana, arial, helvetica, sans-serif;
-  margin: 0 0 0.5em;
-}
-
-#sidebar .search .results ul { 
-  margin: 0; padding: 3px;
-}
-
-#sidebar .search .results li { background: #ffc; padding: 0.2em; }
-
-#sidebar .search .results a:link,
-#sidebar .search .results a:visited {
-  color: #222;
-}
-
-#sidebar .search .results a:hover, 
-#sidebar .search .results a:active  {
-  color: #fff;
-}
-
-/* Flickr sidebar-node */
-#sidebar #flickr {
-  margin: 0 0 2em;
-  clear: both;
-}
-
-#sidebar #flickr div {
-}
-
-#sidebar #flickr img { 
-  margin: 0 0 5px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  display: block;
-}
-        
-#sidebar #flickr img:hover {
-  background: #ffc;
-}
-        
-#sidebar #flickr a { 
-  border: none;
 }
 
 /*--------------------------------------------------------------
@@ -454,17 +512,19 @@ body {
 #footer {
   border-top: 1px solid #ccc; 
   font-size: 90%; 
+  color: #aaa;
 }
 
 #footer a:link,
 #footer a:visited { 
-  color: #000;
+  color: #aaa;
 }
 
 #footer a:hover,
 #footer a:active { 
   color: #fff;
-  background: #000;
+  background: #666;
+  text-decoration: none;
 }
 
 #footer hr {
@@ -489,6 +549,7 @@ body {
   margin: 0; padding: 0 0 0 1em;
   display: inline; 
 }
+
 /*--------------------------------------------------------------
  Syntax Highlighting - contributed by James Wilford
  Closely matches TextMate's "All Hallow's Eve" theme
@@ -552,7 +613,7 @@ body {
                #content form.comments { display: none; } }
 
 body {
-  background: url(/images/theme/background.gif) repeat-x left top;
+  /*background: url(../../images/theme/background.gif) repeat-x left top;*/
   font: normal 12px "lucida grande", verdana, sans-serif;
 }
 
@@ -563,8 +624,8 @@ abbr  { border: none; }
 cite  { font-style: normal; }
 a img { border: none; padding: 0; margin: 0; }
 
-a:link,  a:visited { color: #000; }
-a:hover, a:active  { color: #fff; background: #000; }
+a:link,  a:visited { color: #039;    text-decoration: underline; }
+a:hover, a:active  { color: #00afff; text-decoration: none; }
 
 /* http://longren.org/2006/09/27/wrapping-text-inside-pre-tags */
 pre {
@@ -576,23 +637,23 @@ pre {
 }
 
 .tag { font-size: 280%; }
-.tag1 { font-size: 80%; }
-.tag2 { font-size: 90%; }
-.tag3 { font-size: 100%; }
-.tag4 { font-size: 110%; }
-.tag5 { font-size: 120%; }
-.tag6 { font-size: 130%; }
-.tag7 { font-size: 140%; }
-.tag8 { font-size: 150%; }
-.tag9 { font-size: 160%; }
-.tag10 { font-size: 170%; }
-.tag11 { font-size: 180%; }
-.tag12 { font-size: 190%; }
-.tag13 { font-size: 200%; }
-.tag14 { font-size: 210%; }
-.tag15 { font-size: 220%; }
-.tag16 { font-size: 230%; }
-.tag17 { font-size: 240%; }
-.tag18 { font-size: 250%; }
-.tag19 { font-size: 260%; }
-.tag20 { font-size: 270%; }
+.tag1 { font-size: 100%; }
+.tag2 { font-size: 110%; }
+.tag3 { font-size: 120%; }
+.tag4 { font-size: 130%; }
+.tag5 { font-size: 140%; }
+.tag6 { font-size: 150%; }
+.tag7 { font-size: 160%; }
+.tag8 { font-size: 170%; }
+.tag9 { font-size: 180%; }
+.tag10 { font-size: 190%; }
+.tag11 { font-size: 200%; }
+.tag12 { font-size: 210%; }
+.tag13 { font-size: 220%; }
+.tag14 { font-size: 230%; }
+.tag15 { font-size: 240%; }
+.tag16 { font-size: 250%; }
+.tag17 { font-size: 260%; }
+.tag18 { font-size: 270%; }
+.tag19 { font-size: 280%; }
+.tag20 { font-size: 290%; }

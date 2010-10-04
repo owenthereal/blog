@@ -1,23 +1,37 @@
-{% include search.html %}
+<div class="sidebar-node">
+	{% include google_search.html %}
+</div>
 
-<h3>Pages</h3>
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/projects">Projects</a></li>
-	<li><a href="/about">About</a></li>
-</ul>
+<div class="sidebar-node">
+	<h3>Pages</h3>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/projects">Projects</a></li>
+		<li><a href="/about">About</a></li>
+	</ul>
+</div>
 
-<h3>Follow me</h3>
-<ul>
-<li><a href="http://twitter.com/JingwenOwenOu">Twitter</a></li>
-<li><a href="http://www.linkedin.com/in/jingweno">LinkedIn</a></li>
-<li><a href="http://github.com/jingweno">GitHub</a></li>
-<li><a class="feed-icon" href="http://feeds.feedburner.com/OwenOu">Subscribe to posts</a></li>
-</ul>
+<div class="sidebar-node">
+	<h3>Follow me</h3>
+	<ul>
+		<li><a href="http://twitter.com/JingwenOwenOu">Twitter</a></li>
+		<li><a href="http://www.linkedin.com/in/jingweno">LinkedIn</a></li>
+		<li><a href="http://github.com/jingweno">GitHub</a></li>
+	</ul>
+</div>
 
-<h3><a href="/tags">Tags</a></h3>
-{% for tag in site.tags %}
-{% assign t = tag.first %}
-{% assign posts = tag.last %}
-<a id="{{ t | cgi_escape }}" class="tag tag{{posts.size}}" href="#{{ t | cgi_escape }}">{{ t }}</a>
-{% endfor %}
+<div class="sidebar-node">
+	<h3><a href="/tags">Tags</a></h3>
+	<p>
+		{% for tag in site.tags %}
+		{% assign t = tag.first %}
+		{% assign posts = tag.last %}
+		<a id="{{ t | cgi_escape }}" class="tag tag{{posts.size}}" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>
+		{% endfor %}
+	</p>
+</div>
+
+<div class="sidebar-node">
+	<h3>Subscribe</h3>
+	{% include feedburner.html %}
+</div>

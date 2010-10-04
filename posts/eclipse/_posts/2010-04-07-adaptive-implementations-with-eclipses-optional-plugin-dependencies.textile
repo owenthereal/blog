@@ -19,7 +19,7 @@ The MANIFEST.MF should look something like this:
 <ul>
 	<li>We might consider directly initializing the HTML editor class from WTP and if it doesn't exist, initialize the text editor. However, <a href="http://mobius.inria.fr/eclipse-doc/org/eclipse/osgi/framework/internal/core/BundleLoader.html#findClass(java.lang.String)">BundleLoader</a> won't let this happen since it throws out ClassNotFoundException if a class doesn't exist (in the case of WTP not being installed on the client), and this exception can't be caught in client implementations.</li>
 	<li>We might also consider initializing the HTML editor class through reflection. In this way, we can catch our own ClassNotFoundException and fallback to create a text editor.<br/>
-[gist]<script src="http://gist.github.com/496301.js?file=CreteHTMLTextEditor.java"></script>[/gist]
+	<script src="http://gist.github.com/496301.js?file=CreteHTMLTextEditor.java"></script>
 </li>
 However...this is not quite "OSGI". Actually, Equinox provides <a href="http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.platform.doc.isv/reference/api/org/eclipse/core/runtime/IConfigurationElement.html">APIs</a> to retrieve extension configurations and initialize their implemented classes. It uses the same way to initialize classes like what we are doing here.
 	<li> We can ask Equinox for all the registered editor extensions and find out whether WTP's HTML editor is one of them. If yes, just initialize it. Otherwise, create the text editor that is available to all clients.<br/>
