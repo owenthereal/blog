@@ -3,7 +3,7 @@ subtitle: = Blog.new(:kind => "geek")
 
 auto: true
 pygments: true
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
 
 # Absolute base URL for this site without trailing slash
 url: http://owenou.com
