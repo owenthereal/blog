@@ -1,4 +1,4 @@
-### Scribbish for Jekyll
+### Owen Ou's Blog
 
 Scribbish is a web site theme created by [packagethief][1] for the [Typo][2] blog engine.
 This is a version made for [Jekyll][3], the static site generator. The port was made by [Martin Vilcans][4].
@@ -17,6 +17,7 @@ Use it as-is, or copy it to make new themes.
 [6]: http://github.com/vilcans/scribbish-jekyll/
 [7]: http://quotedprintable.com/pages/scribbish
 
+Scribbish for Jekyll
 ---
 Licensed under MIT
 
