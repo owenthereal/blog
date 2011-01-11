@@ -556,9 +556,12 @@ ul#archives {
  --------------------------------------------------------------*/
 #content .hentry .entry-content .highlight  { background: #ffffff; }
 #content .hentry .entry-content pre { 
-   border: 1px solid #ddd;
-   background-color: #eef;
-   padding: 0 .4em; 
+	border: 1px solid #ddd;
+	background-color: #eef;
+	padding: 0 .4em;
+	overflow: auto;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden; 
 }
 
 #content .hentry .entry-content code {
