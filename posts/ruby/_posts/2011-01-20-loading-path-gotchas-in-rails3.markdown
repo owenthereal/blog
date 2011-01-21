@@ -50,10 +50,10 @@ end
 
 Please note that if class caching is turned on, both cases work. Now everything becomes quite clear, the line with "unless" after the "raise" is causing the problem: when class caching is turned off, "local_const_defined?" always returns false hence raising the "LoadError". I have created a [bug report][3] on this issue and I will post replies here once I got anything :).
 
-The code of the two examples are available [here][2]. It has a simple view to display the output of the load path exception. Just run:
+The code of the two examples are available [here][2]. It has a simple view to display the output of the load path exception. To get started, just run:
 
-	bundle install
-	rails server
+	> bundle install
+	> rails server
 
 
 [1]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb 
