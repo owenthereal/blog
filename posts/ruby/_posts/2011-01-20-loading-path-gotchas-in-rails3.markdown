@@ -4,13 +4,13 @@ title: Loading Path Gotchas in Rails 3
 tags: ruby rails
 ---
 
-The algorithm of auto-loading paths in Rails 3 is a bit weird when **class caching is turned off**: 
+The algorithm of load path inferring in Rails 3 is a bit weird when class caching is turned off: 
 
 Assuming you add all subdirectories under app/models to the load paths by using the new "config.autoload_paths" setting in config/application.rb:
 
 	config.autoload_paths += Dir["#{config.root}/app/models/**/"]
 
-And you have a subdirectory under app/models with name class1 and a file under this subdirectory with name class1.rb. When you are referring any classes under this subdirectory in class1.rb, you have to make sure they are in the namespace of Class1. Otherwise Rails will complain about your referred class is not in the namespace of Class1. In more details, if you have a directory structure like this:
+And you have a subdirectory under app/models with name class1 and a file under this subdirectory with name class1.rb. When you are referring any classes in class1.rb under this subdirectory, you have to make sure they are in the namespace of Class1. Otherwise Rails will complain about your referred class is not in the namespace of Class1. In more details, if you have a directory structure like this:
 
 	- app
 	  - models
@@ -26,9 +26,9 @@ When you refer to Class1Reference in Class1, you will get "**Expected app/models
 	      - class2.rb
 	      - class2_reference.rb
 
-This second example have everything the same as the first one except that the subdirectory name (not_class2) is different from the file name (class2). Surprisingly, this example works as expected. The code of this two examples are available [here][2]. 
+This second example have everything the same as the first one except that the subdirectory name (not_class2) is different from the file name (class2). Surprisingly, this example works as expected.  
 
-The result indicates either a (strange) directory naming convention in Rails 3 or a potential bug in its path loading algorithm. Here is the [lines][1] in Rails 3 that does the auto-loading:
+The result indicates either a (strange) directory naming convention in Rails 3 or a potential bug in its path inferring algorithm. Here are the [lines][1] in Rails 3 that does the auto-loading:
 
 {% highlight ruby %}
 # Load the constant named +const_name+ which is missing from +from_mod+. If
@@ -48,7 +48,12 @@ def load_missing_constant(from_mod, const_name)
 end
 {% endhighlight %}
 
-Please note that if class caching is turned on, both cases work. Now everything becomes quite clear, the line with "unless" after the raise is causing the problem: when class caching is turned off, "local_const_defined?" always returns false and it raises the "LoadError". I have created a [bug report][3] and hopefully I will post the replies here once I got anything :).
+Please note that if class caching is turned on, both cases work. Now everything becomes quite clear, the line with "unless" after the "raise" is causing the problem: when class caching is turned off, "local_const_defined?" always returns false hence raising the "LoadError". I have created a [bug report][3] on this issue and I will post replies here once I got anything :).
+
+The code of the two examples are available [here][2]. It has a simple view to display the output of the load path exception. Just run:
+
+	bundle install
+	rails server
 
 
 [1]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb 
