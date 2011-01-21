@@ -4,11 +4,11 @@ title: Loading Path Gotchas in Rails 3
 tags: ruby rails
 ---
 
-The algorithm of load path inferring in Rails 3 is a bit weird when class caching is turned off: 
+The algorithm of load path inferring in Rails 3 is a bit weird when class caching is turned off. Assuming you add all subdirectories under app/models to the load paths by using the new "config.autoload_paths" setting in config/application.rb:
 
-Assuming you add all subdirectories under app/models to the load paths by using the new "config.autoload_paths" setting in config/application.rb:
-
-	config.autoload_paths += Dir["#{config.root}/app/models/**/"]
+{% highlight ruby %}
+config.autoload_paths += Dir["#{config.root}/app/models/**/"]
+{% endhighlight %}
 
 And you have a subdirectory under app/models with name class1 and a file under this subdirectory with name class1.rb. When you are referring any classes in class1.rb under this subdirectory, you have to make sure they are in the namespace of Class1. Otherwise Rails will complain about your referred class is not in the namespace of Class1. In more details, if you have a directory structure like this:
 
