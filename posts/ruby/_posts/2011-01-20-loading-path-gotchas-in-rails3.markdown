@@ -10,7 +10,7 @@ The algorithm of load path inferring in Rails 3 is a bit weird when class cachin
 config.autoload_paths += Dir["#{config.root}/app/models/**/"]
 {% endhighlight %}
 
-And you have a subdirectory under app/models with name class1 and a file under this subdirectory with name class1.rb. When you are referring any classes in class1.rb under this subdirectory, you have to make sure they are in the namespace of Class1. Otherwise Rails will complain about your referred class is not in the namespace of Class1. In more details, if you have a directory structure like this:
+And you have a subdirectory under app/models with name class1 and a file under this subdirectory with the same name class1.rb. When you are referring any classes in class1.rb under this subdirectory, you have to make sure they are in the namespace of Class1. Otherwise Rails will complain about your referred class is not in the namespace of Class1. In more details, if you have a directory structure like this:
 
 	- app
 	  - models
@@ -26,9 +26,9 @@ When you refer to Class1Reference in Class1, you will get "**Expected app/models
 	      - class2.rb
 	      - class2_reference.rb
 
-This second example have everything the same as the first one except that the subdirectory name (not_class2) is different from the file name (class2). Surprisingly, this example works as expected.  
+This second example have everything the same as the first one (Class2 referring to Class2Reference) except that the subdirectory name (not_class2) is different from the file name (class2.rb). There is no exception raised and everything works as expected.  
 
-The result indicates either a (strange) directory naming convention in Rails 3 or a potential bug in its path inferring algorithm. Here are the [lines][1] in Rails 3 that does the auto-loading:
+The result indicates either a (strange) directory naming convention in Rails 3 or a potential bug in its path inferring algorithm. Here are the [lines][1] in Rails 3 that does the magic:
 
 {% highlight ruby %}
 # Load the constant named +const_name+ which is missing from +from_mod+. If
@@ -48,12 +48,14 @@ def load_missing_constant(from_mod, const_name)
 end
 {% endhighlight %}
 
-Please note that if class caching is turned on, both cases work. Now everything becomes quite clear, the line with "unless" after the "raise" is causing the problem: when class caching is turned off, "local_const_defined?" always returns false hence raising the "LoadError". I have created a [bug report][3] on this issue and I will post replies here once I got anything :).
+Please note that if class caching is turned on, both cases work. Now everything becomes quite clear, the line with "unless" after the "raise" is causing the problem: when class caching is turned off, "local_const_defined?" always returns false hence raising the "LoadError". I have created a [bug report][3] on this issue and I will post replies here once I get anything :).
 
-The code of the two examples are available [here][2]. It has a simple view to display the output of the load path exception. To get started, just run:
+The code of the two examples above are available [here][2]. It has a simple view to display the output of the load path exception. To get started, just run:
 
 	> bundle install
 	> rails server
+
+And check two pages: http://localhost:3000/class1 and http://localhost:3000/class2.
 
 
 [1]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb 
