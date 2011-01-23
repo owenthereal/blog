@@ -55,7 +55,7 @@ The code of the two examples above are available [here][2]. It has a simple view
 	> bundle install
 	> rails server
 
-And check two pages: http://localhost:3000/class1 and http://localhost:3000/class2.
+And check two pages: <http://localhost:3000/class1> and <http://localhost:3000/class2>.
 
 
 [1]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb 
