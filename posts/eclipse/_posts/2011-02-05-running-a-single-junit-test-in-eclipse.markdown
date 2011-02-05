@@ -11,7 +11,7 @@ Like the example below, running *testOne* will trigger running the rest of the t
 
 ![A single test triggers multiple tests](/images/posts/a_single_test_triggers_multiple_tests.png)
 
-This happens mainly because we are running JUnit 3 tests with the JUnit 4 runner. Before version 4.6, The [JUnit 4 runner][1] seems to have the problem of falling back to run a single JUnit 3 test.
+This happens mainly because we are running JUnit 3 tests with the JUnit 4 runner. Before version 4.6, the [JUnit 4 runner][1] seems to have the problem of falling back to run a single JUnit 3 test.
 
 ![Running JUnit 3 tests with JUnit 4 runner](/images/posts/running_junit3_with_junit4_runner.png)
 
