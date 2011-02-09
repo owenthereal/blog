@@ -7,6 +7,10 @@ title: Projects
 
 CodeFaces is a web-based source control client that targets at easing the pain of navigating codes from a source control system on a browser. It allows connecting to multiple source control systems and structurally navigating codes on a unified web interface.
 
+#### [JekyllAndHyde][6]
+
+JekyllAndHyde is a HTML presentation generator that generates a basic Jekyll scaffold with Slippy hooking up. Combining Jekyll and Slippy can provide a powerful yet simple solution to create presentations: use the jekyll_and_hyde gem to generate a Jekyll template with Slippy properly integrated; write slides with Makrdown or Textile; publish slides by pushing it to a Git repository, present slides in a browser.
+
 #### [Aurora][2]
 
 The goal of this project is to develop a web based Integrated Development Environment (IDE). The client only needs a web browser and an internet connection. 
@@ -30,3 +34,4 @@ GitHub Gist WordPress Plugin allows you to embed GitHub Gists from http://gist.g
 [3]: http://sourceforge.net/projects/fitpro/
 [4]: http://ijws.it/
 [5]: http://wordpress.org/extend/plugins/github-gist/
+[6]: https://github.com/jingweno/jekyll_and_hyde
