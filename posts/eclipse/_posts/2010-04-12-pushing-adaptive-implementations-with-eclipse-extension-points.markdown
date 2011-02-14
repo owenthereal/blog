@@ -8,11 +8,11 @@ A week ago, I blogged about [implementing adaptive components using Eclipse's op
 
 However, the implementation is far from enjoyable: our main plugin knows everything about WTP! In other words, in order to specify the query, our main plugin has to know about WTP, hence containing environment-specific implementations. The following graph shows the dependency:
 	
-![pull method](/images/posts/pull.png){: width="300" height="200"}
+![pull method](http://idisk.me.com/jingweno/Public/Pictures/Skitch/pull-20110213-233614.jpg){: width="300" height="200"}
 
 The reason causing this environment-specific coupling is that our main plugin uses the **pull** method to retrieve the HTML editor implementations from WTP (code snippet goes [here][1]). To solve this, we can [inverse the control][4] and have another plugin to **push** specific implementations to the main plugin.
 
-![push method](/images/posts/push.png){: width="400" height="252"}
+![push method](http://idisk.me.com/jingweno/Public/Pictures/Skitch/push-20110213-233648.jpg){: width="400" height="252"}
 
 Equinox has already offered a very powerful tool for this purpose: [extension points][5]. In the dependency graph above, we separate the concerns by creating an adaptor plugin between the main plugin and the WTP plugin. We declare its dependency on WTP as optional to make sure the plugin will be installed on clients even if the WTP dependency is missing. If somehow WTP is installed in the future, the adaptor will automatically hook it up. Besides, we define an extension point in the main plugin so that the adaptor plugin knows what to contribute and where to contribute.
 
