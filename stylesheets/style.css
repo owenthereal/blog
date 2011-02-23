@@ -661,13 +661,13 @@ a:link,  a:visited { color: #039;    text-decoration: underline; }
 a:hover, a:active  { color: #00afff; text-decoration: none; }
 
 /* http://longren.org/2006/09/27/wrapping-text-inside-pre-tags */
-pre {
+/*pre {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap !important;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-}
+}*/
 
 .tag { font-size: 280%; }
 .tag1 { font-size: 100%; }
