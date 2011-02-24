@@ -4,7 +4,7 @@ title: Speed Up J2EE Environment Setup With Jetty Maven Plugin
 tags: java maven jetty
 ---
 
-Setting up a J2EE development environment is typically complex and full of repetition. It wastes a lot of programmers' time before they can happily get the app up and running. They need to configure the IDE, set up the database, configure the server, deploy app to the server, etc.. What's worse, they have to repeat all the setup steps or a subset of the setup steps if there are multiple workspaces. I am not saying all of these steps are unnecessary. But can we just think for a moment why this is causing pain? How can we be [DRY][2] in environment setup?
+Setting up a J2EE development environment is typically complex and full of repetition. It wastes a lot of programmers' time before they can happily get the app up and running. They need to configure the IDE, set up the database, configure the server, deploy app to the server, etc.. What's worse, they have to repeat all the setup steps or a subset of the setup steps if they have multiple workspaces. I am not saying all of these steps are unnecessary. But can we just think for a moment why this is causing pain? How can we be [DRY][2] in environment setup?
 
 Let's take a look at where other web frameworks such as [Rails][7] shine. If you carefully think about how you get a Rails app running, you will be surprised to find out almost no configuration is needed. Here is how it rolls:
 
