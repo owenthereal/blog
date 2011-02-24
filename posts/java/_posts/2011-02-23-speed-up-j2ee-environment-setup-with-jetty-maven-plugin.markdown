@@ -94,7 +94,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 #### Running multiple web apps
 
-It's a bit tricky to run multiple web apps at once with the Jetty Maven Plugin. You need to have a running web app to delegate the requests. If you are using JNDI to define data source, you also need to configure your web apps to load up its environment setting.
+It's a bit tricky to run multiple web apps at once with the Jetty Maven Plugin. You need to have a running web app to delegate the requests. If you are using JNDI to define data source, you also need to configure your web apps to load up their environment setting.
 
 As an example, assuming you have two web apps **foo** and **bar**. They are organized in different Maven projects like the followings:
 
