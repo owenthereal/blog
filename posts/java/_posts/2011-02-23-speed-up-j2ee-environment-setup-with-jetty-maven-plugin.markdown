@@ -17,7 +17,7 @@ Bang! Your app is up with just 2 commands! The last command is especially intere
 
 #### Introducing Jetty Maven Plugin
 
-Jetty is a web server and javax.servlet container. One of its greatest features is its ability to be embedded into any Java application. The Jetty Maven plugin is just a simple integration of Jetty into the Maven build process. But don't get it wrong, being embeddable doesn't mean being less performing. Jetty is actually powering engine behind [Google App Engine][3] and [VMware Zimbra][4]. After all, scalability is more related to your app's implementation than the container.
+Jetty is a web server and javax.servlet container. One of its greatest features is its ability to be embedded into any Java application. The Jetty Maven plugin is just a simple integration of Jetty into the Maven build process. But don't get it wrong, being embeddable doesn't mean being less performing. Jetty is actually the powering engine behind [Google App Engine][3] and [VMware Zimbra][4]. After all, scalability is more related to your app's implementation than the container.
 
 #### Running a single web app
 
@@ -47,7 +47,7 @@ There are lots of useful [settings][5] that you can fine-tune Jetty, such as "sc
 
 #### Running a single web app with JNDI
 
-In the case that you are defining data source using JNDI, you need to describe the data source in the "jetty-env.xml" file and refer it in the Jetty Maven Plugin. The jetty-env.xml file may look something like this:
+In the case that you are defining data source using JNDI, you need to describe the data source in a "jetty-env.xml" file and refer it in the Jetty Maven Plugin. The jetty-env.xml file may look something like this:
 
 {% highlight xml %}
 <?xml version="1.0"?>
