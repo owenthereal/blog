@@ -17,11 +17,11 @@ Bang! Your app is up with just 2 commands! The last command is especially intere
 
 #### Introducing Jetty Maven Plugin
 
-Jetty is a web server and javax.servlet container. One of its greatest features is its ability to be embedded into any Java application. The Jetty Maven plugin is just a simple integration of Jetty into the Maven build process. But don't get it wrong, Jetty is embeddable doesn't mean it is less performing. It's actually powering [Google App Engine][3] and [VMware Zimbra][4] with awesome scalability. After all, scalability is more related to your app's implementation than the container.
+Jetty is a web server and javax.servlet container. One of its greatest features is its ability to be embedded into any Java application. The Jetty Maven plugin is just a simple integration of Jetty into the Maven build process. But don't get it wrong, being embeddable doesn't mean being less performing. Jetty is actually powering engine behind [Google App Engine][3] and [VMware Zimbra][4]. After all, scalability is more related to your app's implementation than the container.
 
 #### Running a single web app
 
-To run a single web app, it is as simple as including the Jetty Maven Plugin as a plugin dependency And run it with "*mvn jetty:run*" in the command line: 
+To run a single web app, it is as simple as including the Jetty Maven Plugin as a plugin dependency in your pom file and run the "*mvn jetty:run*" command: 
 
 {% highlight xml %}
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -43,7 +43,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 </project>
 {% endhighlight %}
 
-There are lots of useful [settings][5] that you can fine-tune Jetty, such as "scanIntervalSeconds" for the time interval to automatically hot redeploy, "systemProperties" for System properties of the execution of the plugin, and "jettyEnvXml" for the file that defines JNDI bindings.
+There are lots of useful [settings][5] that you can fine-tune Jetty, such as "scanIntervalSeconds" for the time interval of automatic hot redeploy, "systemProperties" for System properties of the execution of the plugin, and "jettyEnvXml" for the file that defines JNDI bindings.
 
 #### Running a single web app with JNDI
 
