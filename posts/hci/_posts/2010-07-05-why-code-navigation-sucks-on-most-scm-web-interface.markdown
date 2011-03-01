@@ -4,7 +4,7 @@ title: Why code navigation sucks on most SCM's web interfaces?
 tags: hci codefaces
 ---
 
-I am not surprised that you feel the same: it sucks to navigate codes on most source control system's web interfaces! Here are whys:
+I am not surprised that you feel the same. It sucks to navigate codes on most source control system's web interfaces! Here are whys.
 
 1. **The display of files in most SCM's web interface is not in a tree, but in a list**. Files are in a tree structure; displaying them as a list is definitely a mismatch! The consequence of converting a tree structure to a list one is that the file context is lost during navigation. I believe you must feel annoying when clicking back and forth in order to find more than one file on [GitHub][1]'s web interface: 
 

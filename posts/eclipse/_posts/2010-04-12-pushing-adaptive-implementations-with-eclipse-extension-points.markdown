@@ -105,7 +105,7 @@ For more details, please check out [the source][6].
 
 From above, we learn how to *push* adaptive implementations using extension points, which decouples environment-specific implementations by inverting the controls. Another powerful tool that Equinox provides for adaptive implementations is [Fragment][7]. If you are careful enough, you might have noticed that our adaptor plugin actually acts as a fragment, a library that is specific to a particular operating system or windowing system. In the next blog post, I will talk more about it in details.
 
-[1]: /2010/04/07/adaptive-implementations-with-eclipses-optional-plugin-dependencies/
+[1]: /2010/04/07/adaptive-implementations-with-eclipses-optional-plugin-dependencies.html
 [2]: http://www.eclipse.org/webtools/
 [3]: http://www.eclipse.org/equinox/
 [4]: http://en.wikipedia.org/wiki/Inversion_of_control
