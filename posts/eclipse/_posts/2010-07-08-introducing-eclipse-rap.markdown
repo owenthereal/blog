@@ -12,7 +12,7 @@ So what exactly is the Eclipse paradigm? Can we benefit from it?
 
 #### Architecture
 
-RAP is to the web as RCP to the desktop. It inherits all the goodness from RCP such as workbench extension points model, event-driven SWT/JFace APIs, and componentized OSGi design. As indicated below [4], the only difference between the architecture of RAP and that of RCP is the implementation of SWT/RWT. RWT is actually a bundle providing web-specific implementation of SWT’s widgets based on the [qooxdoo][6] toolkit. In RAP, almost no SWT API is changed.
+RAP is to the web as RCP to the desktop. It inherits all the goodness from RCP such as workbench extension points model, event-driven SWT/JFace APIs, and componentized OSGi design. As indicated below, the only difference between the architecture of RAP and that of RCP is the implementation of SWT/RWT. RWT is actually a bundle providing web-specific implementation of SWT’s widgets based on the [qooxdoo][6] toolkit. In RAP, almost no SWT API is changed.
 
 The following is the architecture of RAP:
 
@@ -46,7 +46,7 @@ h4. Reference
 [^1]: [Eclipse Rich Ajax Platform: Bringing Rich Client to the Web](http://www.amazon.com/Eclipse-Rich-Ajax-Platform-Firstpress/dp/1430218835/ref=sr_1_1?ie=UTF8&s=books&qid=1278568095&sr=8-1)
 [^2]: [EclipseCon 09: RAP or GWT - Which Java-Based AJAX Technology is for You?](http://live.eclipse.org/node/722)
 [^3]: [ZK vs. GWT : Server-Centric Matters](http://www.zkoss.org/smalltalks/gwtZk/)
-[4]: <a href="http://eclipse.org/rap/" target="_blank">Eclipse Rich Ajax Platform (RAP)</a>
+[4]: http://eclipse.org/rap/
 [5]: http://www.eclipse.org/downloads/
 [6]: http://qooxdoo.org/
 [7]: http://www.eclipse.org/equinox/server/
