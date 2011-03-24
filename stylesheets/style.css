@@ -13,6 +13,10 @@ body {
   margin: 0; padding: 0.6em 1em 1em 1em; 
 }
 
+.center {
+  text-align: center;
+}
+
 #container {
   width: 900px;
   max-width: 900px;
