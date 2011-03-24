@@ -55,7 +55,7 @@ Four things to remember when using git-p4:
 * Instead of using "git pull" to fetch and merge changes from remote repository to local, use "git-p4 rebase"
 * Instead of using "git merge" to merge local branches, use "git rebase"
 
-For the last one, the reason is that when you run "git merge", Git creates an extra commit on top of the stack for the merging. This is not something we wanna show in the remote non-git repository. So we merge code with "git rebase". Detailed explanation of the difference between git-merge and git-rebase goes here: <http://www.jarrodspillers.com/2009/08/19/git-merge-vs-git-rebase-avoiding-rebase-hell/>. 
+For the last one, the reason is that when you run "git merge", Git creates an extra commit on top of the stack for the merging. This is not something we wanna show in the remote non-git repository. So we merge code with "git rebase". Detailed explanation of the difference between git-merge and git-rebase goes [here][17]. 
 
 #### Workflow
 
@@ -85,7 +85,7 @@ There is no magic happening with git-p4. What it does is simply invoking the p4 
 	![under the hook of git-p4](http://idisk.me.com/jingweno/Public/Pictures/Skitch/Terminal_%E2%80%94_%E2%8C%981-20110323-171241.jpg)
 </div>
 
-You may be amazed once again by how flexible the design of Git is which makes all this possible! 
+You may be amazed once again by how flexible the design of Git is which makes it possible to bridge to multiple VCS! 
 
 #### Summary
 
@@ -107,3 +107,4 @@ To quote [Martin Fowler][16]'s [opinions][15] on dual VCS, "a lot of teams can b
 [14]: http://www.perforce.com/perforce/doc.current/manuals/p4guide/02_config.html
 [15]: http://martinfowler.com/bliki/VersionControlTools.html
 [16]: http://martinfowler.com
+[17]: http://www.jarrodspillers.com/2009/08/19/git-merge-vs-git-rebase-avoiding-rebase-hell/
