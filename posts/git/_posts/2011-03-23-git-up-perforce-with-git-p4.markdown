@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Git up Perforce with git-p4
+title: Git Up Perforce with git-p4
 tags: git perforce version_control
 ---
 
