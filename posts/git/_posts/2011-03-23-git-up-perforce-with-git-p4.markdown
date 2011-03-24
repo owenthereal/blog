@@ -4,7 +4,7 @@ title: Git Up Perforce with git-p4
 tags: git perforce version_control
 ---
 
-[Distributed version control systems][11] open up lots of flexibility and provide lots of efficiency in work-flow than their centralized cousins (namely [Perforce][12]). There's often value to use DVCS in the team. 
+[Distributed version control systems][11] open up lots of flexibility and provide lots of efficiency in work-flow than their centralized cousins (e.g. [Perforce][12]). There's often value to use DVCS in the team. 
 
 However, the case that I run into frequently is where there is a corporate standard for a deficient VCS, but the team wish to work efficiently by using a more powerful VCS. In that case, there are many successful stories of using [multiple VCS][13]: DVCS for local version control and committing to a shared centralized VCS with a DVCS-to-VCS bridge. 
 
