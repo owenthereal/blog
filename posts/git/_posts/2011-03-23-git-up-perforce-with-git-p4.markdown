@@ -61,7 +61,7 @@ For the last one, the reason is that when you run "git merge", Git creates an ex
 
 There is a [detailed explanation][9] on the usage of git-p4 in Git's source. Here is an example almost covering daily usage:
 
-1. Clone a Perforce project:
+1. Login with "p4 login" and clone a Perforce project:
 
 		git-p4 clone //depot/path/project
 
