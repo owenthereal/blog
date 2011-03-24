@@ -18,8 +18,8 @@ Git is particularly good at this aspect which provides tons of [bridges][1] to o
 
 The git-p4 bridge requires the [p4 command line client][3] properly set up. There is a [lengthy tutorial][14] on Perforce's [documentation website]. The following is a short sums-up:
 
-1. install the p4 command line client (use [MacPort][5] or [Homebrew][6] if you are a Mac guy :-))
-2. create a .p4settings file in your home directory with some global [environment variables][7] for your Perforce repository. For example, here is what my settings look like:
+1. Install the p4 command line client (use [MacPort][5] or [Homebrew][6] if you are a Mac guy :-))
+2. Create a .p4settings file in your home directory with some global [environment variables][7] for your Perforce repository. For example, here is what my settings look like:
 
 		P4PORT=repo_url:repo_port
 		P4USER=user_name
