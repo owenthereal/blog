@@ -89,7 +89,7 @@ You may be amazed once again by how flexible the design of Git is which makes al
 
 #### Summary
 
-To quote from [Martin Fowler][16]'s [post][15] on VCS, "a lot of teams can benefit from this dual-VCS working style, particularly if there's a lot of corporate ceremony enforced by their corporate VCS. Using dual-VCS can often make both the local development team happier and the corporate controllers happier as their motivations for VCS are often different".
+To quote [Martin Fowler][16]'s [post][15] on VCS, "a lot of teams can benefit from this dual-VCS working style, particularly if there's a lot of corporate ceremony enforced by their corporate VCS. Using dual-VCS can often make both the local development team happier and the corporate controllers happier as their motivations for VCS are often different".
 
 [1]: https://github.com/git/git/tree/master/contrib
 [2]: https://github.com/git/git/blob/master/contrib/fast-import/git-p4
