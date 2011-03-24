@@ -8,7 +8,7 @@ tags: git perforce version_control
 
 However, the case that I run into frequently is where there is a corporate standard for a deficient VCS, but the team wish to work efficiently by using a more powerful VCS. In that case, there are many successful stories of using [multiple VCS][13]: DVCS for local version control and committing to a shared centralized VCS with a DVCS-to-VCS bridge. 
 
-Git is particularly good at this aspect which provides tons of [bridges][1] to other VCS (That's another good reason for preferring git over mercurial :-)). Lately I have been using the [git-p4][2] bridge to synchronize codes between a centralized Perforce repository and a local Git repository. Here is a tutorial on how to set this up.
+Git is particularly good at this aspect which provides tons of [bridges][1] to other VCS (That's another good reason for preferring Git over Mercurial :-)). Lately I have been using the [git-p4][2] bridge to synchronize codes between a centralized Perforce repository and a local Git repository. Here is a tutorial on how to set this up.
 
 <div class="center" markdown="1">	
 	![git-p4 bridge](http://idisk.me.com/jingweno/Public/Pictures/Skitch/git-p4-20110323-172404.jpg)
