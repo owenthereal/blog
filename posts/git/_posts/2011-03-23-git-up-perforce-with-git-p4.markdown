@@ -76,6 +76,10 @@ There is a [detailed explanation][9] on the usage of git-p4 in Git's source. Her
 4. Submit your local changes back to Perforce:
 
 		git-p4 submit
+		
+#### Ignoring the .gitignore file
+
+Normally we check in a .gitignore file to ignore files that we don't want to check into the remote repository for each project. However, since the remote repository is not Git, it's meaningless to check in this .gitignore file. To ignore this file, simply add an entry to .git/info/exclude. 
 
 #### Under the hook
 
