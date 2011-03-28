@@ -13,7 +13,7 @@ Let's take a look at where other web frameworks such as [Rails][7] shine. If you
 	> bundle install
 	> rails server
 
-Bang! Your app is up with just 2 commands (ignoring the step to download the source)! The last command is especially interesting. It is to start up the Rails server with the app loaded. Can we do the same in the Java world? Of course, Maven + Jetty Maven Plugin.
+Boom! Your app is up with just 2 commands (ignoring the step to download the source)! The last command is especially interesting. It is to start up the Rails server with the app loaded. Can we do the same in the Java world? Of course, Maven + Jetty Maven Plugin.
 
 #### Introducing Jetty Maven Plugin
 
