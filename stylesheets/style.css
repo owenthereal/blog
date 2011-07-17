@@ -8,9 +8,10 @@
  *     #sidebar
  *   #footer
  */
+
 body {
   text-align: center;
-  margin: 0; padding: 0.6em 1em 1em 1em; 
+  margin: 0; padding: 0.6em 1em 1em 1em;
 }
 
 .center {
@@ -20,7 +21,7 @@ body {
 #container {
   width: 900px;
   max-width: 900px;
-  text-align: left; 
+  text-align: left;
   margin: 0 auto; padding: 0;
 }
 
@@ -30,27 +31,27 @@ body {
 }
 
 #page {
-  clear:both; 
+  clear:both;
 }
 
 #content {
   float: left;
   width: 662px;
-  padding: 0 0 0 5px; 
+  padding: 0 0 0 5px;
 }
 
 #sidebar {
   float: right;
   text-align: left;
   width: 200px;
-  padding-left: 15px; 
-  border-left: 1px dotted #ddd; 
+  padding-left: 15px;
+  border-left: 1px dotted #ddd;
 }
 
 #footer {
-  height: 40px; 
+  height: 40px;
   margin: 10px 0 0; padding: 10px 0 0;
-  clear:both; 
+  clear: both;
 }
 
 @media all and (max-width: 950px) {
@@ -58,6 +59,7 @@ body {
     height: auto;
     padding-bottom: 12px;
   }
+
   #container, #content, #sidebar {
     float: none;
     width: 100%;
@@ -65,6 +67,7 @@ body {
     border: none;
     margin: 0;
   }
+
   #sidebar {
     border-top: 1px solid black;
     padding-top: 5px;
@@ -72,15 +75,15 @@ body {
 }
 
 /*--------------------------------------------------------------
- Header
- --------------------------------------------------------------*/
+Header
+--------------------------------------------------------------*/
 
-#header { 
+#header {
   background: url(/images/theme/header_shadow.gif) repeat-x left bottom;
 }
 
 #header a:link,
-#header a:visited { 
+#header a:visited {
   color: #000;
   text-decoration: none;
 }
@@ -92,14 +95,14 @@ body {
 }
 
 #header h1 {
-  font: bold 410% georgia, serif; 
-  letter-spacing: -1px; 
+  font: bold 410% georgia, serif;
+  letter-spacing: -1px;
   margin: 0; padding: 0 3px;
-  float: left; 
+  float: left;
 }
 
 #header h2 {
-  font: normal 12px verdana, arial, sans-serif;  
+  font: normal 12px verdana, arial, sans-serif;
   margin: 2.5em 0 0 0.8em;
   float: left;
 }
@@ -108,14 +111,15 @@ body {
   #header h2, #header h1 {
     float: none;
   }
+
   #header h2 {
     margin-top: .5em;
   }
 }
 
 /*--------------------------------------------------------------
- Content
- --------------------------------------------------------------*/
+Content
+--------------------------------------------------------------*/
 
 #content {}
 
@@ -123,37 +127,37 @@ body {
 #content h2,
 #content h3,
 #content h4,
-#content h5 { 
+#content h5 {
   font-family: georgia, times;
   font-weight: normal;
   letter-spacing: -1px;
 }
 
-#content h1 { 
+#content h1 {
   font-size: 28px;
-  margin: 0 0 0.3em;  
+  margin: 0 0 0.3em;
 }
 
-#content h2 { 
+#content h2 {
   font-size: 24px;
-  margin: 0 0 0.3em;  
+  margin: 0 0 0.3em;
 }
 
-#content h3 { 
+#content h3 {
   font-size: 22px;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
 }
 
-#content h4 { 
+#content h4 {
   font-size: 20px;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
   border-bottom: 1px dotted #bbb;
 }
 
 #content h5 {
   font-size: 20px;
   background: #ffd;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
   border-bottom: 1px dotted #aaa;
 }
 
@@ -179,11 +183,11 @@ body {
 
 #content blockquote {
   color: #555;
-  border-left: 5px solid #ccc; 
+  border-left: 5px solid #ccc;
   margin: 1.3em 1em; padding: 0 1em;
 }
 
-#content code { 
+#content code {
   font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
 }
 
@@ -206,41 +210,41 @@ body {
 #content h2,
 #content h3,
 #content h4,
-#content h5 { 
-  font-family: "lucidamac bold", "lucida grande", arial, sans-serif; 
+#content h5 {
+  font-family: "lucidamac bold", "lucida grande", arial, sans-serif;
   letter-spacing: -1px;
 }
 
-#content h1 { 
+#content h1 {
   font-size: 24px;
-  margin: 0 0 0.3em;  
+  margin: 0 0 0.3em;
 }
 
-#content h2 { 
+#content h2 {
   font-size: 22px;
-  margin: 0 0 0.3em;  
+  margin: 0 0 0.3em;
 }
 
-#content h3 { 
+#content h3 {
   font-size: 20px;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
 }
 
-#content h4 { 
+#content h4 {
   font-size: 18px;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
   border-bottom: 1px dotted #bbb;
 }
 
 #content h5 {
   font-size: 18px;
   background: #eef;
-  margin: 1.2em 0 0.3em;  
+  margin: 1.2em 0 0.3em;
   border-bottom: 1px dotted #aaa;
 }
 
 #content p {
-  line-height: 15px; 
+  line-height: 15px;
   margin: 0 0 1.2em;
 }
 
@@ -255,17 +259,17 @@ body {
 }
 
 #content li {
-  line-height: 15px; 
+  line-height: 15px;
   margin: 0 0 0 1em; padding: 0;
 }
 
 #content blockquote {
   color: #555;
-  border-left: 5px solid #ccc; 
+  border-left: 5px solid #ccc;
   margin: 1.3em 1em; padding: 0 1em;
 }
 
-#content code { 
+#content code {
   font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
   color: #000;
   background: #eee;
@@ -284,25 +288,25 @@ body {
 }
 
 /* Article Entries - class names based on http://microformats.org/wiki/hatom] */
-#content .hentry { 
+#content .hentry {
   margin: 0 0 3em 0;
 }
 
 #content .hentry .entry-title {
   font-size: 24px;
   line-height: 94%;
-  letter-spacing: -0.75px; 
+  letter-spacing: -0.75px;
   margin: 0;
 }
 
 #content .hentry .entry-title a:link,
-#content .hentry .entry-title a:visited { 
+#content .hentry .entry-title a:visited {
   color: #039;
   text-decoration: none;
 }
 
 #content .hentry .entry-title a:hover,
-#content .hentry .entry-title a:active { 
+#content .hentry .entry-title a:active {
   color: #000;
   background: transparent;
 }
@@ -333,7 +337,7 @@ body {
 
 #content .hentry .entry-content { }
 
-#content .hentry .meta { 
+#content .hentry .meta {
   font-size: 10px;
   background: #eee;
   margin: 0; padding: 5px;
@@ -341,7 +345,7 @@ body {
   list-style-type: none;
 }
 
-#content .hentry ul.meta li { 
+#content .hentry ul.meta li {
   line-height: 13px;
   margin: 0; padding: 0;
 }
@@ -376,13 +380,13 @@ body {
   background-color: #f7f7ff;
 }
 
-#content li.comment.preview { 
+#content li.comment.preview {
   background: #ffc;
   border: 3px solid #fab444;
   margin: 0 0 1.5em; padding: 1em;
 }
 
-#content li.comment .author { 
+#content li.comment .author {
   font-weight: bold;
   margin-bottom: 1em;
 }
@@ -397,16 +401,16 @@ body {
 
 #content li.comment .author abbr { color: #999; }
 
-#content li.comment .author .gravatar { 
+#content li.comment .author .gravatar {
   margin: 0 0 0.5em 0.5em;
-  float: right; 
+  float: right;
 }
 
 #content li.comment .author div {
   margin: 0 0 0.5em 0.5em;
   width: 60px; height: 60px;
   background: url("/images/gravatar.gif") no-repeat left top;
-  float: right; 
+  float: right;
 }
 
 #content form#new_comment {
@@ -415,19 +419,19 @@ body {
   padding: 1em 0.5em;
 }
 
-#content form#new_comment fieldset { 
+#content form#new_comment fieldset {
   border: none;
 }
 
-#content form#new_comment legend { 
+#content form#new_comment legend {
   display: none;
 }
 
-#content form#new_comment label { 
+#content form#new_comment label {
   font-weight: bold;
 }
 
-#content form#new_comment textarea { 
+#content form#new_comment textarea {
   width: 90%; height: 150px;
   padding: 3px;
 }
@@ -440,7 +444,7 @@ body {
 }
 
 ul#archives {
-  list-style-type: none; 
+  list-style-type: none;
   margin: 0 0 2em; padding: 0;
 }
 #archives li.month {
@@ -462,14 +466,14 @@ ul#archives {
 .clean_link a:hover, .clean_link a:active  { color: #00afff; text-decoration: underline; }
 
 /*--------------------------------------------------------------
- Sidebar
- --------------------------------------------------------------*/
+Sidebar
+--------------------------------------------------------------*/
 
 #sidebar {
-  font-size: 11px; 
+  font-size: 11px;
 }
 
-#sidebar h3 { 
+#sidebar h3 {
   font: bold 14px "lucidamac bold", "lucida grande", verdana, arial, helvetica, sans-serif;
   margin: 0 0 0.5em;
 }
@@ -485,15 +489,15 @@ ul#archives {
 }
 
 #sidebar ul {
-  list-style-type: none; 
+  list-style-type: none;
   margin: 0 0 2em; padding: 0;
 }
 
 #sidebar p {
-	margin: 0 0 2em; padding: 0;
+  margin: 0 0 2em; padding: 0;
 }
 
-#sidebar li { 
+#sidebar li {
   margin: 0;
   padding: 1px 0;
 }
@@ -501,7 +505,7 @@ ul#archives {
 #sidebar em { font-style: normal; }
 
 /* Live-search and results */
-#sidebar .search p { 
+#sidebar .search p {
   margin: 0 0 1em 0;
 }
 
@@ -510,22 +514,22 @@ ul#archives {
 }
 
 /*--------------------------------------------------------------
- Footer
- --------------------------------------------------------------*/
+Footer
+--------------------------------------------------------------*/
 
 #footer {
-  border-top: 1px solid #ccc; 
-  font-size: 90%; 
+  border-top: 1px solid #ccc;
+  font-size: 90%;
   color: #aaa;
 }
 
 #footer a:link,
-#footer a:visited { 
+#footer a:visited {
   color: #aaa;
 }
 
 #footer a:hover,
-#footer a:active { 
+#footer a:active {
   color: #fff;
   background: #666;
   text-decoration: none;
@@ -537,51 +541,50 @@ ul#archives {
 
 #footer p {
   width: 40%;
-  float: left; 
-  margin: 0; padding: 0; 
+  float: left;
+  margin: 0; padding: 0;
 }
 
 #footer ul {
   width: 40%;
   margin: 0; padding: 0;
-  list-style-type: none; 
-  text-align: right; 
-  float: right; 
+  list-style-type: none;
+  text-align: right;
+  float: right;
 }
 
 #footer li {
   margin: 0; padding: 0 0 0 1em;
-  display: inline; 
+  display: inline;
 }
 
 /*--------------------------------------------------------------
- Syntax Highlighting - contributed by James Wilford
- Closely matches TextMate's "All Hallow's Eve" theme
- --------------------------------------------------------------*/
+Syntax Highlighting - contributed by James Wilford
+Closely matches TextMate's "All Hallow's Eve" theme
+--------------------------------------------------------------*/
 #content .hentry .entry-content .highlight  { background: #ffffff; }
-#content .hentry .entry-content pre { 
-	border: 1px solid #ddd;
-	background-color: #eef;
-	padding: 0 .4em;
-	overflow: auto;
-	overflow-y: hidden;
-	-ms-overflow-y: hidden; 
+#content .hentry .entry-content pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+  overflow: auto;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
 }
 
 #content .hentry .entry-content code {
-	border: 1px solid #ddd;
-    background-color: #eef;
-    font-size: 85%;
+  border: 1px solid #ddd;
+  background-color: #eef;
+  font-size: 85%;
 }
 
 #content .hentry .entry-content pre code {
-	border: none;
+  border: none;
 }
-
 
 #content .hentry .entry-content .highlight .c { color: #999988; font-style: italic } /* Comment */
 #content .hentry .entry-content .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
-#content .hentry .entry-content .highlight .k { font-weight: bold } /* Keyword */ 
+#content .hentry .entry-content .highlight .k { font-weight: bold } /* Keyword */
 #content .hentry .entry-content .highlight .o { font-weight: bold } /* Operator */
 #content .hentry .entry-content .highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
 #content .hentry .entry-content .highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
@@ -640,14 +643,14 @@ ul#archives {
 #content .hentry .entry-content .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
 
 /*--------------------------------------------------------------
- Application.css
- sets defaults for bare elements
- --------------------------------------------------------------*/
+Application.css
+sets defaults for bare elements
+--------------------------------------------------------------*/
 
 @media print { #sidebar { display: none; }
-               #content { float: none; width: 90%; }
-               #content pre { color: #000; background: #eee; }
-               #content form.comments { display: none; } }
+  #content { float: none; width: 90%; }
+  #content pre { color: #000; background: #eee; }
+  #content form.comments { display: none; } }
 
 body {
   /*background: url(../../images/theme/background.gif) repeat-x left top;*/
@@ -666,11 +669,11 @@ a:hover, a:active  { color: #00afff; text-decoration: none; }
 
 /* http://longren.org/2006/09/27/wrapping-text-inside-pre-tags */
 /*pre {
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap !important;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
+white-space: pre-wrap;
+white-space: -moz-pre-wrap !important;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap;
+word-wrap: break-word;
 }*/
 
 .tag { font-size: 280%; }
