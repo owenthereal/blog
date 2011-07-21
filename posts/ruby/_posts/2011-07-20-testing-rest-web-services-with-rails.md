@@ -7,7 +7,7 @@ tags: ruby rails web_service REST dRuby ActiveResource
 Testing REST web services has never been easy. It requires a running web
 container, multiple threads, network conection and complex transaction management.
 
-Ideally, web service client test should have the following characteristics:
+Ideally, REST web service client test should have the following characteristics:
 
 1. The experience of testing web service API is similar to that of
    testing a ActiveRecord model
@@ -43,10 +43,10 @@ $ curl http://localhost:3000/tasks.json
 In order to test our web services, we need a web service client. There
 are [lots of them][6] out there, but I found [ActiveResource][5] the most
 enjoyable to use in a less complex situation. ActiveResource provides ActiveRecord
-compatible APIs, so when writing web service client tests, we will feel like we are
+compatible APIs, so when writing web service client tests, we feel like we are
 writing unit tests for a ActiveRecord model.
 
-To start with, we just need to extend it from ActiveResource::Base and 
+To start with, we just need to extend it from ActiveResource::Base and
 give it the web server URL and representation format. That's it!
 
 {% highlight ruby %}
@@ -130,11 +130,10 @@ end
 #### Transaction Rollback
 
 For testing strategies of web services, you probably find most people
-suggest to either truncate test data on each run or to mock out the request and response.
-These approaches are less ideal because they're either less effective or
+recommend to either truncate test data on each run or to mock out the request and response.
+These approaches are less ideal since they're either less effective or
 they are not testing full stack of the web services. Would it be possible to
-use transaction rollback like what we do for transactional fixture in
-Rails?
+rollback transaction created by web services calls, like what Rails's transactional fixture does?
 
 Of course! But first let's try to understand the reasons why making transaction rollback
 for web service calls is difficult:
@@ -174,7 +173,7 @@ config.after_initialize do
 end
 {% endhighlight %}
 
-The code snippet does two things:
+The above code snippet does two things:
 
 1. Patch *ActiveRecord::ConnectionAdapters::ConnectionPool#checkout* to make sure only one connection is shared
 across threads
@@ -182,8 +181,8 @@ across threads
    tests
 
 In case you are wondering why it's necessary to share one database
-connection across threads: [ActiveRecord creates one database connection for each thread][3].
-It makes it impossible to track which connection to rollback data in web services calls.
+connection across threads: [ActiveRecord creates one database connection for each thread][3] in its connection pool.
+This makes it impossible to track which connection to rollback data for web services calls.
 What we are doing here is to make sure there is only one connection created and we always rollback data for this connection.
 
 After the aforementioned setup, we are able to expand the transaction boundary to
@@ -231,10 +230,10 @@ instead of having to delete+insert for every test case. A huge performance boost
 
 #### Fixture Creation
 
-Most of the time, we create fixtures for tests to quickly define prototypes for each
+Most of the time, we create test fixtures to quickly define prototypes for each
 of the models and ask for instances with properties that are important to the test at hand. But in the context
-of REST web services, we can't create fixtures unless there is a REST
-API defined. To break this constraint, we use dRuby to open up another channel to directly interact with fixture data on web server.
+of REST web services, we can't create fixtures unless there is a REST API defined. 
+To break this constraint, we use dRuby to open up another channel to directly interact with fixture data on web server.
 
 Assuming we are using the [factory_girl][4] gem for fixture creation,
 We create a dRuby service for port discovery and a dRuby service for each fixture instance:
@@ -285,7 +284,7 @@ end
 
 #### Summary
 
-Testing REST web services can be less complex if we can fully control objects on the web server. ActiveResource and dRuby
+Testing REST web services can be less complex if we have full control over objects on the web server. ActiveResource and dRuby
 stand out to help! They make writing web service client tests feel like writing local unit tests.
 
 [1]: http://www.ruby-doc.org/stdlib/libdoc/drb/rdoc/classes/DRb.html
