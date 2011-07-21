@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Testing REST Web Services with Rails
-tags: ruby rails web_service REST
+tags: ruby rails web_service REST dRuby ActiveResource
 ---
 
 Testing REST web services has never been easy. It requires a running web
