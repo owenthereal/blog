@@ -183,7 +183,7 @@ across threads
 
 In case you are wondering why it's necessary to share one database
 connection across threads: [ActiveRecord creates one database connection for each thread][3].
-This implementation makes it impossible to track which connection to rollback data in web services calls.
+It makes it impossible to track which connection to rollback data in web services calls.
 What we are doing here is to make sure there is only one connection created and we always rollback data for this connection.
 
 After the aforementioned setup, we are able to expand the transaction boundary to
