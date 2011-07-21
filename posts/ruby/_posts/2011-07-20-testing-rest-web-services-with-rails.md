@@ -74,7 +74,7 @@ end
 #### Web Server
 
 To maintain a zero-setup test environment, we’ll have our test control the stratup and shutdown of
-a web server. By having each test start and stop the web server, tests can be easily run with
+a web server. By having the tests start and stop the web server, they can be easily run with
 no external dependencies.
 
 To control the startup and shutdown of a web server before and after all
