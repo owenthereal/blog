@@ -7,13 +7,69 @@ tags: ruby rails web_service REST
 Testing REST web services has never been easy. It requires a running web
 container, multiple threads, network conection and complex transaction management.
 
-Ideally, web service test will have the following characteristics:
+Ideally, web service client test should have the following characteristics:
 
-1. Start up and shut down the web server for the purpose of running the REST web services
-2. Rollback test data after each test
-3. Control fixtures creation for the REST web services
+1. The experience of testing web service API is similar to that of
+   testing a ActiveRecord model
+2. Start up and shut down the web server for the purpose of running REST web services
+3. Rollback test data after each test
+4. Control fixture creation for REST web services
 
 In this article, I demonstrate solutions to each of those mentioned.
+
+As an example throughout the article, let's assume we are creating and testing web services for
+a model called *Task*. Here is a sample action in the *TasksController* of the web server:
+
+{% highlight ruby %}
+# server/app/controllers/tasks_controller.rb
+
+def index
+  @tasks = Task.all
+  render :status => :ok, :json => @tasks
+end
+{% endhighlight %}
+
+We render *@tasks* as the JSON format where *to_json* is automatically
+called on the object. When you run "*curl http://localhost:3000/tasks.json*", you will
+get the following result:
+
+{% highlight bash %}
+$ curl http://localhost:3000/tasks.json
+[{"id":1,"name":"Write a blog post","created_at":"2011-07-20T04:05:41Z","updated_at":"2011-07-20T04:05:41Z","ends_at":"2011-08-20T03:15:00Z"}]
+{% endhighlight %}
+
+#### ActiveResource
+
+In order to test our web services, we need a web service client. There
+are [lots of them][6] out there, but I found [ActiveResource][5] the most
+enjoyable to use in a less complex situation. ActiveResource provides ActiveRecord
+compatible APIs, so when writing web service client tests, we will feel like we are
+writing unit tests for a ActiveRecord model.
+
+To start with, we just need to extend it from ActiveResource::Base and 
+give it the web server URL and representation format. That's it!
+
+{% highlight ruby %}
+# client/app/models/task.rb
+
+class Task < ActiveResource::Base
+  self.site = "http://localhost:3000"
+  self.format = :json
+end
+{% endhighlight %}
+
+And we are using it as if you are using an ActiveRecord object:
+
+{% highlight ruby %}
+# client/spec/models/task_spec.rb
+
+describe Task do
+  it "should return all the tasks" do
+    @tasks= Task.all
+    @tasks.size.should == 1
+  end
+end
+{% endhighlight %}
 
 #### Web Server
 
@@ -21,17 +77,19 @@ To maintain a zero-setup test environment, we’ll have our test control the str
 a web server. By having each test start and stop the web server, tests can be easily run with
 no external dependencies.
 
-To control the startup and shutdown of a web server, it's as simple
-as having something like this:
+To control the startup and shutdown of a web server before and after all
+suites run, it's as simple as having something like this:
 
 {% highlight ruby %}
-describe Task do
-  before :all do
+# client/spec_helper.rb
+
+RSpec.configure do |config|
+  config.before(:suite) do
     @server = Server.new(server_path)
     @server.start
   end
 
-  after :all do
+  config.after(:suite) do
     @server.stop
   end
 end
@@ -41,6 +99,8 @@ The implementation of *Server* is also dead simple. Execute "script/rails server
 daemonize the server and issue a kill to stop it:
 
 {% highlight ruby %}
+# client/lib/server.rb
+
 Class Server
   def initialize(server_path)
     @server_path = server_path
@@ -69,6 +129,11 @@ end
 
 #### Transaction Rollback
 
+For testing strategies of web services, you probably will find most people
+suggest to either truncate the test data on each run or to mock out the request and response.
+These approaches are less ideal because it's either less effective or 
+not testing the full stack of the web services.
+
 Making transaction rollback for web service calls is difficult for the
 following reasons:
 
@@ -90,6 +155,8 @@ It's such a perfect match for controlling the lifecycle of the [ActiveRecord::Ba
 Add the following code to web server's "config/environments/test.rb":
 
 {% highlight ruby %}
+# server/config/environments/test.rb
+
 config.after_initialize do
   ActiveRecord::ConnectionAdapters::ConnectionPool.class_eval do
     alias_method :old_checkout, :checkout
@@ -120,6 +187,8 @@ After the aforementioned setup, we are able to expand the transaction boundary t
 tests:
 
 {% highlight ruby %}
+# client/spec/models/task_spec.rb
+
 describe Task do
   before :all do
     DRb.start_service
@@ -168,6 +237,8 @@ Assuming we are using the [factory_girl][4] gem for fixtures creation,
 We create a dRuby service for port discovery and a dRuby service for each fixture instance:
 
 {% highlight ruby %}
+# server/lib/drb_active_record_instance_factory.rb
+
 require 'factory_girl'
 
 class DRbActiveRecordInstanceFactory
@@ -191,6 +262,8 @@ DRb.start_service('druby://127.0.0.1:9000', DRvActiveRcordInstanceFactory.new)
 In tests, we ask for the port of the fixture instance and query its corresponding remote reference:
 
 {% highlight ruby %}
+# client/spec/models/task_spec.rb
+
 describe Task do
   before :all do
     @drb_factory = DRbObject.new(nil, 'druby://127.0.0.1:9000')
@@ -209,11 +282,12 @@ end
 
 #### Summary
 
-Testing REST web services can be less complex if we can fully control objects on the web server. dRuby happens to
-stand out and help. It makes writing web service client tests feel like
-writing local unit tests.
+Testing REST web services can be less complex if we can fully control objects on the web server. ActiveResource and dRuby
+stand out and help. They make writing web service client tests feel like writing local unit tests.
 
 [1]: http://www.ruby-doc.org/stdlib/libdoc/drb/rdoc/classes/DRb.html
 [2]: http://ar.rubyonrails.org/classes/ActiveRecord/Base.html#M000431
 [3]: https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L160
 [4]: https://github.com/thoughtbot/factory_girl/
+[5]: http://api.rubyonrails.org/classes/ActiveResource/Base.html
+[6]: http://ruby-toolbox.com/categories/http_clients.html
