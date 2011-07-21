@@ -129,13 +129,15 @@ end
 
 #### Transaction Rollback
 
-For testing strategies of web services, you probably will find most people
+For testing strategies of web services, you probably find most people
 suggest to either truncate the test data on each run or to mock out the request and response.
-These approaches are less ideal because it's either less effective or 
-not testing the full stack of the web services.
+These approaches are less ideal because they're either less effective or
+not testing the full stack of the web services. Would it be possible to
+use transaction rollback? Like what we do for transactional fixture in
+Rails?
 
-Making transaction rollback for web service calls is difficult for the
-following reasons:
+Of course! But first let's try to understand the reasons why making transaction rollback
+for web service calls is difficult:
 
 * Tests and web server are running in two separate threads, web server's
   transactional boundary can't expand to tests
