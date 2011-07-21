@@ -284,7 +284,7 @@ end
 #### Summary
 
 Testing REST web services can be less complex if we can fully control objects on the web server. ActiveResource and dRuby
-stand out and help. They make writing web service client tests feel like writing local unit tests.
+stand out and help! They make writing web service client tests feel like writing local unit tests.
 
 [1]: http://www.ruby-doc.org/stdlib/libdoc/drb/rdoc/classes/DRb.html
 [2]: http://ar.rubyonrails.org/classes/ActiveRecord/Base.html#M000431
