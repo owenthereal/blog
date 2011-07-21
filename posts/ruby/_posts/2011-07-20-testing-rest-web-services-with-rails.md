@@ -147,7 +147,7 @@ for web service calls is difficult:
 
 * Web server doesn't know when to rollback the test data
 
-To overcome these problems, we’ll need full control of the lifecycle of web server's
+To overcome these problems, we’ll need to fully control the lifecycle of web server's
 database connection in tests. But how we are able to do this in a client-server architecture?
 
 [dRuby][1] to rescue!
