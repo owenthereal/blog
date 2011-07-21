@@ -150,11 +150,13 @@ we’ll make use of [dRuby][1] to directly control the lifecycle of transaction
 on the web server.
 
 For those who are not familiar with it, dRuby is as the **Remote Method Invocation** to Java as to Ruby.
-it allows methods to be called in one Ruby process upon a Ruby object located in another Ruby process.
-It's a perfect tool to control the lifecycle of web service's
-database connection ([ActiveRecord::Base.connection][2]) in test.
+It allows methods to be called in one Ruby process upon a Ruby object located in another Ruby process.
+[Here][7] is a good introduction to brush you up.
 
-Add the following code to web server's "config/environments/test.rb":
+dRuby is a perfect tool to control the lifecycle of web service's
+database connection ([ActiveRecord::Base.connection][2]) in our web
+services client tests.
+To do that, we add the following code to web server's "config/environments/test.rb":
 
 {% highlight ruby %}
 # server/config/environments/test.rb
@@ -293,3 +295,4 @@ stand out to help! They make writing web service client tests feel like writing 
 [4]: https://github.com/thoughtbot/factory_girl/
 [5]: http://api.rubyonrails.org/classes/ActiveResource/Base.html
 [6]: http://ruby-toolbox.com/categories/http_clients.html
+[7]: http://segment7.net/projects/ruby/drb/introduction.html
