@@ -130,10 +130,10 @@ end
 #### Transaction Rollback
 
 For testing strategies of web services, you probably find most people
-suggest to either truncate the test data on each run or to mock out the request and response.
+suggest to either truncate test data on each run or to mock out the request and response.
 These approaches are less ideal because they're either less effective or
-not testing the full stack of the web services. Would it be possible to
-use transaction rollback? Like what we do for transactional fixture in
+they are not testing full stack of the web services. Would it be possible to
+use transaction rollback like what we do for transactional fixture in
 Rails?
 
 Of course! But first let's try to understand the reasons why making transaction rollback
@@ -152,8 +152,8 @@ on the web server.
 
 For those who are not familiar with it, dRuby is as the **Remote Method Invocation** to Java as to Ruby.
 it allows methods to be called in one Ruby process upon a Ruby object located in another Ruby process.
-It's such a perfect match of controlling the lifecycle of web service's
-database connection ([ActiveRecord::Base.connection][2]) in test!
+It's a perfect tool to control the lifecycle of web service's
+database connection ([ActiveRecord::Base.connection][2]) in test.
 
 Add the following code to web server's "config/environments/test.rb":
 
@@ -182,8 +182,8 @@ across threads
    tests
 
 In case you are wondering why it's necessary to share one database
-connection across threads: [ActiveRecord creates one database connection for each thread][3]
-and this implementation makes it impossible to track which connection to rollback data in web services calls.
+connection across threads: [ActiveRecord creates one database connection for each thread][3].
+This implementation makes it impossible to track which connection to rollback data in web services calls.
 What we are doing here is to make sure there is only one connection created and we always rollback data for this connection.
 
 After the aforementioned setup, we are able to expand the transaction boundary to
