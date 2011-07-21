@@ -171,7 +171,7 @@ config.after_initialize do
   end
 
   require 'drb'
-  DRb.start_service("druby://127.0.0.1:61191", ActiveRecord::Base.connection)
+  DRb.start_service("druby://localhost:8000", ActiveRecord::Base.connection)
 end
 {% endhighlight %}
 
@@ -196,7 +196,7 @@ tests:
 describe Task do
   before :all do
     DRb.start_service
-    @remote_connection = DRbObject.new nil, "druby://127.0.0.1:61191"
+    @remote_connection = DRbObject.new nil, "druby://localhost:8000"
   end
 
   before :each do
@@ -251,7 +251,7 @@ class DRbActiveRecordInstanceFactory
   def get_port_for_fixture_instance(factory_instance)
     port = get_new_port
     inst = Factory.create(factory_instance)
-    DRb.start_sevice('druby://127.0.0.1:#{port}', inst)
+    DRb.start_sevice('druby://localhost:#{port}', inst)
     port
   end
 
@@ -270,7 +270,7 @@ In tests, we ask for the port of the fixture instance and query its correspondin
 
 describe Task do
   before :all do
-    @drb_factory = DRbObject.new(nil, 'druby://127.0.0.1:9000')
+    @drb_factory = DRbObject.new(nil, 'druby://localhost:9000')
   end
 
   before do
