@@ -129,13 +129,15 @@ end
 
 #### Transaction Rollback
 
-For testing strategies of web services, you probably find most people
-recommend to either truncate test data on each run or to mock out the request and response.
+For testing strategies of web services, most people recommend to
+either truncate test data on each run or to mock out the request and response.
 These approaches are less ideal since they're either less effective or
-they are not testing full stack of the web services. Would it be possible to
-rollback transaction created by web services calls, like what Rails's transactional fixture does?
+they are not testing full stack of targeted web services.
 
-Of course! But first let's try to understand the reasons why making transaction rollback
+Would it be possible to wrap web services calls in a transaction
+and rollback data after each test, like what Rails's transactional fixture does?
+
+Of course! But let's first try to understand why making transaction rollback
 for web service calls is difficult:
 
 * Tests and web server are running in two separate threads, web server's
@@ -145,15 +147,16 @@ for web service calls is difficult:
 
 * Web server doesn't know when to rollback the test data
 
-To overcome these problems, we’ll apply a little trickery:
-we’ll make use of [dRuby][1] to directly control the lifecycle of transaction
-on the web server.
+To overcome these problems, we’ll need full control of the lifecycle of web server's
+database connection in tests. But how we are able to do this in a client-server architecture?
+
+[dRuby][1] to rescue!
 
 For those who are not familiar with it, dRuby is as the **Remote Method Invocation** to Java as to Ruby.
 It allows methods to be called in one Ruby process upon a Ruby object located in another Ruby process.
 [Here][7] is a good introduction to brush you up.
 
-dRuby is a perfect tool to control the lifecycle of web service's
+We’ll make use of dRuby to directly control the lifecycle of web service's
 database connection ([ActiveRecord::Base.connection][2]) in our web
 services client tests.
 To do that, we add the following code to web server's "config/environments/test.rb":
@@ -234,7 +237,7 @@ instead of having to delete+insert for every test case. A huge performance boost
 
 Most of the time, we create test fixtures to quickly define prototypes for each
 of the models and ask for instances with properties that are important to the test at hand. But in the context
-of REST web services, we can't create fixtures unless there is a REST API defined. 
+of REST web services, we can't create fixtures unless there is a REST API defined.
 To break this constraint, we use dRuby to open up another channel to directly interact with fixture data on web server.
 
 Assuming we are using the [factory_girl][4] gem for fixture creation,
