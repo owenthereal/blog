@@ -150,7 +150,8 @@ on the web server.
 
 For those who are not familiar with it, dRuby is as the **Remote Method Invocation** to Java as to Ruby.
 it allows methods to be called in one Ruby process upon a Ruby object located in another Ruby process.
-It's such a perfect match for controlling the lifecycle of the [ActiveRecord::Base.connection][2] object on the web server.
+It's such a perfect match of controlling the lifecycle of web service's
+database connection ([ActiveRecord::Base.connection][2]) in test!
 
 Add the following code to web server's "config/environments/test.rb":
 
@@ -226,14 +227,14 @@ end
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
 
-#### Fixtures Creation
+#### Fixture Creation
 
 Most of the time, we create fixtures for tests to quickly define prototypes for each
 of the models and ask for instances with properties that are important to the test at hand. But in the context
 of REST web services, we can't create fixtures unless there is a REST
-API defined. To break this constraint, we use dRuby to open up another channel to interact with fixture data on web server.
+API defined. To break this constraint, we use dRuby to open up another channel to directly interact with fixture data on web server.
 
-Assuming we are using the [factory_girl][4] gem for fixtures creation,
+Assuming we are using the [factory_girl][4] gem for fixture creation,
 We create a dRuby service for port discovery and a dRuby service for each fixture instance:
 
 {% highlight ruby %}
