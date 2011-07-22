@@ -84,12 +84,12 @@ suites run, it's as simple as having something like this:
 # client/spec_helper.rb
 
 RSpec.configure do |config|
-  config.before(:suite) do
+  config.before :suite do
     @server = Server.new(server_path)
     @server.start
   end
 
-  config.after(:suite) do
+  config.after :suite do
     @server.stop
   end
 end
@@ -187,7 +187,8 @@ across threads
 
 In case you are wondering why it's necessary to share one database
 connection across threads: [ActiveRecord creates one database connection for each thread][3] in its connection pool.
-Our web service client tests run in a separate thread than the server so it's impossible to track which connection to rollback data for web services calls.
+Our web service client tests run in a separate thread than the server so it's impossible to track which connection to
+rollback data for the web services calls.
 What we are doing here is to make sure there is only one connection created and we always rollback data for this connection.
 
 After the aforementioned setup, we are able to expand the transaction boundary to
@@ -203,26 +204,26 @@ describe Task do
   end
 
   before :each do
-    begin_transaction
+    begin_remote_transaction
   end
 
   after :each do
-    rollback_transaction
+    rollback_remote_transaction
   end
 
   it "should ..." do
-    # test REST web services calls
+    # test REST web services calls which is wrapped in a transaction
   end
 
   private
 
-  def begin_transaction
+  def begin_remote_transaction
     @remote_connection.increment_open_transactions
     @remote_connection.transaction_joinable = false
     @remote_connection.begin_db_transaction
   end
 
-  def rollback_transaction
+  def rollback_remote_transaction
     @remote_connection.rollback_db_transaction
     @remote_connection.decrement_open_transactions
     @remote_connection.clear_active_connections!
@@ -232,6 +233,43 @@ end
 
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
+The *begin_remote_transaction* method and the
+*rollback_remote_transaction* method can be refactored out to *spec_helper.rb*.
+Now our web services client tests have little difference from usual ActiveRecord unit
+tests.
+
+{% highlight ruby %}
+# client/spec_helper.rb
+
+RSpec.configure do |config|
+  config.before :all do
+    DRb.start_service
+    @remote_connection = DRbObject.new nil, "druby://localhost:8000"
+  end
+
+  config.before :each do
+    @remote_connection.increment_open_transactions
+    @remote_connection.transaction_joinable = false
+    @remote_connection.begin_db_transaction
+  end
+
+  config.after :each do
+    @remote_connection.rollback_db_transaction
+    @remote_connection.decrement_open_transactions
+    @remote_connection.clear_active_connections!
+  end
+end
+{% endhighlight %}
+
+{% highlight ruby %}
+# client/spec/models/task_spec.rb
+
+describe Task do
+  it "should ..." do
+    # test REST web services calls which is wrapped in a transaction
+  end
+end
+{% endhighlight %}
 
 #### Fixture Creation
 
