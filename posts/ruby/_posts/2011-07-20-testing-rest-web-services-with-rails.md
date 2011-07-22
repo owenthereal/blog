@@ -289,17 +289,15 @@ We create a dRuby service for port discovery and a dRuby service for each fixtur
 require 'factory_girl'
 
 class DRbActiveRecordInstanceFactory
-  @@pot = 9001
-
   def get_port_for_fixture_instance(factory_instance)
-    port = get_new_port
+    port = get_or_create_port
     inst = Factory.create(factory_instance)
     DRb.start_sevice('druby://localhost:#{port}', inst)
     port
   end
 
-  def get_new_port
-    # create a random port
+  def get_or_create_port
+    # get or create a random port
   end
 end
 
