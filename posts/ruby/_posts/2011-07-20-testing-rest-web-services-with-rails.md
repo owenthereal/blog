@@ -234,6 +234,7 @@ end
 
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
+
 We can easily refactor out the *begin_remote_transaction* method and the
 *rollback_remote_transaction* method to *spec_helper.rb*,
 so that our web services client tests have little difference from usual ActiveRecord unit tests.
