@@ -132,7 +132,7 @@ end
 For testing strategies of web services, most people recommend to
 either truncate test data on each run or to mock out the request and response.
 These approaches are less ideal since they're either less effective or
-they are not testing full stack of targeted web services.
+they're not testing full stack of the targeted web services.
 
 Would it be possible to wrap web services calls in a transaction
 and rollback data after each test, like what Rails's transactional fixture does?
