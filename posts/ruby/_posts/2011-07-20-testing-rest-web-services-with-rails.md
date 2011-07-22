@@ -211,8 +211,9 @@ describe Task do
     rollback_remote_transaction
   end
 
-  it "should ..." do
-    # test REST web services calls which is wrapped in a transaction
+  it "creates a task through web serices" do
+    task = Task.create(:name => "Write a blog post", :ends_at => Date.tomorrow)
+    Task.find(task.id).should == task
   end
 
   private
@@ -233,10 +234,9 @@ end
 
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
-The *begin_remote_transaction* method and the
-*rollback_remote_transaction* method can be refactored out to *spec_helper.rb*.
-Now our web services client tests have little difference from usual ActiveRecord unit
-tests.
+We can easily refactor out the *begin_remote_transaction* method and the
+*rollback_remote_transaction* method to *spec_helper.rb*,
+so that our web services client tests have little difference from usual ActiveRecord unit tests.
 
 {% highlight ruby %}
 # client/spec_helper.rb
@@ -265,8 +265,9 @@ end
 # client/spec/models/task_spec.rb
 
 describe Task do
-  it "should ..." do
-    # test REST web services calls which is wrapped in a transaction
+  it "creates a task through web serices" do
+    task = Task.create(:name => "Write a blog post", :ends_at => Date.tomorrow)
+    Task.find(task.id).should == task
   end
 end
 {% endhighlight %}
