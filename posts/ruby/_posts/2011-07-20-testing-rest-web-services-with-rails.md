@@ -290,14 +290,14 @@ require 'factory_girl'
 
 class DRbActiveRecordInstanceFactory
   def get_port_for_fixture_instance(factory_instance)
-    port = get_or_create_port
+    port = create_port
     inst = Factory.create(factory_instance)
     DRb.start_sevice('druby://localhost:#{port}', inst)
     port
   end
 
-  def get_or_create_port
-    # get or create a random port
+  def create_port
+    # create a random port
   end
 end
 
