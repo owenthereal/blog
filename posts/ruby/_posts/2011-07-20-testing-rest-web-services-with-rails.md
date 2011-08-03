@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automatic Testing of REST Web Services client with Rails
+title: Automatic Testing of REST Web Services Client with Rails
 tags: ruby rails web_service REST dRuby ActiveResource
 ---
 
