@@ -18,8 +18,9 @@ Ideally, REST web service client test should have the following characteristics:
 
 In this article, I demonstrate solutions to each of those mentioned.
 
-As an example throughout the article, let's assume we are creating and testing web services for
-a model called *Task*. Here is a sample action in the *TasksController* of the web server:
+As an example throughout the article, let's assume we have web services for
+a model called *Task* and we are testing its corresponding client code.
+Here is a sample action in the *TasksController* of the web server:
 
 {% highlight ruby %}
 # server/app/controllers/tasks_controller.rb
