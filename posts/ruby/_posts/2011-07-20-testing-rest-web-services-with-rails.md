@@ -9,9 +9,9 @@ server, multiple threads, network conection and complex transaction management.
 
 Ideally, REST web service client test should have the following characteristics:
 
-1. The experience of testing web service API client code is similar to that of
+1. The experience of testing REST resource is similar to that of
    testing a ActiveRecord model
-2. Start up and shut down the web server for the purpose of running REST web services
+2. Start up and shut down web server for the purpose of running REST web services
 3. Rollback test data after each test
 4. Control fixture creation for REST web services
 5. All tests are automatic
