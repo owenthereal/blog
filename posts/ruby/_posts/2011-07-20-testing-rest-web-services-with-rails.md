@@ -9,7 +9,7 @@ server, multiple threads, network conection and complex transaction management.
 
 Ideally, REST web service client test should have the following characteristics:
 
-1. The experience of testing web service API is similar to that of
+1. The experience of testing web service API client code is similar to that of
    testing a ActiveRecord model
 2. Start up and shut down the web server for the purpose of running REST web services
 3. Rollback test data after each test
@@ -328,7 +328,7 @@ end
 
 #### Summary
 
-Testing REST web services can be less complex if we have full control over objects on the web server. ActiveResource and dRuby
+Testing REST web services client can be less complex if we have full control over objects on the web server. ActiveResource and dRuby
 stand out to help! They make writing web service client tests feel like writing local unit tests.
 
 [1]: http://www.ruby-doc.org/stdlib/libdoc/drb/rdoc/classes/DRb.html
