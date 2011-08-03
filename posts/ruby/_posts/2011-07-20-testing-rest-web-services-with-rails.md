@@ -294,7 +294,7 @@ class DRbActiveRecordInstanceFactory
   def get_port_for_fixture_instance(factory_instance)
     port = create_port
     inst = Factory.create(factory_instance)
-    DRb.start_sevice('druby://localhost:#{port}', inst)
+    DRb.start_service("druby://localhost:#{port}", inst)
     port
   end
 
@@ -303,7 +303,7 @@ class DRbActiveRecordInstanceFactory
   end
 end
 
-DRb.start_service('druby://localhost:9000', DRvActiveRcordInstanceFactory.new)
+DRb.start_service('druby://localhost:9000', DRbActiveRecordInstanceFactory.new)
 {% endhighlight %}
 
 In tests, we ask for the port of the fixture instance and query its corresponding remote reference:
@@ -317,8 +317,8 @@ describe Task do
   end
 
   before do
-    remote_task_port = @drb_factory.get_port_for_fixture_instance(:post)
-    @remote_task = DRbActiveRecord.new(nil, "druby://localhost:#{remote_post_port}")
+    remote_task_port = @drb_factory.get_port_for_fixture_instance(:task)
+    @remote_task = DRbObject.new(nil, "druby://localhost:#{remote_task_port}")
   end
 
   it "should ..."
