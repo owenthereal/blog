@@ -184,7 +184,7 @@ The above code snippet does two things:
 
 1. Patch *ActiveRecord::ConnectionAdapters::ConnectionPool#checkout* to make sure only one connection is shared
 across threads
-2. Start a dRuby service for ActiveRecord::Base.connection to be used in
+2. Start a dRuby service for ActiveRecord::Base to be used in
    tests
 
 In case you are wondering why it's necessary to share one database
