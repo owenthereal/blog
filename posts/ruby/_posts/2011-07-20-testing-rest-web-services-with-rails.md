@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Testing REST Web Services with Rails
+title: Automatic Testing of REST Web Services with Rails
 tags: ruby rails web_service REST dRuby ActiveResource
 ---
 
@@ -14,6 +14,7 @@ Ideally, REST web service client test should have the following characteristics:
 2. Start up and shut down the web server for the purpose of running REST web services
 3. Rollback test data after each test
 4. Control fixture creation for REST web services
+5. All tests are automatic
 
 In this article, I demonstrate solutions to each of those mentioned.
 
