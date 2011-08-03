@@ -176,7 +176,7 @@ config.after_initialize do
   end
 
   require 'drb'
-  DRb.start_service("druby://localhost:8000", ActiveRecord::Base.connection)
+  DRb.start_service("druby://localhost:8000", ActiveRecord::Base)
 end
 {% endhighlight %}
 
@@ -202,7 +202,7 @@ tests:
 describe Task do
   before :all do
     DRb.start_service
-    @remote_connection = DRbObject.new nil, "druby://localhost:8000"
+    @remote_base = DRbObject.new nil, "druby://localhost:8000"
   end
 
   before :each do
@@ -221,15 +221,15 @@ describe Task do
   private
 
   def begin_remote_transaction
-    @remote_connection.increment_open_transactions
-    @remote_connection.transaction_joinable = false
-    @remote_connection.begin_db_transaction
+    @remote_base.connection.increment_open_transactions
+    @remote_base.connection.transaction_joinable = false
+    @remote_base.connection.begin_db_transaction
   end
 
   def rollback_remote_transaction
-    @remote_connection.rollback_db_transaction
-    @remote_connection.decrement_open_transactions
-    @remote_connection.clear_active_connections!
+    @remote_base.connection.rollback_db_transaction
+    @remote_base.connection.decrement_open_transactions
+    @remote_base.clear_active_connections!
   end
 end
 {% endhighlight %}
@@ -247,19 +247,19 @@ so that our web services client tests have little difference from usual ActiveRe
 RSpec.configure do |config|
   config.before :all do
     DRb.start_service
-    @remote_connection = DRbObject.new nil, "druby://localhost:8000"
+    @remote_base = DRbObject.new nil, "druby://localhost:8000"
   end
 
   config.before :each do
-    @remote_connection.increment_open_transactions
-    @remote_connection.transaction_joinable = false
-    @remote_connection.begin_db_transaction
+    @remote_base.connection.increment_open_transactions
+    @remote_base.connection.transaction_joinable = false
+    @remote_base.connection.begin_db_transaction
   end
 
   config.after :each do
-    @remote_connection.rollback_db_transaction
-    @remote_connection.decrement_open_transactions
-    @remote_connection.clear_active_connections!
+    @remote_base.connection.rollback_db_transaction
+    @remote_base.connection.decrement_open_transactions
+    @remote_base.clear_active_connections!
   end
 end
 {% endhighlight %}
