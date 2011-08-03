@@ -30,7 +30,7 @@ def index
 end
 {% endhighlight %}
 
-We render *@tasks* as the JSON format where *to_json* is automatically
+We render *@tasks* as the JSON format where *to_json* is
 called on the object. When you run "*curl http://localhost:3000/tasks.json*", you will
 get the following result:
 
@@ -41,7 +41,7 @@ $ curl http://localhost:3000/tasks.json
 
 #### ActiveResource
 
-In order to test our web services, we need a web service client. There
+In order to test our REST web services, we need a HTTP client. There
 are [lots of them][6] out there, but I found [ActiveResource][5] the most
 enjoyable to use in a less complex situation. ActiveResource provides ActiveRecord
 compatible APIs, so when writing web service client tests, we feel like we are
@@ -149,7 +149,7 @@ for web service calls is difficult:
 * Web server doesn't know when to rollback the test data
 
 To overcome these problems, we’ll need to fully control the lifecycle of web server's
-database connection in tests. But how we are able to do this in a client-server architecture?
+database connection in tests. But how are we able to do this in a client-server architecture?
 
 [dRuby][1] to rescue!
 
@@ -188,7 +188,7 @@ across threads
 
 In case you are wondering why it's necessary to share one database
 connection across threads: [ActiveRecord creates one database connection for each thread][3] in its connection pool.
-Our web service client tests run in a separate thread than the server so it's impossible to track which connection to
+Our web service client tests run in a separate thread from the server's so it's impossible to track which connection to
 rollback data for the web services calls.
 What we are doing here is to make sure there is only one connection created and we always rollback data for this connection.
 
