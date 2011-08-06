@@ -137,7 +137,7 @@ These approaches are less ideal since they're either less effective or
 they're not testing full stack of the targeted web services.
 
 Would it be possible to wrap web services calls in a transaction
-and rollback data after each test, like what Rails's transactional fixture does?
+and rollback data after each test, like what Rails's [transactional fixture][8] does?
 
 Of course! But let's first try to understand why making transaction rollback
 for web service calls is difficult:
@@ -150,7 +150,7 @@ for web service calls is difficult:
 * Web server doesn't know when to rollback the test data
 
 To overcome these problems, we’ll need to fully control the lifecycle of web server's
-database connection in tests. But how are we able to do this in a client-server architecture?
+database connection in the client tests. But how are we able to do this in a client-server architecture?
 
 [dRuby][1] to rescue!
 
@@ -161,7 +161,7 @@ It allows methods to be called in one Ruby process upon a Ruby object located in
 We’ll make use of dRuby to directly control the lifecycle of web service's
 database connection ([ActiveRecord::Base.connection][2]) in our web
 services client tests.
-To do that, we add the following code to web server's "config/environments/test.rb":
+To do that, we add the following code to web server's "*config/environments/test.rb*":
 
 {% highlight ruby %}
 # server/config/environments/test.rb
@@ -339,3 +339,4 @@ stand out to help! They make writing web service client tests feel like writing 
 [5]: http://api.rubyonrails.org/classes/ActiveResource/Base.html
 [6]: http://ruby-toolbox.com/categories/http_clients.html
 [7]: http://segment7.net/projects/ruby/drb/introduction.html
+[8]: http://ar.rubyonrails.org/classes/Fixtures.html
