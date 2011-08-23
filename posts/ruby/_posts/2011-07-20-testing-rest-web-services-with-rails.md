@@ -67,7 +67,7 @@ And we are using it as if you are using an ActiveRecord object:
 
 describe Task do
   it "should return all the tasks" do
-    @tasks= Task.all
+    @tasks = Task.all
     @tasks.size.should == 1
   end
 end
