@@ -201,6 +201,7 @@ tests:
 
 describe Task do
   before :all do
+    @semaphore = Mutex.new
     DRb.start_service
     @remote_base = DRbObject.new nil, "druby://localhost:8000"
   end
@@ -221,6 +222,7 @@ describe Task do
   private
 
   def begin_remote_transaction
+    @semaphore.lock
     @remote_base.connection.increment_open_transactions
     @remote_base.connection.transaction_joinable = false
     @remote_base.connection.begin_db_transaction
@@ -230,12 +232,18 @@ describe Task do
     @remote_base.connection.rollback_db_transaction
     @remote_base.connection.decrement_open_transactions
     @remote_base.clear_active_connections!
+    @semaphore.unlock
   end
 end
 {% endhighlight %}
 
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
+
+Note that the Mutex lock in the code is to make sure multiple web service
+client tests run concurrently, for exmaple, using the [parallel_tests][9] gem. Without this lock,
+while the remote ActiveRecord connection is shared, the tests will
+behavior strangely.
 
 We can easily refactor out the *begin_remote_transaction* method and the
 *rollback_remote_transaction* method to *spec_helper.rb*,
@@ -246,11 +254,13 @@ so that our web services client tests have little difference from usual ActiveRe
 
 RSpec.configure do |config|
   config.before :all do
+    @semaphore = Mutex.new
     DRb.start_service
     @remote_base = DRbObject.new nil, "druby://localhost:8000"
   end
 
   config.before :each do
+    @semaphore.lock
     @remote_base.connection.increment_open_transactions
     @remote_base.connection.transaction_joinable = false
     @remote_base.connection.begin_db_transaction
@@ -260,6 +270,7 @@ RSpec.configure do |config|
     @remote_base.connection.rollback_db_transaction
     @remote_base.connection.decrement_open_transactions
     @remote_base.clear_active_connections!
+    @semaphore.unlock
   end
 end
 {% endhighlight %}
@@ -340,3 +351,4 @@ stand out to help! They make writing web service client tests feel like writing 
 [6]: http://ruby-toolbox.com/categories/http_clients.html
 [7]: http://segment7.net/projects/ruby/drb/introduction.html
 [8]: http://ar.rubyonrails.org/classes/Fixtures.html
+[9]: https://github.com/grosser/parallel_tests
