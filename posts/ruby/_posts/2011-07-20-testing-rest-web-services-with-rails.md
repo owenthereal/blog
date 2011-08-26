@@ -241,7 +241,7 @@ Voila! With dRuby, we use begin+rollback to isolate changes of web services call
 instead of having to delete+insert for every test case. A huge performance boost!
 
 Note that the Mutex lock in the code is to make sure that multiple web service
-client tests can run concurrently, for exmaple, using the [parallel_tests][9] gem
+client tests can run concurrently, for exmaple, using the [parallel_tests][9] gem.
 Without this lock, while the remote ActiveRecord connection is shared, the tests will
 behavior strangely in a multi-threads environment. You can ignore those
 lines if your web service client tests never run concurrently.
