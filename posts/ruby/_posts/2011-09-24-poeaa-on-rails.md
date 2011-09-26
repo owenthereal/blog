@@ -4,9 +4,9 @@ title: PoEAA on Rails
 tags: patterns PoEAA rails
 ---
 
-The book [Patterns of Enterprise Application Architecure][1] (PoEAA) laid the blueprints for Rails' architecture.
+The book [Patterns of Enterprise Application Architecture][1] (PoEAA) laid the blueprints for Rails' architecture.
 When choosing which enterprise design patterns to encode into the framework, Rails picked, to name a few, [Active Record][2], [Template View][3], [Application Controller][4], etc.
-By covering these patterns with a sweet coating of convertion-over-configuration, Rails simplfies pattern analysis a lot.
+By covering these patterns with a sweet coating of convertion-over-configuration, Rails simplifies pattern analysis a lot.
 
 These design assumptions were absolutely pragmatic for the type of applications that Rails was targeted at.
 However, as applications growing more and more complex, developers are starting to realize these
@@ -54,9 +54,9 @@ end
 
 The difference between [Active Record][6] and Data Mapper is actually that
 in the Active Record implementation, Domain Model not only encapsulates business logic,
-but also takes responsability of database access, while in the Data Mapper implementation,
-Domain Model is igorant of database and become Plain Old Ruby
-Object with business logic. Data Mapper allows database logic and the object model to evolve indenpendently.
+but also takes responsibility of database access, while in the Data Mapper implementation,
+Domain Model is ignorant of database and become Plain Old Ruby
+Object with business logic. Data Mapper allows database logic and the object model to evolve independently.
 
 Note that the Active Record pattern and the Data Mapper pattern
 mentioned are not the Ruby libraries these patterns inspire.
@@ -71,12 +71,12 @@ Here is [Martain Fowler][8] on the choice of Active Record or Data Mapper for Do
 > As a result I see two styles of Domain Model in the field. A simple Domain Model looks very much like the database design with mostly one domain object for each database table. A rich Domain Model can look different from the database design, with inheritance, strategies, and other \[Gang of Four\] patterns, and complex webs of interconnected objects. A rich Domain Model is better for more complex logic, but is harder to map to the database. **A simple Domain Model can use Active Record, whereas a rich Domain Model requires Data Mapper**.
 
 In an enterprise Rails application, it's not rare to see complex domain models stuffed with
-assoications, validations, scopes and business logics.
+associations, validations, scopes and business logics.
 It has become a growing pain to deal with such "fat models".
 We need to separate the database concerns out into a new dedicated
-leyer: the data mappers.
+layer: the data mappers.
 However, as far as I know, there's no ORM in Ruby giving us such separation yet,
-althought it's been said the upcoming 2.0 release of the data_mapper gem will [fully
+although it's been said the upcoming 2.0 release of the data_mapper gem will [fully
 implement the Data Mapper pattern][11]. Before we are able to consume
 the new data_mapper gem, is there a way to mitigate existing overloaded Rails models?
 Besides, switching an ORM for existing code is not effortless.
@@ -108,7 +108,7 @@ end
 class Store < ActiveRecord::Base
   include StoreMapper
 
-  # assoications
+  # associations
   has_many :products
   belongs_to :company
   ...
@@ -122,7 +122,7 @@ end
 {% endhighlight %}
 
 This half-baked solution, although not migrating to the Data Mapper pattern,
-cleanly isolates the defintions of database logic with the ones of business logic.
+cleanly isolates the definitions of database logic with the ones of business logic.
 Of course, it's recommended to use the Data Mapper pattern where
 possible.
 
@@ -162,10 +162,10 @@ as well as for talking to multiple presentation layers:
 
 > The benefit of Service Layer is that it defines a common set of
 > application operations available to many kinds of clients and it
-> corrdinates an application's response in each operation. ...
+> coordinates an application's response in each operation. ...
 > 
 > The easier question to answer is probably when not to use it. You
-> probabaly don't need a Service Layer if your application's business
+> probably don't need a Service Layer if your application's business
 > logic will only have one kind of client - say, a user interface - and
 > its use case responses don't involve multiple transactional resources.
 
@@ -198,7 +198,7 @@ presentation.
 In a complex system where there are lots of screens, views become a very busy place for extracting state and behavior from models.
 The [Presentation Model][14] comes to ease the pain:
 
-> Presentation Model pulls the state and behavior of the view out into a model class that is part of the presentation. The Presentation Model coordinates with the domain layer and provides an interface to the view that minimizes decision making in the view. The view either stores all its state in the Presentation Model or synchonizes its state with Presentation Model frequently.
+> Presentation Model pulls the state and behavior of the view out into a model class that is part of the presentation. The Presentation Model coordinates with the domain layer and provides an interface to the view that minimizes decision making in the view. The view either stores all its state in the Presentation Model or synchronizes its state with Presentation Model frequently.
 
 As an example, let's build a view for the scenario "creating a store for a user":
 
@@ -270,9 +270,9 @@ complex:
 
 What's worse, if the display of a view is based on conditions,
 for example in a multi-appearance application,
-you will find the determination logic leaked into many places in virews or controllers.
+you will find the determination logic leaked into many places in views or controllers.
 Again, this is fine for a simple Rails application.
-But it becomes unmanagable as the appplication growing more complex.
+But it becomes unmanageable as the application growing more complex.
 
 Let's think about an example: an e-commerce platform supports multiple
 stores and each store has its own customized UI to display a product.
@@ -320,10 +320,10 @@ reviews of a product:
 <%= render_cell :product, :name, product.name %>
 <%= render_cell :product, :description, product.description %>
 <%= render_cell :product, :price, product.price %>
-<%= render_cell :product, :reivews, product.reviews %>
+<%= render_cell :product, :reviews, product.reviews %>
 {% endhighlight %}
 
-As a second step, we define three strategies (*ProductCell*, *Amazon::Productcell*, and
+As a second step, we define three strategies (*ProductCell*, *Amazon::ProductCell*, and
 *Apple::ProductCell*) to convert the logical presentation to different HTML.
 Then we use cells' strategy builder to return strategy class based on current store in session:
 
@@ -382,19 +382,19 @@ module Apple
 end
 {% endhighlight %}
 
-As you may see, the Two Step View pattern makes multi-appearance implementation managable in a way that
+As you may see, the Two Step View pattern makes multi-appearance implementation manageable in a way that
 different appearance implementations are organized in a set of strategy classes.
 
 #### Summary
 
 The default enterprise design patterns encoded into Rails are perfect match for small/medium size projects.
 They are light weight and easy to be understood. However, as the application growing more mature,
-these patterns do not scale due to layers taking too much resposiblity.
+these patterns do not scale due to layers taking too much responsibility.
 That said, a "fat" layer need to be broken into smaller ones:
 
 1. Data Mapper is an effort to extract out data source layer from Domain
-   Modle that implements Active Record,
-2. Service Layer is an endeavour to extract out application logic from
+   Model that implements Active Record,
+2. Service Layer is an endeavor to extract out application logic from
    Domain Model,
 3. Presentation Model is an attempt to extract out presentation logic
    from a single or multiple Domain Model, and
@@ -402,7 +402,7 @@ That said, a "fat" layer need to be broken into smaller ones:
    processing steps so that a view can be generated in different formats.
 
 In return for breaking apart a system into smaller layers, each layer
-becomes easier to maintain, resue, test and scale. 
+becomes easier to maintain, reuse, test and scale.
 
 I would like to thank Martin Fowler for his awesome book and would love
 to hear any feedback.
