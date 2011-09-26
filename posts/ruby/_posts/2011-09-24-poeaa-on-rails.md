@@ -136,8 +136,7 @@ project is typically divided into three layers:
 
 1. presentation layer, including views and controllers,
 2. domain layer, including models, and
-3. data source layer, which is hidden behind models with the
-   Active Record pattern.
+3. data source layer, which is hidden behind models extending from *ActiveRecord::Base*.
 
 It's not difficult to understand the Data Mapper pattern is an effort to break
 down #3 into another layer to lower the complexity of models. However,
@@ -250,7 +249,7 @@ end
 
 In the example, we wrap two models (*Store* and *User*) into a presenter and
 extract only the attributes needed (*Store#name* and *User#email*) for the "create store" screen.
-To summarize, I would like to once again consult Fowler for Presentation Model:
+To summarize this pattern, I would like to once again consult Fowler:
 
 > Presentation Model is a pattern that pulls presentation behavior from a view. ... It's useful for allowing you to test without the UI, support for some form of multiple view and a separation of concerns which may make it easier to develop the user interface.
 > 
@@ -270,12 +269,12 @@ complex:
 
 What's worse, if the display of a view is based on conditions,
 for example in a multi-appearance application,
-you will find the determination logic leaked into many places in views or controllers.
+you will find logic that determines which template to render leaked into many places in views or controllers.
 Again, this is fine for a simple Rails application.
 But it becomes unmanageable as the application growing more complex.
 
 Let's think about an example: an e-commerce platform supports multiple
-stores and each store has its own customized UI to display a product.
+stores and each store has its own storefront to display a product.
 It's common to see the following solution:
 
 {% highlight erb %}
@@ -303,7 +302,7 @@ pattern:
   ![Two Step View](/images/posts/two_step_view.png)
 </div>
 
-From the above diagram, the multi-store UI example can be reimplemented with the Two Step
+From the above diagram, the multi-storefront example can be reimplemented with the Two Step
 View pattern. Note that in the implementation, a gem called [cells][17] is used to
 help define logical presentation. The cells gem
 is very helpful in this respect although it was originally designed for
@@ -383,12 +382,12 @@ end
 {% endhighlight %}
 
 As you may see, the Two Step View pattern makes multi-appearance implementation manageable in a way that
-different appearance implementations are organized in a set of strategy classes.
+a logical presentation is defined and different appearance implementations are organized in a set of strategy classes to parse this logial presentation.
 
 #### Summary
 
 The default enterprise design patterns encoded into Rails are perfect match for small/medium size projects.
-They are light weight and easy to be understood. However, as the application growing more mature,
+They are light weight and easy to understand. However, as the application growing more mature,
 these patterns do not scale due to layers taking too much responsibility.
 That said, a "fat" layer need to be broken into smaller ones:
 
@@ -404,8 +403,8 @@ That said, a "fat" layer need to be broken into smaller ones:
 In return for breaking apart a system into smaller layers, each layer
 becomes easier to maintain, reuse, test and scale.
 
-I would like to thank Martin Fowler for his awesome book and would love
-to hear any feedback.
+Last but not least, I would like to thank Martin Fowler for his awesome book and would love
+to hear any feedback for you.
 
 [1]: http://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420
 [2]: http://martinfowler.com/eaaCatalog/activeRecord.html
