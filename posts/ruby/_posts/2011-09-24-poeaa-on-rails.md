@@ -73,16 +73,16 @@ Here is [Martain Fowler][8] on the choice of Active Record or Data Mapper for Do
 In an enterprise Rails application, it's not rare to see complex domain models stuffed with
 assoications, validations, scopes and business logics.
 It has become a growing pain to deal with such "fat models".
-We need to separate the database concerns out into new dedicated
-entitis: the data mappers.
+We need to separate the database concerns out into a new dedicated
+leyer: the data mappers.
 However, as far as I know, there's no ORM in Ruby giving us such separation yet,
 althought it's been said the upcoming 2.0 release of the data_mapper gem will [fully
 implement the Data Mapper pattern][11]. Before we are able to consume
 the new data_mapper gem, is there a way to mitigate existing overloaded Rails models?
 Besides, switching an ORM for existing code is not effortless.
 
-As a compromised solution, I would extract database related logics for each *ActiveRecord::Base* model,
-for exmaple, validations and scopes, out into a module and then mix it in:
+As a compromised solution, I would extract database related logic for each *ActiveRecord::Base* model (e.g., validations and scopes)
+out into a module and then mix it in:
 
 {% highlight ruby %}
 # app/mappers/store_mapper.rb
@@ -123,6 +123,8 @@ end
 
 This half-baked solution, although not migrating to the Data Mapper pattern,
 cleanly isolates the defintions of database logic with the ones of business logic.
+Of course, it's recommended to use the Data Mapper pattern where
+possible.
 
 #### Service Layer
 
@@ -142,8 +144,7 @@ down #3 into another layer to lower the complexity of models. However,
 in the context of enterprise application, models are still overwhelmed by complicated business logic.
 As Fowler pointed out, business logic can be further divided into "domain logic" and
 "application logic", and [Service Layer][13] is a pattern to encapsulate
-model's "application logic" by establishing a boundary and set of operations
-through which the presentation layers interact with the application:
+model's "application logic" by establishing a boundary where the presentation layers interact with the application:
 
 > ... Service Layer is a pattern for organization business logic. Many
 > Designers, including me, like to divide "business logic" into two
@@ -170,7 +171,7 @@ as well as for talking to multiple presentation layers:
 
 To translate this into a code example, let's assume in an e-commerce
 platform, we need to email monthly sells report to the store owner.
-In this example, *StoreService* acts as a coordinator of multiple models for the mailing sells report workflow:
+In this example, *StoreService* acts as a coordinator of multiple models for the "mailing sells report" workflow:
 
 {% highlight ruby %}
 # app/services/store_service.rb
@@ -185,17 +186,17 @@ class StoreService
 end
 {% endhighlight %}
 
-Another place to make good use of Service Layer shine is reusing workflows for different
-controllers, say the same workflow in the above example is used in the *Storefront::StoresController* for store front
-and in the *Api::StoresController* for REST API calls, where Service Layer becomes a [Facade][12].
+Another place where Service Layer shines is reusing workflows for different
+controllers, for example, the same workflow in the above example is used in the *Storefront::StoresController* for store front
+and in the *Api::StoresController* for REST API calls. Service Layer becomes a [Facade][12] in this case.
 
 #### Presentation Model
 
-It's not uncommon to present multiple models in the same view. Most
+It's not uncommon to present multiple models in a view. Most
 importantly, not all attributes of a model are needed for a certain
 presentation.
-In a complex system where there are lots of screens, views become a very messy place for extracting state and behavior from models.
-Here comes the [Presentation Model][14] to ease the pain:
+In a complex system where there are lots of screens, views become a very busy place for extracting state and behavior from models.
+The [Presentation Model][14] comes to ease the pain:
 
 > Presentation Model pulls the state and behavior of the view out into a model class that is part of the presentation. The Presentation Model coordinates with the domain layer and provides an interface to the view that minimizes decision making in the view. The view either stores all its state in the Presentation Model or synchonizes its state with Presentation Model frequently.
 
@@ -249,8 +250,7 @@ end
 
 In the example, we wrap two models (*Store* and *User*) into a presenter and
 extract only the attributes needed (*Store#name* and *User#email*) for the "create store" screen.
-As a summary, I would like to once again consult Fowler for the benefit of
-Presentation Model:
+To summarize, I would like to once again consult Fowler for Presentation Model:
 
 > Presentation Model is a pattern that pulls presentation behavior from a view. ... It's useful for allowing you to test without the UI, support for some form of multiple view and a separation of concerns which may make it easier to develop the user interface.
 > 
@@ -258,39 +258,150 @@ Presentation Model:
 
 #### Two Step Views
 
-render_cell :product, :name, @product.name
-render_cell :product, :description, @product.description
-render_cell :product, :price, @product.price
-render_cell :product, :reivews, @product.reviews
+Rails comes with a neat templating system that allows you to quickly create
+dynamic pages. However, this [Template View][15] pattern has drawbacks as
+Fowler pointed out, especially in a situation where the view is very
+complex:
 
-class AmazonStoreProductCell < Cell::Rails
+> ... the common implementations make it too easy to put complicated logic in the page,
+> thus making it hard to maintain, particularly by nonprogrammers. You
+> need good discipline to keep the page simple and display oriented,
+> putting logic in the helper. ...
+
+What's worse, if the display of a view is based on conditions,
+for example in a multi-appearance application,
+you will find the determination logic leaked into many places in virews or controllers.
+Again, this is fine for a simple Rails application.
+But it becomes unmanagable as the appplication growing more complex.
+
+Let's think about an example: an e-commerce platform supports multiple
+stores and each store has its own customized UI to display a product.
+It's common to see the following solution:
+
+{% highlight erb %}
+<!-- app/views/products/_product.html.erb -->
+
+<% if store.amazon_store? %>
+  <%= render :partial => '/amazon/products/_product.html.erb', :object => product %>
+<% elsif store.apple_store? %>
+  <%= render :partial => '/apple/products/_product.html.erb', :object => product %>
+<% else %>
+  <%= render :partial => '/default/products/_product.html.erb', :object => product %>
+<% end %>
+{% endhighlight %}
+
+The determination logic for displaying a product based on store is leaked into the product partial.
+Apparently, to build the whole multi-appearance application, this approach does not
+scale. Thankfully, Fowler has something good for us - the [Two Step View][16]
+pattern:
+
+> ... You may also want to make global changes to the appearance of the site easily, but common approaches using Template View or Transform View make this difficult because presentation decisions are often duplicated across multiple pages or transform modules. A global change can force you to change several files.
+> 
+> Two Step View deals with this problem by splitting the transformation into two stages. The first transforms the model data into a logical presentation without any special formatting; the second converts that logical presentation with the actual formatting needed. ...
+
+The multi-store UI example can be reimplemented with the Two Step
+View pattern. Note that in the implementation, a gem called [cells][17] is used to
+help define logical presentation. The cells gem
+is very helpful in this respect although it was originally designed for
+other purposes.
+
+As a first step, we transform the product data into a logical
+presentation.
+For all stores, we display name, description, price and
+reviews of a product:
+
+{% highlight erb %}
+<!-- app/views/products/_product.html.erb -->
+
+render_cell :product, :name, product.name
+render_cell :product, :description, product.description
+render_cell :product, :price, product.price
+render_cell :product, :reivews, product.reviews
+{% endhighlight %}
+
+As a second step, we define three strategies (*ProductCell*, *Amazon::Productcell*, and
+*Apple::ProductCell*) to convert the logical presentation to different HTML.
+Then we use cells' strategy builder to return strategy class based on current store in session:
+
+{% highlight ruby %}
+# app/cells/product_cell.rb
+
+class ProductCell < Cell::Rails
+  # return strategy class based on current store in session
+  build { "#{current_store.name}::ProductCell".classify.constantize rescue nil }
+
   def name(name)
     content_tag(:h1, name)
   end
-  ...
-
-  def reviews(reviews)
-    
-  end
-end
-
-class AppleStoreProductCell < Cell::Rails
-  def name(name)
-    content_tag(:div, name, :class => 'title')
-  end
 
   ...
 
   def reviews(reviews)
+    # display reviews
   end
 end
+{% endhighlight %}
 
+{% highlight ruby %}
+# app/cells/amazon/product_cell.rb
 
+module Amazon
+  class ProductCell < ::ProductCell
+    def name(name)
+      content_tag(:p, name)
+    end
+
+    ...
+
+    def reviews(reviews)
+      # display reviews for Amazon store
+    end
+  end
+end
+{% endhighlight %}
+
+{% highlight ruby %}
+# app/cells/apple/product_cell.rb
+
+module Apple
+  class ProductCell < ::ProductCell
+    def name(name)
+      content_tag(:div, name, :class => 'title')
+    end
+
+    ...
+
+    def reviews(reviews)
+      # display reviews for Apple store
+    end
+  end
+end
+{% endhighlight %}
+
+As you may see, the Two Step View pattern makes multi-appearance implementation managable in a way that
+different appearance implementations are organized in a set of strategy classes.
 
 #### Summary
 
-break down fat models into layers
-easier to test and reuse
+The default enterprise design patterns encoded into Rails are perfect match for small/medium size projects.
+They are light weight and easy to be understood. However, as the application growing more mature,
+these patterns do not scale due to layers taking too much resposiblity.
+That said, a "fat" layer need to be broken into smaller ones:
+
+1. Data Mapper is an effort to extract out data source layer from Domain
+   Modle that implements Active Record,
+2. Service Layer is an endeavour to extract out application logic from
+   Domain Model,
+3. Presentation Model is an attempt to extract out presentation logic
+   from a single or multiple Domain Model, and
+4. Two Step View is a try to break down presentation logic into two
+   processing steps so that a view can be generated in different formats.
+
+In return for breaking apart a system into smaller layers, each layer
+becomes easier to maintain, resue, test and scale. 
+
+I would like to thank Martin Fowler for his awesome book and would love
+to hear any feedback.
 
 [1]: http://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420
 [2]: http://martinfowler.com/eaaCatalog/activeRecord.html
@@ -306,3 +417,6 @@ easier to test and reuse
 [12]: http://en.wikipedia.org/wiki/Facade_pattern
 [13]: http://martinfowler.com/eaaCatalog/serviceLayer.html
 [14]: http://martinfowler.com/eaaDev/PresentationModel.html
+[15]: http://martinfowler.com/eaaCatalog/templateView.html
+[16]: http://martinfowler.com/eaaCatalog/twoStepView.html
+[17]: https://github.com/apotonick/cells
