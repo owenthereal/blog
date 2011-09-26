@@ -24,7 +24,7 @@ The git-p4 bridge requires the [p4 command line client][3] properly set up. Ther
 		P4PORT=repo_url:repo_port
 		P4USER=user_name
 		P4PASSWD=password
-		P4CLIETNT=client_workspace_name
+		P4CLIENT=client_workspace_name
 		P4EDITOR=vim
 
 3. Run "p4 client" to define the workspace mappings
