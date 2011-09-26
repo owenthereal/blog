@@ -299,7 +299,11 @@ pattern:
 > 
 > Two Step View deals with this problem by splitting the transformation into two stages. The first transforms the model data into a logical presentation without any special formatting; the second converts that logical presentation with the actual formatting needed. ...
 
-The multi-store UI example can be reimplemented with the Two Step
+<div class="center" markdown="1">
+  ![Two Step View](/images/posts/two_step_view.png)
+</div>
+
+From the above diagram, the multi-store UI example can be reimplemented with the Two Step
 View pattern. Note that in the implementation, a gem called [cells][17] is used to
 help define logical presentation. The cells gem
 is very helpful in this respect although it was originally designed for
@@ -313,10 +317,10 @@ reviews of a product:
 {% highlight erb %}
 <!-- app/views/products/_product.html.erb -->
 
-render_cell :product, :name, product.name
-render_cell :product, :description, product.description
-render_cell :product, :price, product.price
-render_cell :product, :reivews, product.reviews
+<%= render_cell :product, :name, product.name %>
+<%= render_cell :product, :description, product.description %>
+<%= render_cell :product, :price, product.price %>
+<%= render_cell :product, :reivews, product.reviews %>
 {% endhighlight %}
 
 As a second step, we define three strategies (*ProductCell*, *Amazon::Productcell*, and
