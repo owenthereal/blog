@@ -26,8 +26,11 @@ from the same book that Rails' architecture heavily base upon.
 Note that the patterns I am mentioning here will benefit more for
 complex applications, for example, an e-commerce web application selling
 digital goods.
-There's clearly some overhead to use these patterns for small projects
-where the default Rails patterns shine.
+There's clearly some overhead to use these patterns for simple projects
+where the default Rails patterns shine. Most importantly, you should
+apply these patterns where they make sense. I am strong believer in
+contextual solution and these patterns are definitely not the only way
+to go.
 
 #### Data Mapper
 
