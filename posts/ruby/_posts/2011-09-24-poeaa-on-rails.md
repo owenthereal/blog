@@ -62,7 +62,8 @@ Note that the Active Record pattern and the Data Mapper pattern
 mentioned are not the Ruby libraries these patterns inspire.
 The [active_record][9] gem is an implementation of the Active Record pattern.
 The [data_mapper][10] gem is also a "Active Record"-ish implementation, although
-it has elements of the Data Mapper pattern.
+it has elements of the Data Mapper pattern. For those who are interested
+in seeing the implementation difference between these two gems, I created a [gist][18] for you.
 
 Here is [Martain Fowler][8] on the choice of Active Record or Data Mapper for Domain Model:
 
@@ -303,15 +304,17 @@ pattern:
 </div>
 
 From the above diagram, the multi-storefront example can be reimplemented with the Two Step
-View pattern. Note that in the implementation, a gem called [cells][17] is used to
+View pattern. The process is in two steps. The first step is to
+transform the product data into a logical presentation. The second step
+is to convert this logical presentation into different HTML.
+
+Note that in the implementation, a gem called [cells][17] is used to
 help define logical presentation. The cells gem
 is very helpful in this respect although it was originally designed for
 other purposes.
 
-As a first step, we transform the product data into a logical
-presentation.
-For all stores, we display name, description, price and
-reviews of a product:
+For the logical presentation, we define it to display name, description, price and
+reviews of a product for every store:
 
 {% highlight erb %}
 <!-- app/views/products/_product.html.erb -->
@@ -322,9 +325,9 @@ reviews of a product:
 <%= render_cell :product, :reviews, product.reviews %>
 {% endhighlight %}
 
-As a second step, we define three strategies (*ProductCell*, *Amazon::ProductCell*, and
+We then define three strategies (*ProductCell*, *Amazon::ProductCell*, and
 *Apple::ProductCell*) to convert the logical presentation to different HTML.
-Then we use cells' strategy builder to return strategy class based on current store in session:
+We make use of cells' strategy builder to return strategy class based on current store in session:
 
 {% highlight ruby %}
 # app/cells/product_cell.rb
@@ -382,13 +385,13 @@ end
 {% endhighlight %}
 
 As you may see, the Two Step View pattern makes multi-appearance implementation manageable in a way that
-a logical presentation is defined and different appearance implementations are organized in a set of strategy classes to parse this logial presentation.
+different appearance implementations are organized in a set of strategy classes to parse a common logial presentation.
 
 #### Summary
 
 The default enterprise design patterns encoded into Rails are perfect match for small/medium size projects.
 They are light weight and easy to understand. However, as the application growing more mature,
-these patterns do not scale due to layers taking too much responsibility.
+these patterns do not scale well due to layers taking too much responsibility.
 That said, a "fat" layer need to be broken into smaller ones:
 
 1. Data Mapper is an effort to extract out data source layer from Domain
@@ -423,3 +426,4 @@ to hear any feedback for you.
 [15]: http://martinfowler.com/eaaCatalog/templateView.html
 [16]: http://martinfowler.com/eaaCatalog/twoStepView.html
 [17]: https://github.com/apotonick/cells
+[18]: https://gist.github.com/1244351
