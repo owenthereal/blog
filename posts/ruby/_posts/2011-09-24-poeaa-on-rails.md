@@ -40,7 +40,7 @@ their attributes from the database.
 </div>
 
 Assuming we are building an e-commerce platform, we get a store object by
-going through the store mapper:
+going through the store mapper which connects to the database:
 
 {% highlight ruby %}
 # app/controllers/stores_controller.rb
