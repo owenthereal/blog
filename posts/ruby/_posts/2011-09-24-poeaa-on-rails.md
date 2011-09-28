@@ -28,7 +28,7 @@ complex applications, for example, an e-commerce web application selling
 digital goods.
 There's clearly some overhead to use these patterns for simple projects
 where the default Rails patterns shine. Most importantly, you should
-apply these patterns where they make sense. I am strong believer in
+only apply these patterns where they make sense. I am a strong believer in
 contextual solution and these patterns are definitely not the only way
 to go.
 
