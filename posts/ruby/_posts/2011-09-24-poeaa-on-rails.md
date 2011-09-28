@@ -392,7 +392,7 @@ different appearance implementations are organized in a set of strategy classes 
 
 #### Summary
 
-The default enterprise design patterns encoded into Rails are perfect match for small/medium size projects.
+The default enterprise design patterns encoded into Rails are perfect matches for small/medium size projects.
 They are light weight and easy to understand. However, as the application growing more mature,
 these patterns do not scale well due to layers taking too much responsibility.
 That said, a "fat" layer need to be broken into smaller ones:
