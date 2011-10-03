@@ -6,7 +6,7 @@ tags: patterns PoEAA rails
 
 The book [Patterns of Enterprise Application Architecture][1] (PoEAA) laid the blueprints for Rails' architecture.
 When choosing which enterprise design patterns to encode into the framework, Rails picked, to name a few, [Active Record][2], [Template View][3], [Application Controller][4], etc.
-By covering these patterns with a sweet coating of convertion-over-configuration, Rails simplifies pattern analysis a lot.
+By covering these patterns with a sweet coating of convention-over-configuration, Rails simplifies pattern analysis a lot.
 
 These design assumptions were absolutely pragmatic for the type of applications that Rails was targeted at.
 However, as applications growing more and more complex, developers are starting to realize these
@@ -16,7 +16,7 @@ four main areas are overloaded in an enterprise application:
 1. high coupling between domain model and data source,
 2. bloated domain model with a mix of domain logic and application
    logic,
-3. presentation behavior leaked into views, and
+3. presentation behaviour leaked into views, and
 4. high coupling between view data and template
 
 To understand these problems better as well as to figure out possible
@@ -68,7 +68,7 @@ The [data_mapper][10] gem is also a "Active Record"-ish implementation, although
 it has elements of the Data Mapper pattern. For those who are interested
 in seeing the implementation difference between these two gems, I created a [gist][18] for you.
 
-Here is [Martain Fowler][8] on the choice of Active Record or Data Mapper for Domain Model:
+Here is [Martin Fowler][8] on the choice of Active Record or Data Mapper for Domain Model:
 
 > An OO domain model will often look similar to a database model, yet it will still have a lot of differences. A Domain Model mingles data and process, has multivalued attributes and a complex web of associations, and uses inheritance.
 > 
