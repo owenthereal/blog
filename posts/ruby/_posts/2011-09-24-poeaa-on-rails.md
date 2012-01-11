@@ -8,7 +8,7 @@ The book [Patterns of Enterprise Application Architecture][1] (PoEAA) laid the b
 When choosing which enterprise design patterns to encode into the framework, Rails picked, to name a few, [Active Record][2], [Template View][3], [Application Controller][4], etc.
 By covering these patterns with a sweet coating of convention-over-configuration, Rails simplifies pattern analysis a lot.
 
-These design assumptions were absolutely pragmatic for the type of applications that Rails was targeted at.
+These design assumptions were absolutely pragmatic for the type of applications that Rails was targeting at.
 However, as applications growing more and more complex, developers are starting to realize these
 default architectural patterns may not scale very well. Typically,
 four main areas are overloaded in an enterprise application:
@@ -21,7 +21,7 @@ four main areas are overloaded in an enterprise application:
 
 To understand these problems better as well as to figure out possible
 solutions, I would like to walk you through some enterprise patterns
-from the same book that Rails' architecture heavily base upon.
+from the same book that Rails' architecture heavily bases upon.
 
 Note that the patterns I am mentioning here will benefit more for
 complex applications, for example, an e-commerce web application selling
@@ -84,6 +84,8 @@ although it's been said the upcoming 2.0 release of the data_mapper gem will [fu
 implement the Data Mapper pattern][11]. Before we are able to consume
 the new data_mapper gem, is there a way to mitigate existing overloaded Rails models?
 Besides, switching an ORM for existing code is not effortless.
+
+[Update] On 01/10 2012, Piotr Solnica from the data_mapper gem made an official announcement saying they are actively working on Data Mapper 2.0 (http://solnic.eu/2012/01/10/ruby-datamapper-status.html).  
 
 As a compromised solution, I would extract database related logic for each *ActiveRecord::Base* model (e.g., validations and scopes)
 out into a module and then mix it in:
