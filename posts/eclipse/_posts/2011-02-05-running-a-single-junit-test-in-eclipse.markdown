@@ -9,11 +9,11 @@ if there is a test suite with multiple tests, when running a single unit test, e
 
 Like the example below, running *testOne* will trigger running the rest of the tests in the suite which are grouped under the "**Unrooted Tests**" node. This is quite irritating sometimes since running unexpected tests may slow down the workflow if they take time to finish. It's also quite confusing since programmers get unwanted test results. Some of my coworkers solve this problem by commenting out unwanted tests each time before running a test. However, it's not very effective and it's error-prone.
 
-![A single test triggers multiple tests](http://idisk.me.com/jingweno/Public/Pictures/Skitch/a_single_test_triggers_multiple_tests-20110213-233120.jpg)
+![A single test triggers multiple tests](/images/posts/a_single_test_triggers_multiple_tests.png)
 
 This happens mainly because we are running JUnit 3 tests with the JUnit 4 runner. Before version 4.6, the [JUnit 4 runner][1] seems to have the problem of falling back to run a single JUnit 3 test.
 
-![Running JUnit 3 tests with JUnit 4 runner](http://idisk.me.com/jingweno/Public/Pictures/Skitch/running_junit3_with_junit4_runner-20110213-233707.jpg)
+![Running JUnit 3 tests with JUnit 4 runner](/images/posts/running_junit3_with_junit4_runner.png)
 
 So...the solution is quite simple:
 

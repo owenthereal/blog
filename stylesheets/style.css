@@ -650,7 +650,7 @@ sets defaults for bare elements
 @media print { #sidebar { display: none; }
   #content { float: none; width: 90%; }
   #content pre { color: #000; background: #eee; }
-  #content form.comments { display: none; } }
+#content form.comments { display: none; } }
 
 body {
   /*background: url(../../images/theme/background.gif) repeat-x left top;*/
@@ -697,3 +697,24 @@ word-wrap: break-word;
 .tag18 { font-size: 270%; }
 .tag19 { font-size: 280%; }
 .tag20 { font-size: 290%; }
+
+/*****************************************************************************/
+/*
+/* Home
+/*
+/*****************************************************************************/
+
+ul.posts {
+  list-style-type: none;
+  margin-bottom: 2em;
+}
+
+ul.posts li {
+  line-height: 1.75em;
+}
+
+ul.posts span {
+  color: #aaa;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+}

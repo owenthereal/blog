@@ -2,11 +2,11 @@
 layout: default
 ---
 
+{% include about.html %}
+
+<h3>Blog Posts</h3>
 {% assign posts = site.posts %}
-
-{% for article in posts limit:3 %}
-  {% include article.html %}
-{% endfor %}
-
-<h1>Archives</h1>
 {% include postlist.html %}
+
+<h3>Open Source Projects</h3>
+{% include projects.html %}
