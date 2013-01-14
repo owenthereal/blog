@@ -151,7 +151,7 @@ To interactively stage and unstage changes, type
 
 This command removes remote file copy only. For example, typing
 
-    > git remote --cached database.yml
+    > git remove --cached database.yml
 
 removes database.yml that is already checked in but leaving the local copy untouched. This is intensively handy for removing ignored files that are already
 pushed without removing the local copies.
@@ -169,7 +169,12 @@ feature branch yet.
 #### git branch --merged & git branch --no-merged
 
 This command returns a list of branches that are merged or not yet merged
-to current branch. It's a useful check before any merging happens.
+to current branch. It's a useful check before any merging happens. For
+example, on a featrue branch, typing
+
+    > git branch --no-merged
+
+returns a list of branchs that are not yet merged to the feature branch.
 
 #### git branch --contains SHA
 
