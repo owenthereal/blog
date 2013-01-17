@@ -100,7 +100,7 @@ handy for sharing the link to a chunk of code with your teammates:
 
 #### subscribing peoples
 
-Metioning users in pull requests, issues or any comment will subscribe them to all
+Mentioning users in pull requests, issues or any comment will subscribe them to all
 subsequent notifications:
 
 <div class="center" markdown="1">	
@@ -141,20 +141,22 @@ To search for changes that matches the pattern "stupid" in history, for example,
 
     > git log -S'stupid'
 
+Combining with "-p" shows the changes with the search pattern.
+
 #### git add -p
 
 To interactively stage and unstage changes, type
 
     > git add -p
 
-#### git remove --cached FILE
+#### git rm --cached FILE
 
 This command removes remote file copy only. For example, typing
 
-    > git remove --cached database.yml
+    > git rm --cached database.yml
 
-removes database.yml that is already checked in but leaving the local copy untouched. This is intensively handy for removing ignored files that are already
-pushed without removing the local copies.
+removes database.yml that is already checked in but leaving the local copy untouched.
+This is intensively handy for removing ignored files that are already pushed without removing the local copies.
 
 #### git log ..BRANCH
 
@@ -213,5 +215,5 @@ To further deepen your Git and GitHub skills, I recommend the following
 materials:
 
 * [ProGit](http://git-scm.com/book), the best book on Git
-* [Andvanced Git](https://peepcode.com/products/advanced-git) serials by [Peepcode](https://peepcode.com/)
+* [Advanced Git](https://peepcode.com/products/advanced-git) serials by [Peepcode](https://peepcode.com/)
 * [Git and GitHub Secrets](http://zachholman.com/talk/git-github-secrets/) talk by [Zach Holman](https://twitter.com/holman)
