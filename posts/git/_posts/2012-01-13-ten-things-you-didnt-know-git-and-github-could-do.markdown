@@ -82,7 +82,7 @@ project:
 #### email reply
 
 You can comment directly by replying to the email received from GitHub
-instead of commenting on the website. GitHub will route your replys correctly:
+instead of commenting on the website. GitHub will route your reply correctly:
 
 <div class="center" markdown="1">	
 	![GitHub Reply Email](/images/posts/github_email_reply.png)
@@ -112,7 +112,7 @@ subsequent notifications:
 In pull requests, issues or any comment, sha and issue number
 (#1 for example) will be automatically linked. Besides, you can link sha
 or issue number from another repository with the format of
-**user/repo@sha1** or **user/repo#1** repsectively. The following is an
+**user/repo@sha1** or **user/repo#1** respectively. The following is an
 example of autolinking a sha in a comment:
 
 <div class="center" markdown="1">	
@@ -123,7 +123,7 @@ example of autolinking a sha in a comment:
 
 [Hub](https://github.com/defunkt/hub) is the command line GitHub. It
 provides integration between Git and GitHub in command line. One of
-the most userful commands is creating pull request by just typing "**hub pull-request**" in your terminal.
+the most useful commands is creating pull request by just typing "**hub pull-request**" in your terminal.
 Detail of all other commands is available on its project
 [readme](https://github.com/defunkt/hub#commands).
 
@@ -148,6 +148,9 @@ Combining with "-p" shows the changes with the search pattern.
 To interactively stage and unstage changes, type
 
     > git add -p
+
+Updated 2013-01-18: From [@tjwallace](https://twitter.com/tjwallace), git checkout and git reset also support the --patch (-p)
+option for the interactive mode.
 
 #### git rm --cached FILE
 
@@ -185,12 +188,12 @@ This returns which branch contains a specified sha key, for example, typing
     > git branch --contains 2f8e2b
 
 shows all branches containing the commit 2f832b. It is very helpful for
-verifyng whether a git cherry-pick is done correctly for instance.
+verifying whether a git cherry-pick is done correctly for instance.
 
 #### git status -s
 
 It returns a less verbose version of git status. I setup this command as
-my default when running git status to reduece noise.
+my default when running git status to reduce noise.
 
 #### git reflog
 
