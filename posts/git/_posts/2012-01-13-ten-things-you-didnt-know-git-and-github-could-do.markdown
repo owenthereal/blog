@@ -152,6 +152,9 @@ To interactively stage and unstage changes, type
 Updated 2013-01-18: From [@tjwallace](https://twitter.com/tjwallace), git checkout and git reset also support the --patch (-p)
 option for the interactive mode.
 
+Updated 2013-03-17: From
+[jasherai](http://owenou.com/2012/01/13/ten-things-you-didnt-know-git-and-github-could-do.html#comment-832473162), git stash also supports the --patch (-p) option.
+
 #### git rm --cached FILE
 
 This command removes remote file copy only. For example, typing
