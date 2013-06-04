@@ -15,11 +15,11 @@ Let's take a look at where other web frameworks such as [Rails][7] shine. If you
 
 Boom! Your app is up with just 2 commands (ignoring the step to download the source)! The last command is especially interesting. It is to start up the Rails server with the app loaded. Can we do the same in the Java world? Of course, Maven + Jetty Maven Plugin.
 
-#### Introducing Jetty Maven Plugin
+##### Introducing Jetty Maven Plugin
 
 Jetty is a web server and javax.servlet container. One of its greatest features is its ability to be embedded into any Java application. The Jetty Maven plugin is just a simple integration of Jetty into the Maven build process. But don't get it wrong, being embeddable doesn't mean being less performing. Jetty is actually the powering engine behind [Google App Engine][3] and [VMware Zimbra][4]. After all, scalability is more related to your app's implementation than the container.
 
-#### Running a single web app
+##### Running a single web app
 
 To run a single web app, it is as simple as including the Jetty Maven Plugin as a plugin dependency in your pom file and run the "*mvn jetty:run*" command: 
 
@@ -45,7 +45,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 There are lots of useful [settings][5] that you can fine-tune Jetty, such as "scanIntervalSeconds" for the time interval of automatic hot redeploy, "systemProperties" for System properties of the execution of the plugin, and "jettyEnvXml" for the file that defines JNDI bindings.
 
-#### Running a single web app with JNDI
+##### Running a single web app with JNDI
 
 In the case that you are defining data source using JNDI, you need to describe the data source in a "jetty-env.xml" file and refer it in the Jetty Maven Plugin. The jetty-env.xml file may look something like this:
 
@@ -92,7 +92,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 </project>
 {% endhighlight %}
 
-#### Running multiple web apps
+##### Running multiple web apps
 
 It's a bit tricky to run multiple web apps at once with the Jetty Maven Plugin. You need to have a running web app to delegate the requests. If you are using JNDI to define data source, you also need to configure your web apps to load up their environment settings.
 
@@ -176,7 +176,7 @@ The "resourceBase" of each web app is set to its corresponding target folder. Th
 
 Again, running "*mvn jetty:run*" will start up these two servers at once. 
 
-#### Summary
+##### Summary
 
 As you may see, after setting up Jetty in the build process, we are able to start up the server with just one command. It speeds up the setup of our development environment and free ourselves from repeating the setup steps in the future. Most importantly, your teammates will thank you for saving a lot of their precious time.
 

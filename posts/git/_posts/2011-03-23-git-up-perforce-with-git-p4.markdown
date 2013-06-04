@@ -14,7 +14,7 @@ Git is particularly good at this aspect which provides tons of [bridges][1] to o
 	![git-p4 bridge](/images/posts/git-p4.jpeg)
 </div>
 
-#### Setting up the Perforce command line client
+##### Setting up the Perforce command line client
 
 The git-p4 bridge requires the [p4 command line client][3] properly set up. There is a [lengthy tutorial][14] on Perforce's documentation website. The following is a short sums-up:
 
@@ -32,7 +32,7 @@ The git-p4 bridge requires the [p4 command line client][3] properly set up. Ther
 
 After you have done all these, don't forget to issue "p4 sync repo_url" to test whether you are able to checkout stuff from your repository.
 
-#### Installing git-p4 bridge
+##### Installing git-p4 bridge
 
 The [git-p4][8] bridge is a Python script to enable bidirectional operation between a Perforce depot and Git. It doesn't come with the Git distribution by default. To make it invokable in your system, you need to download the script and put it into your system path. For me, I clone the Git source code from GitHub and make a soft-link to the script:
 
@@ -46,7 +46,7 @@ The [git-p4][8] bridge is a Python script to enable bidirectional operation betw
 
 Windows users need to include the [git-p4.bat][10] file in the system path.
 
-#### Commands
+##### Commands
 
 Four things to remember when using git-p4: 
 
@@ -57,7 +57,7 @@ Four things to remember when using git-p4:
 
 For the last one, the reason is that when you run "git merge", Git creates an extra commit on top of the stack for the merging. This is not something we wanna show in the remote non-git repository. So we merge code with "git rebase". Detailed explanation of the difference between git-merge and git-rebase goes [here][17]. 
 
-#### Workflow
+##### Workflow
 
 There is a [detailed explanation][9] on the usage of git-p4 in Git's source. Here is an example almost covering daily usage:
 
@@ -77,11 +77,11 @@ There is a [detailed explanation][9] on the usage of git-p4 in Git's source. Her
 
 		git-p4 submit
 		
-#### Ignoring the .gitignore file
+##### Ignoring the .gitignore file
 
 Normally we check in a .gitignore file to ignore files that we don't want to check into the remote repository for each project. However, since the remote repository is not Git, it's meaningless to check in this .gitignore file. To ignore this file, simply add an entry to .git/info/exclude. 
 
-#### Under the hook
+##### Under the hook
 
 There is no magic happening with git-p4. What it does is simply invoking the p4 command line tool to download sources to local, and then clone a Git repository out of it. You can simply verify this by typing "git branch -a":
 
@@ -91,7 +91,7 @@ There is no magic happening with git-p4. What it does is simply invoking the p4 
 
 You may be amazed once again by how flexible the design of Git is which makes it possible to bridge to multiple VCS! 
 
-#### Summary
+##### Summary
 
 To quote [Martin Fowler][16]'s [opinions][15] on dual VCS, "a lot of teams can benefit from this dual-VCS working style, particularly if there's a lot of corporate ceremony enforced by their corporate VCS. Using dual-VCS can often make both the local development team happier and the corporate controllers happier as their motivations for VCS are often different".
 

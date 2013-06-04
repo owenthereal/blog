@@ -7,38 +7,54 @@
     {% if page.title %}<title>{{ page.title }}</title>
     {% else %}<title>{{ site.name }}</title>{% endif %}
     {% if page.author %}<meta name="author" content="{{ page.author }}" />{% endif %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Loading Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+
+    <!-- Loading Flat UI -->
+    <link href="/css/flat-ui.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="/images/theme/owen.png" />
+
     <link href="http://feeds.feedburner.com/OwenOu" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
 
-    <link rel="icon" type="image/png" href="/images/theme/owen.png" />
-    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+      <![endif]-->
   </head>
 
   <body>
-    <div id="container">
-      <div id="header">
-        <h1><span><a href="/">{{ site.name }}</a></span></h1>
-        <h2>{{ site.subtitle }}</h2>
-      </div>
-      <div id="page">
-        <div id="content">
-          {{ content }}
-        </div>
-        <div id="sidebar">
-          {% include sidebar.html %}
-        </div>
-        <br style="clear:both;" />
-      </div>
-      <div id="footer">
-        <hr />
-        {% include footer.html %}
-      </div>
-    </div>
+  <div class="container main">
+    {% include navbar.html %}
 
-    <div id="github_ribbons">
-      <a href="https://github.com/jingweno/jingweno.github.com">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
-      </a>
+    <div class="content">
+      {{ content }}
     </div>
+    <div class="demo-row">
+      <div class="demo-content-wide">
+        <hr/>
+        {% include footer.html %}
+        <p/>
+      </div>
+    </div>
+  </div>
+
+    <!-- Load JS here for greater good =============================-->
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-select.js"></script>
+    <script src="/js/bootstrap-switch.js"></script>
+    <script src="/js/flatui-checkbox.js"></script>
+    <script src="/js/flatui-radio.js"></script>
+    <script src="/js/jquery.tagsinput.js"></script>
+    <script src="/js/jquery.placeholder.js"></script>
+    <script src="/js/jquery.stacktable.js"></script>
 
     <!-- Disqus comment count -->
     <script type="text/javascript">

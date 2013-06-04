@@ -1,9 +1,14 @@
-{% comment %}
-Renders a list of posts.
-Set a variable called posts before including this snippet.
-{% endcomment %}
-<ul class="posts">
+<table class="table table-striped table-hover">
+  <tbody>
 	{% for post in posts %}
-	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title | xml_escape }}</a></li>
+  <tr>
+    <td>
+      <a href="{{ post.url }}">{{ post.title | xml_escape }}</a>
+    </td>
+    <td>
+      {{ post.date | date_to_string }}
+    </td>
+  </tr>
 	{% endfor %}
-</ul>
+  </tbody>
+</table>

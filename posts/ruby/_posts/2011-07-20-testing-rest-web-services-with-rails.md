@@ -40,7 +40,7 @@ $ curl http://localhost:3000/tasks.json
 [{"id":1,"name":"Write a blog post","created_at":"2011-07-20T04:05:41Z","updated_at":"2011-07-20T04:05:41Z","ends_at":"2011-08-20T03:15:00Z"}]
 {% endhighlight %}
 
-#### ActiveResource
+##### ActiveResource
 
 In order to test our REST web services, we need a HTTP client. There
 are [lots of them][6] out there, but I found [ActiveResource][5] the most
@@ -73,7 +73,7 @@ describe Task do
 end
 {% endhighlight %}
 
-#### Web Server
+##### Web Server
 
 To maintain a zero-setup test environment, we’ll have our test control the stratup and shutdown of
 a web server. By having the tests start and stop the web server, they can be easily run with
@@ -129,7 +129,7 @@ Class Server
 end
 {% endhighlight %}
 
-#### Transaction Rollback
+##### Transaction Rollback
 
 For testing strategies of web services, most people recommend to
 either truncate test data on each run or to mock out the request and response.
@@ -287,7 +287,7 @@ describe Task do
 end
 {% endhighlight %}
 
-#### Fixture Creation
+##### Fixture Creation
 
 Most of the time, we create test fixtures to quickly define prototypes for each
 of the models and ask for instances with properties that are important to the test at hand. But in the context
@@ -339,7 +339,7 @@ describe Task do
 end
 {% endhighlight %}
 
-#### Summary
+##### Summary
 
 Testing REST web services client can be less complex if we have full control over objects on the web server. ActiveResource and dRuby
 stand out to help! They make writing web service client tests feel like writing local unit tests.
