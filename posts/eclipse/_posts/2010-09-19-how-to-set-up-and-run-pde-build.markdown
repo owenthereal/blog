@@ -12,7 +12,7 @@ Before running the PDE build, you need to set up the followings:
 * target platform
 * build configuration file
 
-#### Build directory
+##### Build directory
 
 The first step in setting up a build is to create the directory in which the build will take place. Next, create two subdirectories called "*plugins*" and "*features*", and copy the plug-ins and features that you want to build respectively into these two folders. The directory structure for the build directory should look like this:
 
@@ -25,7 +25,7 @@ The first step in setting up a build is to create the directory in which the bui
 	        - feature_to_build
 	        - ...
 
-#### Target platform
+##### Target platform
 
 Features and plugins are compiled and run against a set of pre-built features and plugins. These dependencies constitute the target platform. For example, most RCP applications contribute to the UI by depending on the *org.eclipse.ui* plug-in. 
 
@@ -40,7 +40,7 @@ In this step, you also need to create a directory with two subdirectories called
 	        - org.eclipse.equinox.launcher
 	        - ...
 
-#### Build configuration file
+##### Build configuration file
 
 After setting up the directory structure for the plugins/features to build and the target platform, we need to tell PDE how we want the build. We can configure it by adding a *build.properties* file. The template of this file is available in any Eclipse distribution:
 
@@ -59,7 +59,7 @@ PDE build provides [a variety of properties][5] that we can configure for the bu
 	collectingFolder: the location under which all of the build output will be collected
 	configs: the list of {os, ws, arch} configurations to build
 
-#### Running PDE build
+##### Running PDE build
 
 If you have followed me this far, you should have the following directory structure ready:
 
@@ -93,7 +93,7 @@ Open up a terminal, type in:
 
 You should see PDE starts building :).
 
-#### Summary
+##### Summary
 
 Setting up the PDE build looks scary at first, but once you understand [Equinox][6] a little bit more, you will find everything make a lot of sense. All you need to get it to run is creating the directory structure for the plug-ins/features to build and their dependencies, and configuring some properties. The directory structure, probably as you have already realized, is Equinox's [convention][7] of managing components.
 

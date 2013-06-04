@@ -1,33 +1,22 @@
 ---
 layout: default
 ---
-<div class="hentry">
-  <h2 class="entry-title">
+<div class="demo-row">
+  <h4>
     <a href="{{ page.url }}">{{ page.title }}</a>
-  </h2>
-  <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
-  <br class="clear" />
-  <div class="entry-content">
-    {{ content }}
+  </h4>
+  <div class="demo-content-wide">
+    <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
+    <br class="clear" />
+    <br class="clear" />
+    <div class="entry-content">
+      {{ content }}
+    </div>
   </div>
+</div>
 
-  <ul class="meta">
-    <li>
-    <a href="{{ site.url }}{{ page.url }}#disqus_thread">Comments</a>
-      {% if page.tags != empty %}
-        - {% for t in page.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}
-      {% endif %}
-    </li>
-  </ul>
-
-  <ul class="posts">
-    {% assign p = page.previous %}{% if p %}
-    <li><span>Previous: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
-    {% endif %}
-    {% assign p = page.next %}{% if p %}
-    <li><span>Next: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
-    {% endif %}
-  </ul>
-
-  {% include disqus.html %}
+<div class="demo-row">
+  <div class="demo-content-wide">
+    {% include disqus.html %}
+  </div>
 </div>

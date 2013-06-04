@@ -32,7 +32,7 @@ only apply these patterns where they make sense. I am a strong believer in
 contextual solution and these patterns are definitely not the only way
 to go.
 
-#### Data Mapper
+##### Data Mapper
 
 [Data Mapper][5] is a layer that transfers data between objects
 and a database. It typically creates [Domain Model][7] objects by populating
@@ -132,7 +132,7 @@ cleanly isolates the definitions of database logic with the ones of business log
 Of course, it's recommended to use the Data Mapper pattern where
 possible.
 
-#### Service Layer
+##### Service Layer
 
 Layering is one of the most common techniques to break apart a complex
 software system. The higher layer uses service defined by the lower
@@ -195,7 +195,7 @@ Another place where Service Layer shines is reusing workflows for different
 controllers, for example, the same workflow in the above example is used in the *Storefront::StoresController* for store front
 and in the *Api::StoresController* for REST API calls. Service Layer becomes a [Facade][12] in this case.
 
-#### Presentation Model
+##### Presentation Model
 
 It's not uncommon to present multiple models in a view. Most
 importantly, not all attributes of a model are needed for a certain
@@ -261,7 +261,7 @@ To summarize this pattern, I would like to once again consult Fowler:
 > 
 > ... Presentation Model allows you to write logic that is completely independent of the views used for display. You also do not need to rely on the view to store state. ...
 
-#### Two Step Views
+##### Two Step Views
 
 Rails comes with a neat templating system that allows you to quickly create
 dynamic pages. However, this [Template View][15] pattern has drawbacks as
@@ -392,7 +392,7 @@ end
 As you may see, the Two Step View pattern makes multi-appearance implementation manageable in a way that
 different appearance implementations are organized in a set of strategy classes to parse a common logial presentation.
 
-#### Summary
+##### Summary
 
 The default enterprise design patterns encoded into Rails are perfect matches for small/medium size projects.
 They are light weight and easy to understand. However, as the application growing more mature,

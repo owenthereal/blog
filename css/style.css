@@ -1,0 +1,17 @@
+.main {
+  margin: 0 auto;
+  width: 900px;
+}
+
+.center {
+  text-align: center;
+}
+
+hr {
+  margin: 5px;
+}
+
+.to-right {
+  text-align:right;
+  float:right;
+}

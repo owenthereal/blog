@@ -10,7 +10,7 @@ RAP, what? The Eclipse community is expanding its range to Hip Hop :)? Not exact
 
 So what exactly is the Eclipse paradigm? Can we benefit from it?
 
-#### Architecture
+##### Architecture
 
 RAP is to the web as RCP to the desktop. It inherits all the goodness from RCP such as workbench extension points model, event-driven SWT/JFace APIs, and componentized OSGi design. As indicated below, the only difference between the architecture of RAP and that of RCP is the implementation of SWT/RWT. RWT is actually a bundle providing web-specific implementation of SWT’s widgets based on the [qooxdoo][6] toolkit. In RAP, almost no SWT API is changed.
 
@@ -26,15 +26,15 @@ This architecture also determines that RAP is a server-centric AJAX framework[^3
 
 Both methods have pros and cons. Server-centric frameworks handle all communication  automatically and leaves as few JavaScript codes on the browsers as possible, hence potentially having less security holes on the browsers. Client-centric frameworks are more flexible but require more work to step deep into low-level implementations of client-to-server communication, e.g., figuring out how to update widgets effectively in an asynchronous callback.
 
-#### UI Testing
+##### UI Testing
 
 For a Java-based rich AJAX application, while server side can be tested with JUnit, testing UI is always a headache. Like GWT, testing UI has to rely on external JavaScript libraries such as [JsUnit][8]. But for RAP, since it’s server-centric, UI code can be tested using JUnit with the special [RAPTestCase][9]. Moreover, since the workbench APIs haven’t been changed, all existing SWT testing tools can be reused, e.g., [Selenium][10] or [SWTBot][11].
 
-#### Performance
+##### Performance
 
 In general, RAP pushes more work off the client onto the server, thus communicating more information and more frequently with the server. Some performance testings were available[^12].
 
-#### Deployment
+##### Deployment
 
 RAP is extremely easy to deploy on an OSGi based server [^2], e.g., [Spring dm server][13] which has moved to the [Eclipse Virgo][14] project, because its server side implementation bases on the http OSGi standard. Deploying to a traditional J2EE such as Tomcat requires packaging an extra "[Servlet Bridge][15]" into the war. A drawback of RAP is that it can’t be deployed to a *plain* web server such as Apache. You can do this to a GWT-based application without RPC and the generated JavaScript codes will still work fine on a browser.
 h4. Summary
