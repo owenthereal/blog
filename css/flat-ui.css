@@ -408,8 +408,8 @@ you can use the generic selector below, but it's slower:
 }
 .demo-row {
   margin: 0 auto;
-  padding: 0 0px 5px;
-  width: 890px;
+  padding: 0 20px 50px;
+  width: 900px;
   *zoom: 1;
 }
 .demo-row:before,
@@ -472,11 +472,11 @@ you can use the generic selector below, but it's slower:
 }
 .demo-content-wide {
   clear: both;
-  /*margin: 0 20px;*/
+  margin: 0 20px;
 }
 .demo-title {
   float: left;
-  /*margin: -10px 20px 10px;*/
+  margin: -10px 20px 10px;
   width: 240px;
   font-size: 24.5px;
   line-height: 40px;
@@ -1269,7 +1269,6 @@ a.muted:focus {
 }
 .navbar {
   font-size: 15.988px;
-  margin-bottom: 10px;
   /* 16px */
 
 }
