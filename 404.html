@@ -3,5 +3,10 @@ layout: page
 title: Aah ooh...page cannot be found 
 ---
 
-{% assign posts = site.posts %}
-{% include postlist.html %}
+<div class="row">
+  <div class="span10">
+    <h4>Blog Posts</h4>
+    {% assign posts = site.posts %}
+    {% include postlist.html %}
+  </div>
+</div>
