@@ -15,8 +15,7 @@
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
 
     <!-- Loading Flat UI -->
-    <link href="/css/flat-ui.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/png" href="/images/theme/owen.png" />
 
     <link href="http://feeds.feedburner.com/OwenOu" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
@@ -37,12 +36,9 @@
         <div class="content">
           {{ content }}
         </div>
-        <div class="row">
-          <div class="span10">
-            <hr/>
-            {% include footer.html %}
-            <p/>
-          </div>
+        <hr/>
+        <div class="footer">
+          {% include footer.html %}
         </div>
       </div>
       <div class="span1"></div>
