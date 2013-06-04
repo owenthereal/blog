@@ -28,18 +28,24 @@
   </head>
 
   <body>
-  <div class="container main">
-    {% include navbar.html %}
+  <div class="container">
+    <div class="row">
+      <div class="span1"></div>
+      <div class="span10">
+        {% include navbar.html %}
 
-    <div class="content">
-      {{ content }}
-    </div>
-    <div class="demo-row">
-      <div class="demo-content-wide">
-        <hr/>
-        {% include footer.html %}
-        <p/>
+        <div class="content">
+          {{ content }}
+        </div>
+        <div class="row">
+          <div class="span10">
+            <hr/>
+            {% include footer.html %}
+            <p/>
+          </div>
+        </div>
       </div>
+      <div class="span1"></div>
     </div>
   </div>
 

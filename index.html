@@ -2,23 +2,23 @@
 layout: default
 ---
 
-<div class="demo-row">
-  <div class="demo-content-wide">
+<div class="row">
+  <div class="span10">
     {% include about.html %}
   </div>
 </div>
 
-<div class="demo-row">
-  <h4 class="demo-title">Blog Posts</h4>
-  <div class="demo-content-wide">
+<div class="row">
+  <div class="span10">
+    <h4>Blog Posts</h4>
     {% assign posts = site.posts %}
     {% include postlist.html %}
   </div>
 </div>
 
-<div class="demo-row">
-  <h4 class="demo-title">Projects</h4>
-  <div class="demo-content-wide">
+<div class="row">
+  <div class="span10">
+    <h4>Projects</h4>
     {% include projects.html %}
   </div>
 </div>
