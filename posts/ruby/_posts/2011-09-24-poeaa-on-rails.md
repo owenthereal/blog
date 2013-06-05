@@ -85,7 +85,7 @@ implement the Data Mapper pattern][11]. Before we are able to consume
 the new data_mapper gem, is there a way to mitigate existing overloaded Rails models?
 Besides, switching an ORM for existing code is not effortless.
 
-\[Updated 01/10 2012\], [Piotr Solnica](http://solnic.eu/) from the data_mapper gem made an official announcement saying they are actively working on Data Mapper 2.0. Announcement goes [here](http://solnic.eu/2012/01/10/ruby-datamapper-status.html).  
+\[Updated 01/10 2012\] [Piotr Solnica](http://solnic.eu/) from the data_mapper gem made an official announcement saying they are actively working on Data Mapper 2.0. Announcement goes [here](http://solnic.eu/2012/01/10/ruby-datamapper-status.html).  
 
 As a compromised solution, I would extract database related logic for each *ActiveRecord::Base* model (e.g., validations and scopes)
 out into a module and then mix it in:

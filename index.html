@@ -2,25 +2,17 @@
 layout: default
 ---
 
-<div class="row">
-  <div class="span10">
-    {% include about.html %}
-  </div>
-</div>
+<header id="about">
+  {% include about.html %}
+</header>
 
-<br class="clear" />
+<section id="posts">
+  <h4>Blog Posts</h4>
+  {% assign posts = site.posts %}
+  {% include postlist.html %}
+</section>
 
-<div class="row">
-  <div class="span10">
-    <h4>Blog Posts</h4>
-    {% assign posts = site.posts %}
-    {% include postlist.html %}
-  </div>
-</div>
-
-<div class="row">
-  <div class="span10">
-    <h4>Projects</h4>
-    {% include projects.html %}
-  </div>
-</div>
+<section id="projects">
+  <h4>Projects</h4>
+  {% include projects.html %}
+</section>

@@ -1,21 +1,16 @@
 ---
 layout: default
 ---
-<div class="row">
-  <div class="span10">
-    <h4>
-      <a href="{{ page.url }}">{{ page.title }}</a>
-    </h4>
-    <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
-    <br class="clear" />
-    <br class="clear" />
+<h4>
+  <a href="{{ page.url }}">{{ page.title }}</a>
+</h4>
+<abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</abbr>
+<br class="clear" />
+<br class="clear" />
 
-    {{ content }}
-  </div>
-</div>
+{{ content }}
 
-<div class="row">
-  <div class="span10">
-    {% include disqus.html %}
-  </div>
-</div>
+<br class="clear" />
+<br class="clear" />
+
+{% include disqus.html %}
