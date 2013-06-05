@@ -762,8 +762,7 @@ input.search-query{padding-right:6px;padding-left:6px;margin-bottom:0;-webkit-bo
 .mls,.mhs,.mas{margin-left:5px;}
 .mlm,.mhm,.mam{margin-left:10px;}
 .mll,.mhl,.mal{margin-left:20px;}
-.content{margin-top:60px;}
-.center{text-align:center;}
+@media (min-width:980px){.main{padding-top:60px;} .container,.navbar-static-top .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:900px;}}.center{text-align:center;}
 hr{margin:0 0 5px 0;}
 .footer{margin:0 0 0 5px;}
 .to-right{text-align:right;float:right;}
