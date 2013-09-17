@@ -1,6 +1,6 @@
 ---
 layout: nil
-permalink: /search.json
+permalink: /index.json
 ---
 [
   {% for post in site.posts %}
