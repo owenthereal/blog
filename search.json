@@ -1,0 +1,14 @@
+---
+layout: nil
+permalink: /search.json
+---
+[
+	{% for post in site.posts %}
+    {
+      "id": "{{ site.url }}{{ post.url }}",
+      "title": "{{ post.title | xml_escape }}",
+      "date": "{{ post.date | date_to_xmlschema }}",
+      "content": "{{ post.content | xml_escape }}"
+    },
+  {% endfor %}
+]
