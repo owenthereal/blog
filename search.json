@@ -3,12 +3,15 @@ layout: nil
 permalink: /search.json
 ---
 [
-	{% for post in site.posts %}
+  {% for post in site.posts %}
     {
       "id": "{{ site.url }}{{ post.url }}",
-      "title": "{{ post.title | xml_escape }}",
+      "title": "{{ post.title | uri_escape }}",
       "date": "{{ post.date | date_to_xmlschema }}",
-      "content": "{{ post.content | xml_escape }}"
-    },
+      "content": "{{ post.content | uri_escape }}"
+    }
+    {% if forloop.index < forloop.length %}
+    ,
+    {% endif %}
   {% endfor %}
 ]
