@@ -200,8 +200,8 @@ Hello Owen Ou
 ##### Conclusion
 
 With `gotask`, you're able to write idiomatic Go code for build tasks.
-In the future, I hope `gotask` can be part of the [Go toolchain](http://golang.org/src/cmd/go), so that you can simply type `go task` to get started.
-If you're a Go committer and convinced this is the right approach for a build tool in Go, feel free to ping me. I'm happy to help out :).
+In the future, I would hope `gotask` can be part of the [Go toolchain](http://golang.org/src/cmd/go), so that you can simply type `go task` instead of installing another tool.
+If you're a Go committer reading this blog post and are convinced that `gotask` worths being part the Go toolchain, feel free to ping me. I'm happy to help out with the integration :).
 If you're a user of `gotask` and would like to help out with the development, the project page is [here](https://github.com/jingweno/gotask).  
 
 Happy tasking!
