@@ -8,21 +8,22 @@ One of the things that I miss a lot when programming in Go is being able to writ
 The de facto build tool for Go is [make](http://www.gnu.org/software/make/).
 Make is simple, classic and gets the work done. But it falls when build tasks are becoming complex.
 Another drawback with make is that it's completely isolated from Go: there's no way to import and make use of any Go code.
-Other build tools like [ant](http://ant.apache.org/) or [maven](http://maven.apache.org/what-is-maven.html) suffer for the same reason.
+Build tools like [ant](http://ant.apache.org/) or [maven](http://maven.apache.org/what-is-maven.html) also suffer for the same reason.
 
 ##### External DSL vs. Internal DSL
 
 The problems with these build tools come from the fact that they use an external [Domain Specific Language](http://en.wikipedia.org/wiki/Domain_Specific_Language) (DSL) to describe build tasks.
-Programming languages like Ruby, on the other hand, adopt an internal DSL approach, à la [rake](http://rake.rubyforge.org/). It allows you to write build tasks in the host language.
+Programming languages like Ruby, on the other hand, adopt an internal DSL approach, à la [rake](http://rake.rubyforge.org/).
+It allows you to express build tasks in the host language.
 For reference, [Martin Fowler](http://martinfowler.com/) has a very good [article](http://martinfowler.com/bliki/DomainSpecificLanguage.html) on internal DSL and external DSL.
 
 ##### Idiomatic Build Tool in Go
 
 Go, as a statically-typed language, is not designed to write good DSLs.
-[Andrea Fazzi](https://twitter.com/remogatto) has written a [blog post](http://freecella.blogspot.ca/2010/03/is-go-suitable-for-building-dsl.html) on whether Go is suitable for building DSL by comparing to Ruby.
+[Andrea Fazzi](https://twitter.com/remogatto) has written a [blog post](http://freecella.blogspot.ca/2010/03/is-go-suitable-for-building-dsl.html) on whether Go is suitable for building DSL by comparing it to Ruby.
 The conclusion, without surprise, was Go is not good at building complex and general purpose DSLs.
 However, we don't necessary need to bend the Go syntax in order to make an idiomatic build tool.
-An everyday example is [`go test`](http://golang.org/pkg/testing/). Consider the following test function in a file called `time_test.go`:
+An everyday Go example is [`go test`](http://golang.org/pkg/testing/). Consider the following test function in a file called `time_test.go`:
 
 {% highlight go %}
 func TestTimeConsuming(t *testing.T) {
@@ -75,7 +76,7 @@ func TaskSayHello(t *tasking.T) {
 }
 {% endhighlight %}
 
-Running `gotask -h` to display all the tasks:
+Running `gotask -h` will display all the tasks:
 
 {% highlight text %}
 $ gotask -h
@@ -100,7 +101,7 @@ GLOBAL OPTIONS:
    --help, -h           show help
 {% endhighlight %}
 
-Running `gotask say-hello -h` to display usage for a task:
+Running `gotask say-hello -h` will display usage for a task:
 
 {% highlight text %}
 $ gotask say-hello -h
@@ -176,7 +177,7 @@ Section OPTIONS contains the definition of the command line flags it takes.
 
 ###### Task Scaffolding
 
-`gotask` is able to generate a task scaffolding to quickly get you started for writing build tasks with the `--generate` or `-g` flag.
+`gotask` is able to generate a task scaffolding to quickly get you started for writing build tasks by using the `--generate` or `-g` flag.
 The generated task is named as `pkg_task.go` where `pkg` is the name of the package that `gotask` is run:
 
 {% highlight text %}
@@ -188,8 +189,8 @@ create example_task.go
 ###### Compiling Tasks
 
 `gotask` is able to compile defined tasks into an executable using `go build`.
-This is useful when you need to distribute your build executables. For
-the above `say-hello` task, you can compile it into a binary like:
+This is useful when you need to distribute your build executables.
+For the above `say-hello` task, you can compile it into a binary using `--compile` or `-c`:
 
 {% highlight text %}
 $ gotask -c
@@ -200,8 +201,8 @@ Hello Owen Ou
 ##### Conclusion
 
 With `gotask`, you're able to write idiomatic Go code for build tasks.
-In the future, I would hope `gotask` can be part of the [Go toolchain](http://golang.org/src/cmd/go), so that you can simply type `go task` instead of installing another tool.
-If you're a Go committer reading this blog post and are convinced that `gotask` worths being part the Go toolchain, feel free to ping me. I'm happy to help out with the integration :).
+In the future, I would hope `gotask` can be part of the [Go toolchain](http://golang.org/src/cmd/go), so that you can simply type `go task` without installing another tool.
+If you're a Go committer reading this blog post and are convinced that `gotask` worths being port to the Go toolchain, feel free to ping me. I'm happy to help out with the integration :).
 If you're a user of `gotask` and would like to help out with the development, the project page is [here](https://github.com/jingweno/gotask).  
 
 Happy tasking!
