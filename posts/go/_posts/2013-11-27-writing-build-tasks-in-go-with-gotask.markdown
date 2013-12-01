@@ -44,7 +44,7 @@ We could do something similar for an idiomatic build tool in Go: introducing [go
 
 ##### Gotask
 
-Consider the following task function in a file called `say_hello_task.go`:
+Consider the following task function in a file called `sayhello_task.go`:
 
 {% highlight go %}
 // +build gotask
