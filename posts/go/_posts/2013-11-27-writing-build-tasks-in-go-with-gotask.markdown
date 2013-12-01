@@ -7,8 +7,8 @@ tags: go gotask
 One of the things that I miss a lot when programming in Go is being able to write build tasks in Go itself.
 The de facto build tool for Go is [make](http://www.gnu.org/software/make/).
 Make is simple, classic and gets the work done. But it falls when build tasks are becoming complex.
-Another drawback with make is that it's completely isolated from Go: there's no way to import and make use of any Go code.
-Build tools like [ant](http://ant.apache.org/) or [maven](http://maven.apache.org/what-is-maven.html) also suffer for the same reason.
+Another drawback with make is that it's completely isolated from the host language: there's no way to import and make use of any Go code.
+Build tools like [ant](http://ant.apache.org/) or [maven](http://maven.apache.org/what-is-maven.html) also suffer for similar reasons.
 
 ##### External DSL vs. Internal DSL
 
