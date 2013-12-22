@@ -16,30 +16,22 @@ increase your day-to-day productivity.
 On your source code browsing page, press **t** to enter the fuzzy file
 finder mode:
 
-<div class="center" markdown="1">	
-	![GitHub Shortcuts File Finder](/images/posts/github_shortcut_file_finder.png)
-</div>
+![GitHub Shortcuts File Finder](/images/posts/github_shortcut_file_finder.png)
 
 On your repository's home page, press **w** to quickly filter
 branches:
 
-<div class="center" markdown="1">	
-	![GitHub Shortcuts Filter Branch](/images/posts/github_shortcut_filter_branch.png)
-</div>
+![GitHub Shortcuts Filter Branch](/images/posts/github_shortcut_filter_branch.png)
 
 On any GitHub page, press **?** to show the list of shortcuts applied to a particular page:
 
-<div class="center" markdown="1">	
-	![GitHub Shortcuts](/images/posts/github_shortcuts.png)
-</div>
+![GitHub Shortcuts](/images/posts/github_shortcuts.png)
 
 ###### ignoring whitespace: ?w=1
 
 Add **?w=1** any diff URL to trim whitespace:
 
-<div class="center" markdown="1">	
-	![GitHub Trim Whitespace](/images/posts/github_trim_whitespace.png)
-</div>
+![GitHub Trim Whitespace](/images/posts/github_trim_whitespace.png)
 
 ###### commits by range: master@{time}..master
 
@@ -51,9 +43,7 @@ of commits since yesterday by using format like **master@{1.day.ago}...master**.
 [https://github.com/rails/rails/compare/master@{1.day.ago}...master](https://github.com/rails/rails/compare/master@{1.day.ago}...master),
 for example, gets all commits since yesterday for the Rails project:
 
-<div class="center" markdown="1">	
-	![GitHub Advanced Compare View](/images/posts/github_advanced_compare_view.png)
-</div>
+![GitHub Advanced Compare View](/images/posts/github_advanced_compare_view.png)
 
 ###### commits by author: ?author=github_handle
 
@@ -62,9 +52,7 @@ You can filter commits by author in the commit view by appending param
 [https://github.com/dynjs/dynjs/commits/master?author=jingweno](https://github.com/dynjs/dynjs/commits/master?author=jingweno)
 shows a list of my commits to the [Dynjs](http://dynjs.org/) project:
 
-<div class="center" markdown="1">	
-	![GitHub Filter Commits By Author](/images/posts/github_filter_by_author.png)
-</div>
+![GitHub Filter Commits By Author](/images/posts/github_filter_by_author.png)
 
 ###### .diff & .patch
 
@@ -74,18 +62,14 @@ link [https://github.com/rails/rails/compare/master@{1.day.ago}...master.patch](
 gets the patch for all the commits since yesterday in the Rails
 project:
 
-<div class="center" markdown="1">	
-	![GitHub Diff Patch](/images/posts/github_diff_patch.png)
-</div>
+![GitHub Diff Patch](/images/posts/github_diff_patch.png)
 
 ###### email reply
 
 You can comment directly by replying to the email received from GitHub
 instead of commenting on the website. GitHub will route your reply correctly:
 
-<div class="center" markdown="1">	
-	![GitHub Reply Email](/images/posts/github_email_reply.png)
-</div>
+![GitHub Reply Email](/images/posts/github_email_reply.png)
 
 ###### line linking
 
@@ -93,18 +77,14 @@ In any file view, when you click one line or multiple lines by pressing
 **SHIFT**, the URL will change to reflect your selections. This is very
 handy for sharing the link to a chunk of code with your teammates:
 
-<div class="center" markdown="1">	
-	![GitHub Line Linking](/images/posts/github_line_linking.png)
-</div>
+![GitHub Line Linking](/images/posts/github_line_linking.png)
 
 ###### subscribing peoples
 
 Mentioning users in pull requests, issues or any comment will subscribe them to all
 subsequent notifications:
 
-<div class="center" markdown="1">	
-	![GitHub Subscribe Peoples](/images/posts/github_subscribe_peoples.png)
-</div>
+![GitHub Subscribe Peoples](/images/posts/github_subscribe_peoples.png)
 
 ###### autolink
 
@@ -114,9 +94,7 @@ or issue number from another repository with the format of
 **user/repo@sha1** or **user/repo#1** respectively. The following is an
 example of autolinking a sha in a comment:
 
-<div class="center" markdown="1">	
-	![GitHub Auto Link](/images/posts/github_auto_link.png)
-</div>
+![GitHub Auto Link](/images/posts/github_auto_link.png)
 
 ###### hub
 
