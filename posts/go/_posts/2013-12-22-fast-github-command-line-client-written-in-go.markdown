@@ -80,16 +80,16 @@ I'll continuously put efforts on making `gh` fully compatible with `hub`.
 ###### More Features
 
 `gh` has features like [autoupdate](https://github.com/jingweno/gh#autoupdate), [releases](https://github.com/jingweno/gh#gh-release-beta) and [issues](https://github.com/jingweno/gh#gh-issues-beta) that are not available in `hub`.
-There're plans to add more in the upcoming releases, for example, support of [creating releases](https://github.com/jingweno/gh/pull/129).
+There're plans to add more features in the upcoming releases, for example, the support of [creating releases](https://github.com/jingweno/gh/pull/129).
 
 ##### Thanks
 
 It's been nine months of hard work on `gh`.
 I would like to thank all the [contributors](https://github.com/jingweno/gh/graphs/contributors), especially [@calavera](https://github.com/calavera), [@dgryski](https://github.com/dgryski) and [@tgkokk](https://github.com/tgkokk).
 I would also like to thank all the early adopters of `gh`.
-If you find anything doesn't work or have any good suggestions to `gh`,
+If you find anything doesn't work or have any suggestions to `gh`,
 feel free to fire us a [GitHub issue](https://github.com/jingweno/gh/issues?state=open).
 If you're interested in helping out, shoot me an email.
-I'm very excited to see what will happen to `gh` in the new year!
+I'm very excited to see more great stuff coming to `gh` in the new year!
 
 May `gh` be with you!
