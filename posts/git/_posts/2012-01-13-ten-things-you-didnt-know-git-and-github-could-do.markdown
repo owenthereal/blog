@@ -17,8 +17,7 @@ On your source code browsing page, press **t** to enter the fuzzy file
 finder mode:
 
 <div class="center" markdown="1">	
-	![GitHub Shortcuts File
-Finder](/images/posts/github_shortcut_file_finder.png)
+	![GitHub Shortcuts File Finder](/images/posts/github_shortcut_file_finder.png)
 </div>
 
 On your repository's home page, press **w** to quickly filter
@@ -133,13 +132,17 @@ Detail of all other commands is available on its project
 
 To view changes in history for README.md, for example, type
 
-    > git log -p README.md
+{% highlight text %}
+> git log -p README.md
+{% endhighlight %}
 
 ###### git log -S'PATTERN'
 
 To search for changes that matches the pattern "stupid" in history, for example, type
 
-    > git log -S'stupid'
+{% highlight text %}
+> git log -S'stupid'
+{% endhighlight %}
 
 Combining with "-p" shows the changes with the search pattern.
 
@@ -147,7 +150,9 @@ Combining with "-p" shows the changes with the search pattern.
 
 To interactively stage and unstage changes, type
 
-    > git add -p
+{% highlight text %}
+> git add -p
+{% endhighlight %}
 
 Updated 2013-01-18: From [@tjwallace](https://twitter.com/tjwallace), git checkout and git reset also support the --patch (-p)
 option for the interactive mode.
@@ -159,7 +164,9 @@ Updated 2013-03-17: From
 
 This command removes remote file copy only. For example, typing
 
-    > git rm --cached database.yml
+{% highlight text %}
+> git rm --cached database.yml
+{% endhighlight %}
 
 removes database.yml that is already checked in but leaving the local copy untouched.
 This is intensively handy for removing ignored files that are already pushed without removing the local copies.
@@ -169,7 +176,9 @@ This is intensively handy for removing ignored files that are already pushed wit
 This command returns all the commits in a branch that are not in HEAD. For example,
 assuming you are on a feature branch, typing
 
-    > git log ..master
+{% highlight text %}
+> git log ..master
+{% endhighlight %}
 
 gets all commits that are in master but not merged into the current
 feature branch yet.
@@ -180,7 +189,9 @@ This command returns a list of branches that are merged or not yet merged
 to current branch. It's a useful check before any merging happens. For
 example, on a featrue branch, typing
 
-    > git branch --no-merged
+{% highlight text %}
+> git branch --no-merged
+{% endhighlight %}
 
 returns a list of branchs that are not yet merged to the feature branch.
 
@@ -188,7 +199,9 @@ returns a list of branchs that are not yet merged to the feature branch.
 
 This returns which branch contains a specified sha key, for example, typing
 
-    > git branch --contains 2f8e2b
+{% highlight text %}
+> git branch --contains 2f8e2b
+{% endhighlight %}
 
 shows all branches containing the commit 2f832b. It is very helpful for
 verifying whether a git cherry-pick is done correctly for instance.
