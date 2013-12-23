@@ -19,6 +19,7 @@
     &[class*="fui-"] {
       font-weight: normal;
     }
+    small { line-height: 1; }
   }
 
   .nav {
@@ -47,6 +48,12 @@
           color: @firm;
           .box-shadow(none);
         }
+      }
+      &:first-child {
+        border-radius: 6px 6px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 6px 6px;
       }
 
       // Second level nav
@@ -111,7 +118,6 @@
       position: absolute;
       top: 0;
       width: 234px;
-      z-index: -100;
       // Trigger transform to hide nav completely without 'ghost' bug (when switching from :hover to initial)
       -webkit-transform: scale(1, 0.99);
       -webkit-transform-origin: 0 0;
@@ -222,11 +228,14 @@
     border-bottom: 2px solid mix(@base, black, 85%);
     border-right: 2px solid mix(@base, black, 85%);
     color: @inverse;
-    padding: 10px 28px 11px 0;
+    padding: 10px 28px 11px 32px;
   }
   .btn-navbar {
     color: @inverse;
     margin: 7px 10px;
+  }
+  .btn-icon {
+    margin: 8px 5px 8px 15px;
   }
   .nav {
     > li {
@@ -249,14 +258,14 @@
             border-bottom-color: mix(@firm, black, 85%);
             border-left: none;
             color: @inverse;
-            padding-left: @navbar-link-space + 2;
+            padding-left: @navbar-link-space;
             .box-shadow(none);
           }
         }
         & + li {
           > a {
             border-left: none;
-            padding-left: @navbar-link-space + 2;
+            padding-left: @navbar-link-space;
           }
         }
       }
@@ -266,7 +275,7 @@
         font-size: @base-font-size * 1.143; /* 16px */
         border-bottom: 2px solid mix(@base, black, 85%);
         border-left: 2px solid mix(@base, black, 85%);
-        color: @inverse;        
+        color: @inverse;
         padding: 16px @navbar-link-space 15px;
       }
     }
@@ -417,7 +426,7 @@
     .navbar-search {
       border-left: 2px solid mix(@base, black, 85%);
       border-bottom: 2px solid mix(@base, black, 85%);
-      padding: 8px @navbar-link-space 6px;
+      padding: 8px 0 6px @navbar-link-space + 3;
       min-width: 220px;
 
       &.form-search {

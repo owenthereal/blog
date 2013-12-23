@@ -129,7 +129,7 @@
     $radio.find(':radio').radio('toggle');
   });
   
-  $(window).on('load', function () {
+  $(function () {
     $('[data-toggle="radio"]').each(function () {
       var $radio = $(this);
       $radio.radio();
