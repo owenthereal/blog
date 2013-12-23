@@ -5,7 +5,7 @@
   width: 264px;
   background-color: @inverse;
   display: none;
-  margin: 10px 0 0 -35px;
+  margin: 10px 0 0 0;
   border: 7px solid @firm;
   .box-shadow(-14px 14px 0 fade(@base, 6%));
   .border-radius(@datepicker-border-radius);
@@ -28,7 +28,7 @@
     color: @inverse;
     text-align: center;
     cursor: pointer;
-    
+
     &:hover {
       background-color: mix(@firm, white, 80%);
     }
@@ -116,7 +116,7 @@
     }
     a {
       .border-radius(@datepicker-border-radius);
-      
+
       &:hover {
         background-color: mix(@lightgray, white, 60%);
         color: @base;
@@ -199,8 +199,8 @@
   }
   .ui-datepicker-buttonpane {
     clear: left;
-  }  
-} 
+  }
+}
 .ui-datepicker-multi-2 .ui-datepicker-group {
   width: 50%;
 }

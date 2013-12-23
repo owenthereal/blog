@@ -1,3 +1,12 @@
+// Demo Flat UI
+
+
+// Loading config with variables (changing them leads to changing a color scheme)
+@import "config";
+
+// Utility mixins for greater good
+@import "mixins";
+
 // For demo purposes only
 .demo-headline {
   color: @firm;
@@ -263,6 +272,42 @@
   }
 }
 
+// Static Modal
+.static-modal-backdrop {
+  background-color: mix(@base, black, 70%);
+  padding: 62px 14px;
+  margin-bottom: 50px;
+}
+
+// Sidebar for Components navigation
+.demo-sidebar {
+  height: 100%;
+  left: 0;
+  margin: 0;
+  list-style-type: none;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 150px;
+  z-index: 10000;
+  background-color: mix(@base, white, 6%);
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  li {
+    &:first-child {
+      a {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    padding: 7px 20px;
+  }
+}
+
 //
 // Responsive: Landscape phone to desktop/tablet
 // --------------------------------------------------
@@ -314,5 +359,9 @@
       margin: 0 0 10px;
     }
   }
+  
+  .static-modal-backdrop {
+    margin-left: -@rwd-container-space;
+    margin-right: -@rwd-container-space;
+  }
 }
-

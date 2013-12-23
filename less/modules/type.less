@@ -74,7 +74,7 @@ h6 {
 
 // Paragraph
 p {
-  font-size: @base-font-size; /* 18px */
+  font-size: @base-font-size * 1.286; /* 18px */
   line-height: @base-line-height * 1.399; /* 31px */
 }
 
@@ -94,23 +94,7 @@ blockquote {
   position: relative;
   border-left: none;
   padding-left: 19px;
-  
-  p {
-    font-size: @base-font-size;
-    line-height: @base-line-height * 1.259;
-    font-weight: normal;
-    margin-bottom: .4em;
-  }
-  small {
-    font-size: @base-font-size;
-    line-height: @base-line-height * 1.399;
-    font-style: italic;
-    color: @base;
-    
-    &:before {
-      content: "";
-    }
-  }
+
   &:before {
     position: absolute;
     left: 0;
@@ -121,6 +105,24 @@ blockquote {
     background-color: #ebedee;
     content: "";
     .border-radius(2px);
+  }
+
+  p {
+    font-size: @base-font-size * 1.429;
+    line-height: @base-line-height * 1.259;
+    font-weight: normal;
+    margin-bottom: .4em;
+  }
+
+  small {
+    font-size: @base-font-size * 1.286;
+    line-height: @base-line-height * 1.399;
+    font-style: italic;
+    color: @base;
+
+    &:before {
+      content: "";
+    }
   }
 }
 
@@ -133,6 +135,22 @@ blockquote {
   line-height: @base-line-height;
   font-style: italic;
   margin: 24px 0;
+}
+
+.prettyprint {
+  background-color: @pre-background;
+  border-color: @pre-border-color;
+  border-radius: @pre-border-radius;
+  border-width: 2px;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+  &.linenums {
+    overflow: visible;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 }
 
 // Text colors

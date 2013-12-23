@@ -21,6 +21,12 @@
           box-sizing: @boxmodel;
 }
 
+.background-clip(@clip: border-box) {
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
+}
+
 .box-shadow(@properties) {
   -webkit-box-shadow: @properties;
      -moz-box-shadow: @properties;
@@ -60,7 +66,7 @@
   }
 }
 
-.mask(...) {
+.mask(@arguments) {
   -webkit-mask: @arguments;
           mask: @arguments;
 }

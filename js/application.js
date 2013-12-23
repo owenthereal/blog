@@ -61,6 +61,7 @@ String.prototype.repeat = function(num) {
     var $slider3 = $("#slider3")
       , slider3ValueMultiplier = 100
       , slider3Options;
+
     if ($slider3.length > 0) {
       $slider3.slider({
         min: 1,
@@ -69,13 +70,21 @@ String.prototype.repeat = function(num) {
         orientation: "horizontal",
         range: true,
         slide: function(event, ui) {
-          $slider3.find(".ui-slider-value:first").text("$" + ui.values[0] * slider3ValueMultiplier).end()
-        .find(".ui-slider-value:last").text("$" + ui.values[1] * slider3ValueMultiplier);
+          $slider3.find(".ui-slider-value:first")
+            .text("$" + ui.values[0] * slider3ValueMultiplier)
+            .end()
+            .find(".ui-slider-value:last")
+            .text("$" + ui.values[1] * slider3ValueMultiplier);
         }
       });
+
       slider3Options = $slider3.slider("option");
-      $slider3.addSliderSegments(slider3Options.max).find(".ui-slider-value:first").text("$" + slider3Options.values[0] * slider3ValueMultiplier).end()
-        .find(".ui-slider-value:last").text("$" + slider3Options.values[1] * slider3ValueMultiplier);
+      $slider3.addSliderSegments(slider3Options.max)
+        .find(".ui-slider-value:first")
+        .text("$" + slider3Options.values[0] * slider3ValueMultiplier)
+        .end()
+        .find(".ui-slider-value:last")
+        .text("$" + slider3Options.values[1] * slider3ValueMultiplier);
     }
 
     // Add style class name to a tooltips
@@ -104,6 +113,7 @@ String.prototype.repeat = function(num) {
 
     // jQuery UI Spinner
     $.widget( "ui.customspinner", $.ui.spinner, {
+      widgetEventPrefix: $.ui.spinner.prototype.widgetEventPrefix,
       _buttonHtml: function() { // Remove arrows on the buttons
         return "" +
         "<a class='ui-spinner-button ui-spinner-up ui-corner-tr'>" +
@@ -151,21 +161,28 @@ String.prototype.repeat = function(num) {
     });
 
     // jQuery UI Datepicker
-    $('#datepicker-01').datepicker({
+    var datepickerSelector = '#datepicker-01';
+    $(datepickerSelector).datepicker({
       showOtherMonths: true,
       selectOtherMonths: true,
       dateFormat: "d MM, yy",
       yearRange: '-1:+1'
     }).prev('.btn').on('click', function (e) {
       e && e.preventDefault();
-      $('#datepicker-01').focus();
+      $(datepickerSelector).focus();
     });
     $.extend($.datepicker, {_checkOffset:function(inst,offset,isFixed){return offset}});
+
+    // Now let's align datepicker with the prepend button
+    $(datepickerSelector).datepicker('widget').css({'margin-left': -$(datepickerSelector).prev('.btn').outerWidth() - 2});
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
 
     // Stackable tables
     $(".table-striped").stacktable({id: "rwd-table"});
+
+    // make code pretty
+    window.prettyPrint && prettyPrint()
   });
 })(jQuery);

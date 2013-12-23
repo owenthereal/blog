@@ -15,16 +15,17 @@ module.exports = function(grunt) {
           "js/flatui-radio.js",
           "js/jquery.tagsinput.js",
           "js/jquery.placeholder.js",
-          "js/jquery.stacktable.js"
+          "js/jquery.stacktable.js",
+          "js/application.js"
         ],
-        dest: 'js/build/production.js',
+        dest: 'js/build/application.js',
       }
     },
 
     uglify: {
       build: {
-        src: 'js/build/production.js',
-        dest: 'js/build/production.min.js'
+        src: 'js/build/application.js',
+        dest: 'js/build/application.min.js'
       }
     },
 
@@ -45,7 +46,7 @@ module.exports = function(grunt) {
           cleancss: true
         },
         files: {
-          "css/styles.css": "less/styles.less"
+          "css/application.css": "less/styles.less"
         }
       }
     },
