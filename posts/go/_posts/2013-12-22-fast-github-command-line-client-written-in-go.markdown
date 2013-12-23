@@ -36,11 +36,11 @@ I ended up building `gh`, by referring to the implementation of the Ruby `hub`, 
 It's pretty exciting that VM technology is getting more and more mature and code runs faster and faster on a VM.
 However, for a command line tool whose running cycle is usually short, there's no need for a VM:
 the command line program exits before the [JIT](http://en.wikipedia.org/wiki/Just-in-time_compilation) can kick in.
-Besides, a command line tool built with a VM-based language means an extra piece of software needs to be installed in order to run it.
-That says, a command line program doesn't gain much advantage from a VM but bear the cost of it.
+Besides, a command line tool built with a VM-based language means an extra piece of software (the VM itself) needs to be installed in order to run it.
+A command line program doesn't gain much advantage from a VM but bear the cost of it.
 Therefore, implementing a command line tool in a native language is not only of great benefit to performance, but also to the ease of distribution.
 The Go programming language, with its runtime, systems access, and its capability of compiling to a single, statically linked binary with no
-dependencies, is a very appealing platform to build a command line tool. Let's take a look what `gh` offers with the power of Go :-).
+dependencies, is a very appealing platform for building command line tools. Let's take a look what `gh` offers with the power of Go :-).
 
 ###### Faster
 
@@ -85,9 +85,10 @@ There're plans to add more features in the upcoming releases, for example, the s
 ##### Thanks
 
 It's been nine months of hard work on `gh`.
-I would like to thank all the [contributors](https://github.com/jingweno/gh/graphs/contributors), especially [@calavera](https://github.com/calavera), [@dgryski](https://github.com/dgryski) and [@tgkokk](https://github.com/tgkokk).
+I would like to thank all the [contributors](https://github.com/jingweno/gh/graphs/contributors),
+especially [@calavera](https://github.com/calavera), [@dgryski](https://github.com/dgryski) and [@tgkokk](https://github.com/tgkokk).
 I would also like to thank all the early adopters of `gh`.
-If you find anything doesn't work or have any suggestions to `gh`,
+If you have any suggestions to `gh`,
 feel free to fire us a [GitHub issue](https://github.com/jingweno/gh/issues?state=open).
 If you're interested in helping out, shoot me an email.
 I'm very excited to see more great stuff coming to `gh` in the new year!
