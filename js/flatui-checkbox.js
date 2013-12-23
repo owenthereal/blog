@@ -100,7 +100,7 @@
     $checkbox.find(':checkbox').checkbox('toggle');
   });
   
-  $(window).on('load', function () {
+  $(function () {
     $('[data-toggle="checkbox"]').each(function () {
       var $checkbox = $(this);
       $checkbox.checkbox();

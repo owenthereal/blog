@@ -10,30 +10,31 @@
   padding: @dialog-padding 0;
   position: relative;
   text-align: center;
-  
+
   .btn {
     vertical-align: baseline;
   }
   form {
     margin-bottom: 0;
-    
+
     input, .btn {
       margin-bottom: 0;
       margin-left: 20px;
       vertical-align: top;
-      
+
       &:first-child {
         margin-left: 0;
       }
     }
   }
-  
+
   // Dialog styles
   // -----------
   &.dialog-success {
     background-color: #f0faf8;
     border-top-color: #e2edeb;
   }
+
   &.dialog-danger  { .swap-dialog-color(@danger) }
   &.dialog-warning { .swap-dialog-color(@warning) }
   &.dialog-info    { .swap-dialog-color(@info) }
@@ -41,7 +42,7 @@
     background-color: @base;
     border-top-color: mix(@base, black, 80%);
     color: @inverse;
-  }  
+  }
 }
 
 //

@@ -612,6 +612,17 @@ input.search-query {
   }
 }
 
+
+// Style buttons inside control-group as well
+// -------------------------------------------------
+.control-group {
+  &.error .btn   { border-color: @danger }
+  &.success .btn { border-color: @success }
+  &.warning .btn { border-color: @warning }
+  &.info .btn    { border-color: @info }
+}
+
+
 //
 // Responsive: Landscape phone to desktop/tablet
 // --------------------------------------------------
