@@ -35,7 +35,7 @@ I ended up building `gh`, by referring to the implementation of the Ruby `hub`, 
 
 It's pretty exciting that VM technology is getting more and more mature and code runs faster and faster on a VM.
 However, for a command line tool whose running cycle is usually short, there's no need for a VM:
-the command line program exits before the [JIT](http://en.wikipedia.org/wiki/Just-in-time_compilation) can kick in.
+the command line program exits before the [JIT compiler](http://en.wikipedia.org/wiki/Just-in-time_compilation) can kick in.
 Besides, a command line tool built with a VM-based language means an extra piece of software (the VM itself) needs to be installed in order to run it.
 A command line program doesn't gain much advantage from a VM but bear the cost of it.
 Therefore, implementing a command line tool in a native language is not only of great benefit to performance, but also to the ease of distribution.
