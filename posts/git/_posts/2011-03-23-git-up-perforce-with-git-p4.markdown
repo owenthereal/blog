@@ -10,7 +10,7 @@ However, the case that I run into frequently is where there is a corporate stand
 
 Git is particularly good at this aspect which provides tons of [bridges][1] to other VCS (That's another good reason for preferring Git over Mercurial :-)). Lately I have been using the [git-p4][2] bridge to synchronize codes between a centralized Perforce repository and a local Git repository. This post is a tutorial on how to set this up.
 
-<div class="center" markdown="1">	
+<div class="center" markdown="1">
 	![git-p4 bridge](/images/posts/git-p4.jpeg)
 </div>
 
