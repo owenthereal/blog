@@ -10,9 +10,7 @@ However, the case that I run into frequently is where there is a corporate stand
 
 Git is particularly good at this aspect which provides tons of [bridges][1] to other VCS (That's another good reason for preferring Git over Mercurial :-)). Lately I have been using the [git-p4][2] bridge to synchronize codes between a centralized Perforce repository and a local Git repository. This post is a tutorial on how to set this up.
 
-<div class="center" markdown="1">
-  ![git-p4 bridge](/images/posts/git-p4.jpeg)
-</div>
+![git-p4 bridge](/images/posts/git-p4.jpeg)
 
 ##### Setting up the Perforce command line client
 
@@ -87,9 +85,7 @@ Normally we check in a .gitignore file to ignore files that we don't want to che
 
 There is no magic happening with git-p4. What it does is simply invoking the p4 command line tool to download sources to local, and then clone a Git repository out of it. You can simply verify this by typing "git branch -a":
 
-<div class="center" markdown="1">
-	![under the hook of git-p4](/images/posts/Terminal.jpeg)
-</div>
+![under the hook of git-p4](/images/posts/Terminal.jpeg)
 
 You may be amazed once again by how flexible the design of Git is which makes it possible to bridge to multiple VCS!
 

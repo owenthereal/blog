@@ -38,9 +38,7 @@ to go.
 and a database. It typically creates [Domain Model][7] objects by populating
 their attributes from the database.
 
-<div class="center" markdown="1">
-  ![Data Mapper](/images/posts/data_mapper.png)
-</div>
+![Data Mapper](/images/posts/data_mapper.png)
 
 Assuming we are building an e-commerce platform, we get a store object by
 going through the store mapper which connects to the database:
@@ -301,12 +299,10 @@ scale. Thankfully, Fowler has something good for us - the [Two Step View][16]
 pattern:
 
 > ... You may also want to make global changes to the appearance of the site easily, but common approaches using Template View or Transform View make this difficult because presentation decisions are often duplicated across multiple pages or transform modules. A global change can force you to change several files.
-> 
+>
 > Two Step View deals with this problem by splitting the transformation into two stages. The first transforms the model data into a logical presentation without any special formatting; the second converts that logical presentation with the actual formatting needed. ...
 
-<div class="center" markdown="1">
-  ![Two Step View](/images/posts/two_step_view.png)
-</div>
+![Two Step View](/images/posts/two_step_view.png)
 
 From the above diagram, the multi-storefront example can be reimplemented with the Two Step
 View pattern. The process is in two steps. The first step is to
