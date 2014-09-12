@@ -1,8 +1,8 @@
 name: Owen Ou's Blog
 subtitle: = Blog.new(:kind => "geek")
 
-auto: true
-pygments: true
+markdown:    redcarpet
+highlighter: pygments
 permalink: /:year/:month/:day/:title.html
 
 # Absolute base URL for this site without trailing slash
