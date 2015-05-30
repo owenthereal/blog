@@ -2,17 +2,34 @@
 layout: default
 ---
 
-<header id="about">
-  {% include about.html %}
-</header>
+{% include author.html %}
 
-<section id="posts">
-  <h4 class="mbl">Posts</h4>
-  {% assign posts = site.posts %}
-  {% include postlist.html %}
-</section>
+<section class="posts postindex wrapper">
 
-<section id="projects">
-  <h4 class="mbl">Projects</h4>
-  {% include projects.html %}
+	{% for post in paginator.posts %}
+		<article class="post {% if post.featured == true %} featured {% endif %}">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					{% for category in post.categories %}
+					{{ category }} 
+					{% endfor %}
+				</h2>
+				<h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>.
+				</span>
+				<div class="excerpt">
+					{% if post.content contains '<!--more-->' %}
+						{{ post.content | split:'<!--more-->' | first }}
+					{% else %}
+						{{ post.content }}   
+					{% endif %}
+				</div>
+			</header>
+		</article>
+	{% endfor %}
+
+	{% include pagination.html %}
+
 </section>

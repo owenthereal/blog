@@ -1,19 +1,36 @@
-name: Owen Ou's Blog
-subtitle: = Blog.new(:kind => "geek")
+# Site Settings
+title: "Owen Ou's Blog"
+author: "Jingwen Owen Ou"
+email: "jingweno@gmail.com"
+description: "I'm a hacker."
+baseurl: ""
+url: "http://owenou.com"
+logourl: "/assets/img/bloglogo.jpg"
+fa-logo: "fa-flag-o"
+paginate: 5
 
-markdown:    redcarpet
-highlighter: pygments
+# Social Settings
+twitter_url: "https://twitter.com/JingwenOwenOu"
+github_url:	"http://github.com/jingweno"
+googleplus_url: "https://plus.google.com/116384151198560836084"
+linkedin_url: "https://www.linkedin.com/in/jingweno"
+
+# Theme Settings
+theme_disqus_shortname: "owenoublog"
+theme_google_comments: false
+theme_analytics_id: "UA-3828325-5"
+theme_analytics_domain: "owenou.com"
+theme_reading_time: true
+theme_autoload_comments: true
+theme_always_show_nav: false
+
+# SASS Settings
+# DO NOT MODIFY
+sass:
+ sass_dir: "assets/css/"
+ style: :compressed
+
+# Build Settings
+markdown: kramdown
 permalink: /:year/:month/:day/:title.html
 
-# Absolute base URL for this site without trailing slash
-url: http://owenou.com
-
-# Absolute URL of feed.
-# You may want to change this URL to point to a feedburner feed.
-feed: http://owenou.com/atom.xml
-
-# Author element in atom feed. Optional.
-# If email is supplied, name is required.
-author:
-  name: Jingwen Owen Ou
-  email: jingweno@gmail.com
