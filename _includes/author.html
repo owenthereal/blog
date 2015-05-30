@@ -1,0 +1,13 @@
+<div class="profile">
+  {% if site.logourl != "" %}<img src="{{ site.logourl }}" class="profileimage" alt="user">{% endif %}
+  <h4>{{ site.author }}</h4>
+  <p>{{ site.description }}</p>
+  <div class="postprofile">
+    <ul class="social">
+      <li><a href="{{ site.twitter_url }}" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>		
+      <li><a href="{{ site.github_url }}" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+      <li><a href="{{ site.googleplus_url }}" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+      <li><a href="{{ site.linkedin_url }}" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
+  </div>
+</div>

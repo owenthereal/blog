@@ -1,6 +1,11 @@
-<small>
-  Copyright &copy; 2009-2014 Jingwen Owen Ou
-</small>
-<small class="to-right">
-  Powered by <a href="http://github.com/mojombo/jekyll">jekyll</a>
-</small>
+<footer class="wrapper">
+    <div class="smallnav">
+    	{% for page in site.pages %}
+        	{% if page.title %}<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a> &bull;{% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        Copyright &copy; <a href="{{ site.url }}/">{{ site.title }}</a>. 2015 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>

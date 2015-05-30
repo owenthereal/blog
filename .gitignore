@@ -1,7 +1,4 @@
-.bundle
-Gemfile.lock
 _site/
 _drafts/
-server/
 .DS_Store
 node_modules
