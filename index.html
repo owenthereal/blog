@@ -23,7 +23,7 @@ layout: default
 					{% if post.content contains '<!--more-->' %}
 						{{ post.content | split:'<!--more-->' | first }}
 					{% else %}
-						{{ post.content }}   
+						{{ post.content }}
 					{% endif %}
 				</div>
 			</header>
