@@ -2,5 +2,19 @@
   "root": "_site/",
   "https_only": true,
   "clean_urls": true,
-  "error_page": "404.html"
+  "error_page": "404.html",
+  "headers": {
+    "/**": {
+      "Cache-Control": "private, no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "Sat, 05 Nov 1955 00:00:00 PST",
+      "Strict-Transport-Security": "max-age=86400; includeSubDomains;",
+      "X-Download-Options": "noopen",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "/assets/**": { "Cache-Control": "public, max-age=512000" },
+    "/images/**": { "Cache-Control": "public, max-age=512000" }
+  }
 }
