@@ -1,6 +1,6 @@
 {
   "root": "_site/",
-  "https_only": false,
+  "https_only": true,
   "clean_urls": true,
   "routes": {
     "/**": "index.html"
