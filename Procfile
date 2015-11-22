@@ -1,1 +1,1 @@
-web: bundle exec jekyll build && ./bin/boot
+web: bin/boot
