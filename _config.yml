@@ -4,7 +4,7 @@ author: "Owen Ou"
 email: "jingweno@gmail.com"
 description: "I'm a hacker."
 baseurl: ""
-url: "http://owenou.com"
+url: "https://owenou.com"
 logourl: "/assets/img/bloglogo.jpg"
 fa-logo: "fa-flag-o"
 paginate: 5
