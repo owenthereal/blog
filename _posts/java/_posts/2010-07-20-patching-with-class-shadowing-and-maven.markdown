@@ -22,7 +22,7 @@ It tells the class loader that patch.jar is loaded before ootb.jar, hence any cl
 
 Here is an example we are going to build. HelloWorldProxy is a *proxy* artifact that exports its classpath in such an order that classes in HelloWorldPatch are replacing classes in HelloWorld. HelloWorldTest depends on HelloWorldProxy and doesn’t know which implementation (HelloWorld or HelloWorldPatch) HelloWorldProxy is exporting. The dependency graph is as followed:
 
-![example dependency](/images/posts/maven_example_dep.png){: width="447" height="245"}
+![example dependency]({% asset_path "maven_example_dep.png" %}){: width="447" height="245"}
 
 In the pom.xml of HelloWorldProxy, it has two dependencies and we put HelloWorldPatch before HelloWorld, since we would like to see classes in HelloWorldPatch replacing the ones in HelloWorld. As of Maven 2.0.9, the ordering of dependencies on the classpath is [preserved][5]. The code snippet is as followed:
 
@@ -64,7 +64,7 @@ We also need to make sure HelloWorldProxy exports the two jars in the  Class-Pat
 
 Run “mvn package” in HelloWorldProxy and take a look at the generated MANIFEST.MF:
 
-![manifest](/images/posts/maven_manifest.png){: width="594" height="102"}
+![manifest]({% asset_path "maven_manifest.png" %}){: width="594" height="102"}
 
 Voila! That’s what we expect! HelloWorldPatch takes precedence over HelloWorld on HelloWorldProxy’s classpath!
 

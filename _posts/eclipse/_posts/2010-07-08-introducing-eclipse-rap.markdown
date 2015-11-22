@@ -6,7 +6,7 @@ categories: eclipse rap
 
 RAP, what? The Eclipse community is expanding its range to Hip Hop :)? Not exactly, although there is a chance. [Eclipse Rich Ajax Platform][4] (RAP) is a framework that empowers developers to build rich web clients “the Eclipse way.” <!--more--> From the latest [Helios download][5], RAP Tooling has become a default component of the RCP bundle:
 
-![Eclipse rap download](/images/posts/rap_download.png){: width="463" height="37"}
+![Eclipse rap download]({% asset_path "rap_download.png" %}){: width="463" height="37"}
 
 So what exactly is the Eclipse paradigm? Can we benefit from it?
 
@@ -16,13 +16,13 @@ RAP is to the web as RCP to the desktop. It inherits all the goodness from RCP s
 
 The following is the architecture of RAP:
 
-![rap architecture](/images/posts/rap_archi.png){: width="521" height="158"}
+![rap architecture]({% asset_path "rap_archi.png" %}){: width="521" height="158"}
 
 This architecture determines that developers can bring their RCP applications to the web with a single code base, also called single sourcing[^1]. Like building a RCP application, building a RAP application is a process of building plug-ins and bundles: On the UI side, contributing widget plug-ins; On the server side, since it is powered by [server-side Equinox][7], contributing servlet plug-ins. Unsurprisingly, it also inherits the benefits of any OSGi application such as dynamically adding/removing bundles.
 
 This architecture also determines that RAP is a server-centric AJAX framework[^3]. As indicated below, in a server-centric framework, the application is hosted on the application server and all processing is done on the server. The client browser is only used for data presentation. Consequently, it leaves small footprints on browsers: it waits for instructions from the server to create corresponding widgets on demand. In contrast, client-centric framework such as GWT statically compiles all widgets beforehand.
 
-![server centric vs client centric](/images/posts/server_centric_client_centric.png){: width="468" height="331"}
+![server centric vs client centric]({% asset_path "server_centric_client_centric.png" %}){: width="468" height="331"}
 
 Both methods have pros and cons. Server-centric frameworks handle all communication  automatically and leaves as few JavaScript codes on the browsers as possible, hence potentially having less security holes on the browsers. Client-centric frameworks are more flexible but require more work to step deep into low-level implementations of client-to-server communication, e.g., figuring out how to update widgets effectively in an asynchronous callback.
 

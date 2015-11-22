@@ -40,7 +40,7 @@ to go.
 and a database. It typically creates [Domain Model][7] objects by populating
 their attributes from the database.
 
-![Data Mapper](/images/posts/data_mapper.png)
+![Data Mapper]({% asset_path "data_mapper.png" %})
 
 Assuming we are building an e-commerce platform, we get a store object by
 going through the store mapper which connects to the database:
@@ -304,7 +304,7 @@ pattern:
 >
 > Two Step View deals with this problem by splitting the transformation into two stages. The first transforms the model data into a logical presentation without any special formatting; the second converts that logical presentation with the actual formatting needed. ...
 
-![Two Step View](/images/posts/two_step_view.png)
+![Two Step View]({% asset_path "two_step_view.png" %})
 
 From the above diagram, the multi-storefront example can be reimplemented with the Two Step
 View pattern. The process is in two steps. The first step is to

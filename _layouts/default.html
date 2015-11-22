@@ -12,11 +12,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
-      <link rel="shortcut icon" type="image/png" href="/images/theme/owen.png">
+      <link rel="shortcut icon" type="image/png" href="{% asset_path "owen.png" %}">
       <link rel="prefetch" href="{{ site.url }}">
       <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-      <link rel="stylesheet" href="{{ "/assets/css/init.css" | prepend: site.baseurl }}">
+      {% stylesheet "app.css" %}
       <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
@@ -39,7 +39,6 @@
         'autoload_comments': {{ site.theme_autoload_comments }}
       };
     </script>
-    <script async type="text/javascript" src="{{ "/assets/js/theme.min.js" | prepend: site.baseurl }}"></script>
-
+    {% javascript "theme.js" async %}
   </body>
 </html>
