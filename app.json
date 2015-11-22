@@ -5,11 +5,11 @@
   "repository": "https://github.com/jingweno/jingweno.github.io",
   "buildpacks": [
     {
-      "url": "heroku/ruby"
-    },
-    {
 
       "url": "https://github.com/hone/heroku-buildpack-static.git"
+    },
+    {
+      "url": "heroku/ruby"
     }
   ]
 }
