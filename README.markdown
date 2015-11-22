@@ -1,6 +1,8 @@
 # Owen Ou's Blog
 
-This is the data for my geek blog. It uses [Jekyll][1] as the blog engine. 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+This is the data for my geek blog. It uses [Jekyll][1] as the blog engine.
 
 # License
 
@@ -10,4 +12,4 @@ This work is licensed under [Creative Commons Attribution-NonCommercial-NoDerivs
 [2]: http://creativecommons.org/licenses/by-nc-nd/3.0/
 
 
-Copyright 2009-2014 Jingwen Owen Ou
+Copyright 2009-2016 Jingwen Owen Ou

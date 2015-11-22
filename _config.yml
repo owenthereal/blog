@@ -4,7 +4,7 @@ author: "Owen Ou"
 email: "jingweno@gmail.com"
 description: "I'm a hacker."
 baseurl: ""
-url: "http://owenou.com"
+url: "https://owenou.com"
 logourl: "/assets/img/bloglogo.jpg"
 fa-logo: "fa-flag-o"
 paginate: 5
@@ -27,7 +27,7 @@ theme_always_show_nav: false
 # SASS Settings
 # DO NOT MODIFY
 sass:
- sass_dir: "assets/css/"
+ sass_dir: "assets/css"
  style: :compressed
 
 # Build Settings
@@ -35,4 +35,18 @@ markdown: kramdown
 permalink: /:year/:month/:day/:title
 
 gems:
+  - jekyll-assets
   - jekyll-paginate
+
+assets:
+  cdn: https://owenou-herokuapp-com.global.ssl.fastly.net
+  digest: true
+  sources:
+    - assets/css
+    - assets/img
+    - assets/js
+    - images/theme
+    - images/posts
+
+exclude:
+  - vendor

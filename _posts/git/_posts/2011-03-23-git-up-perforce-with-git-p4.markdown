@@ -12,7 +12,7 @@ Git is particularly good at this aspect which provides tons of [bridges][1] to o
 
 <!--more-->
 
-![git-p4 bridge](/images/posts/git-p4.jpeg)
+![git-p4 bridge]({% asset_path "git-p4.jpeg" %})
 
 ## Setting up the Perforce command line client
 
@@ -87,7 +87,7 @@ Normally we check in a .gitignore file to ignore files that we don't want to che
 
 There is no magic happening with git-p4. What it does is simply invoking the p4 command line tool to download sources to local, and then clone a Git repository out of it. You can simply verify this by typing "git branch -a":
 
-![under the hook of git-p4](/images/posts/Terminal.jpeg)
+![under the hook of git-p4]({% asset_path "Terminal.jpeg" %})
 
 You may be amazed once again by how flexible the design of Git is which makes it possible to bridge to multiple VCS!
 

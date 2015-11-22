@@ -12,7 +12,7 @@ Let's get started with an example: When a HTML file is clicked, it should be ope
 
 * First, we need to add the WTP UI component as an *optional* dependency.
 
-	![push method](/images/posts/optional_dependencies.png){: width="304" height="307"}
+	![push method]({% asset_path "optional_dependencies.png" %}){: width="304" height="307"}
 
 	The MANIFEST.MF should look something like this:
 

@@ -1,0 +1,21 @@
+{
+  "name": "Owen Ou's blog",
+  "description": "This is the blog of Owen Ou",
+  "website": "https://owenou.com",
+  "repository": "https://github.com/jingweno/jingweno.github.io",
+  "env": {
+    "JEKYLL_ENV": {
+      "description": "Jekyll Environment. It affects asset compilation. Details see https://github.com/jekyll/jekyll-assets#configuration.",
+      "value": "production"
+    }
+  },
+  "buildpacks": [
+    {
+
+      "url": "https://github.com/hone/heroku-buildpack-static.git"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
