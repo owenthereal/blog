@@ -5,13 +5,14 @@
   "error_page": "404.html",
   "headers": {
     "/**": {
-      "Cache-Control": "public, s-maxage=2592000, max-age=86400",
+      "Cache-Control": "private, no-store, no-cache, must-revalidate, proxy-revalidate",
       "Pragma": "no-cache",
       "Strict-Transport-Security": "max-age=86400; includeSubDomains;",
       "X-Download-Options": "noopen",
       "X-Content-Type-Options": "nosniff",
       "X-Frame-Options": "SAMEORIGIN",
       "X-XSS-Protection": "1; mode=block"
-    }
+    },
+    "/assets/**": { "Cache-Control": "public, s-maxage=2592000, max-age=86400" }
   }
 }
