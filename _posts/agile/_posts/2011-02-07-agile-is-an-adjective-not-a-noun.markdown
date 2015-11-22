@@ -9,4 +9,4 @@ categories: agile
 If you miss any of these, you are just fooling yourself.
 
 [1]: http://twitter.com/pragdave
-[2]: http://pragprog.com/magazines/2011-02/agile--   
+[2]: http://pragprog.com/magazines/2011-02/agile--
