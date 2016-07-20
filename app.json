@@ -11,11 +11,11 @@
   },
   "buildpacks": [
     {
-
-      "url": "https://github.com/hone/heroku-buildpack-static.git"
+      "url": "heroku/ruby"
     },
     {
-      "url": "heroku/ruby"
+
+      "url": "https://github.com/hone/heroku-buildpack-static.git"
     }
   ]
 }
