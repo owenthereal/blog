@@ -13,6 +13,9 @@
       "X-Frame-Options": "SAMEORIGIN",
       "X-XSS-Protection": "1; mode=block"
     },
-    "/assets/**": { "Cache-Control": "public, s-maxage=2592000, max-age=86400" }
+    "/assets/**": {
+      "Cache-Control": "public, s-maxage=2592000, max-age=86400",
+      "Access-Control-Allow-Origin": "*"
+    }
   }
 }
