@@ -1,5 +1,4 @@
 ---
-layout: post
 title: PoEAA on Rails
 categories: patterns rails
 ---
@@ -23,8 +22,6 @@ To understand these problems better as well as to figure out possible
 solutions, I would like to walk you through some enterprise patterns
 from the same book that Rails' architecture heavily bases upon.
 
-<!--more-->
-
 Note that the patterns I am mentioning here will benefit more for
 complex applications, for example, an e-commerce web application selling
 digital goods.
@@ -40,12 +37,12 @@ to go.
 and a database. It typically creates [Domain Model][7] objects by populating
 their attributes from the database.
 
-![Data Mapper]({% asset_path "data_mapper.png" %})
+![Data Mapper]({% asset_path "data_mapper.png" %}){: .align-center}
 
 Assuming we are building an e-commerce platform, we get a store object by
 going through the store mapper which connects to the database:
 
-{% highlight ruby %}
+```ruby
 # app/controllers/stores_controller.rb
 
 class StoreController < ApplicationController
@@ -53,7 +50,7 @@ class StoreController < ApplicationController
     @store = StoreMapper.find(params[:id])
   end
 end
-{% endhighlight %}
+```
 
 The difference between [Active Record][6] and Data Mapper is actually that
 in the Active Record implementation, Domain Model not only encapsulates business logic,
@@ -90,7 +87,7 @@ Besides, switching an ORM for existing code is not effortless.
 As a compromised solution, I would extract database related logic for each *ActiveRecord::Base* model (e.g., validations and scopes)
 out into a module and then mix it in:
 
-{% highlight ruby %}
+```ruby
 # app/mappers/store_mapper.rb
 
 module StoreMapper
@@ -106,9 +103,9 @@ module StoreMapper
     ...
   end
 end
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 # app/models/store.rb
 
 class Store < ActiveRecord::Base
@@ -125,7 +122,7 @@ class Store < ActiveRecord::Base
   end
   ...
 end
-{% endhighlight %}
+```
 
 This half-baked solution, although not migrating to the Data Mapper pattern,
 cleanly isolates the definitions of database logic with the ones of business logic.
@@ -178,7 +175,7 @@ To translate this into a code example, let's assume in an e-commerce
 platform, we need to email monthly sells report to the store owner.
 In this example, *StoreService* acts as a coordinator of multiple models for the "mailing sells report" workflow:
 
-{% highlight ruby %}
+```ruby
 # app/services/store_service.rb
 
 class StoreService
@@ -189,7 +186,7 @@ class StoreService
     SellsReportMailer.report_mailer(store.owner, store_report).deliver
   end
 end
-{% endhighlight %}
+```
 
 Another place where Service Layer shines is reusing workflows for different
 controllers, for example, the same workflow in the above example is used in the *Storefront::StoresController* for store front
@@ -207,7 +204,7 @@ The [Presentation Model][14] comes to ease the pain:
 
 As an example, let's build a view for the scenario "creating a store for a user":
 
-{% highlight ruby %}
+```ruby
 # app/presenters/create_store_presenter.rb
 
 class CreateStorePresenter
@@ -229,9 +226,9 @@ class CreateStorePresenter
     @store.save
   end
 end
-{% endhighlight %}
+```
 
-{% highlight erb %}
+```erb
 <!-- app/views/stores/create_store.html.erb -->
 
 <h1>Create a store</h1>
@@ -251,14 +248,14 @@ end
     <%= f.submit "Create" %>
   </p>
 <% end %>
-{% endhighlight %}
+```
 
 In the example, we wrap two models (*Store* and *User*) into a presenter and
 extract only the attributes needed (*Store#name* and *User#email*) for the "create store" screen.
 To summarize this pattern, I would like to once again consult Fowler:
 
 > Presentation Model is a pattern that pulls presentation behavior from a view. ... It's useful for allowing you to test without the UI, support for some form of multiple view and a separation of concerns which may make it easier to develop the user interface.
-> 
+>
 > ... Presentation Model allows you to write logic that is completely independent of the views used for display. You also do not need to rely on the view to store state. ...
 
 ## Two Step Views
@@ -283,7 +280,7 @@ Let's think about an example: an e-commerce platform supports multiple
 stores and each store has its own storefront to display a product.
 It's common to see the following solution:
 
-{% highlight erb %}
+```erb
 <!-- app/views/products/_product.html.erb -->
 
 <% if store.amazon_store? %>
@@ -293,7 +290,7 @@ It's common to see the following solution:
 <% else %>
   <%= render :partial => '/default/products/_product.html.erb', :object => product %>
 <% end %>
-{% endhighlight %}
+```
 
 The determination logic for displaying a product based on store is leaked into the product partial.
 Apparently, to build the whole multi-appearance application, this approach does not
@@ -304,7 +301,7 @@ pattern:
 >
 > Two Step View deals with this problem by splitting the transformation into two stages. The first transforms the model data into a logical presentation without any special formatting; the second converts that logical presentation with the actual formatting needed. ...
 
-![Two Step View]({% asset_path "two_step_view.png" %})
+![Two Step View]({% asset_path "two_step_view.png" %}){: .align-center}
 
 From the above diagram, the multi-storefront example can be reimplemented with the Two Step
 View pattern. The process is in two steps. The first step is to
@@ -319,20 +316,20 @@ other purposes.
 For the logical presentation, we define it to display name, description, price and
 reviews of a product for every store:
 
-{% highlight erb %}
+```erb
 <!-- app/views/products/_product.html.erb -->
 
 <%= render_cell :product, :name, product.name %>
 <%= render_cell :product, :description, product.description %>
 <%= render_cell :product, :price, product.price %>
 <%= render_cell :product, :reviews, product.reviews %>
-{% endhighlight %}
+```
 
 We then define three strategies (*ProductCell*, *Amazon::ProductCell*, and
 *Apple::ProductCell*) to convert the logical presentation to different HTML.
 We make use of cells' strategy builder to return strategy class based on current store in session:
 
-{% highlight ruby %}
+```ruby
 # app/cells/product_cell.rb
 
 class ProductCell < Cell::Rails
@@ -349,9 +346,9 @@ class ProductCell < Cell::Rails
     # display reviews
   end
 end
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 # app/cells/amazon/product_cell.rb
 
 module Amazon
@@ -367,9 +364,9 @@ module Amazon
     end
   end
 end
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 # app/cells/apple/product_cell.rb
 
 module Apple
@@ -385,7 +382,7 @@ module Apple
     end
   end
 end
-{% endhighlight %}
+```
 
 As you may see, the Two Step View pattern makes multi-appearance implementation manageable in a way that
 different appearance implementations are organized in a set of strategy classes to parse a common logial presentation.

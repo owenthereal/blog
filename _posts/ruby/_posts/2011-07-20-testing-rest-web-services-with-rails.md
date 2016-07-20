@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Automatic Testing of REST Web Services Client with Rails
 categories: testing rails web_service
 ---
@@ -18,29 +17,27 @@ Ideally, REST web service client test should have the following characteristics:
 
 In this article, I demonstrate solutions to each of those mentioned.
 
-<!--more-->
-
 As an example throughout the article, let's assume we have web services for
 a model called *Task* and we are testing its corresponding client code.
 Here is a sample action in the *TasksController* of the web server:
 
-{% highlight ruby %}
+```ruby
 # server/app/controllers/tasks_controller.rb
 
 def index
   @tasks = Task.all
   render :status => :ok, :json => @tasks
 end
-{% endhighlight %}
+```
 
 We render *@tasks* as the JSON format where *to_json* is
 called on the object. When you run "*curl http://localhost:3000/tasks.json*", you will
 get the following result:
 
-{% highlight bash %}
+```bash
 $ curl http://localhost:3000/tasks.json
 [{"id":1,"name":"Write a blog post","created_at":"2011-07-20T04:05:41Z","updated_at":"2011-07-20T04:05:41Z","ends_at":"2011-08-20T03:15:00Z"}]
-{% endhighlight %}
+```
 
 ## ActiveResource
 
@@ -53,18 +50,18 @@ writing unit tests for a ActiveRecord model.
 To start with, we just need to extend it from ActiveResource::Base and
 give it the web server URL and representation format. That's it!
 
-{% highlight ruby %}
+```ruby
 # client/app/models/task.rb
 
 class Task < ActiveResource::Base
   self.site = "http://localhost:3000"
   self.format = :json
 end
-{% endhighlight %}
+```
 
 And we are using it as if you are using an ActiveRecord object:
 
-{% highlight ruby %}
+```ruby
 # client/spec/models/task_spec.rb
 
 describe Task do
@@ -73,7 +70,7 @@ describe Task do
     @tasks.size.should == 1
   end
 end
-{% endhighlight %}
+```
 
 ## Web Server
 
@@ -84,7 +81,7 @@ no external dependencies.
 To control the startup and shutdown of a web server before and after all
 suites run, it's as simple as having something like this:
 
-{% highlight ruby %}
+```ruby
 # client/spec_helper.rb
 
 RSpec.configure do |config|
@@ -97,15 +94,15 @@ RSpec.configure do |config|
     @server.stop
   end
 end
-{% endhighlight %}
+```
 
 The implementation of *Server* is also dead simple. Execute "script/rails server -d" to
 daemonize the server and issue a kill to stop it:
 
-{% highlight ruby %}
+```ruby
 # client/lib/server.rb
 
-Class Server
+class Server
   def initialize(server_path)
     @server_path = server_path
   end
@@ -129,7 +126,7 @@ Class Server
     File.join(@server_path, 'tmp', 'pids', 'server.pid')
   end
 end
-{% endhighlight %}
+```
 
 ## Transaction Rollback
 
@@ -165,7 +162,7 @@ database connection ([ActiveRecord::Base.connection][2]) in our web
 services client tests.
 To do that, we add the following code to web server's "*config/environments/test.rb*":
 
-{% highlight ruby %}
+```ruby
 # server/config/environments/test.rb
 
 config.after_initialize do
@@ -180,7 +177,7 @@ config.after_initialize do
   require 'drb'
   DRb.start_service("druby://localhost:8000", ActiveRecord::Base)
 end
-{% endhighlight %}
+```
 
 The above code snippet does two things:
 
@@ -198,7 +195,7 @@ What we are doing here is to make sure there is only one connection created and 
 After the aforementioned setup, we are able to expand the transaction boundary to
 tests:
 
-{% highlight ruby %}
+```ruby
 # client/spec/models/task_spec.rb
 
 describe Task do
@@ -237,7 +234,7 @@ describe Task do
     @semaphore.unlock
   end
 end
-{% endhighlight %}
+```
 
 Voila! With dRuby, we use begin+rollback to isolate changes of web services calls to the database,
 instead of having to delete+insert for every test case. A huge performance boost!
@@ -252,7 +249,7 @@ We can easily refactor out the *begin_remote_transaction* method and the
 *rollback_remote_transaction* method to *spec_helper.rb*,
 so that our web services client tests have little difference from usual ActiveRecord unit tests.
 
-{% highlight ruby %}
+```ruby
 # client/spec_helper.rb
 
 RSpec.configure do |config|
@@ -276,9 +273,9 @@ RSpec.configure do |config|
     @semaphore.unlock
   end
 end
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 # client/spec/models/task_spec.rb
 
 describe Task do
@@ -287,7 +284,7 @@ describe Task do
     Task.find(task.id).should == task
   end
 end
-{% endhighlight %}
+```
 
 ## Fixture Creation
 
@@ -299,7 +296,7 @@ To break this constraint, we use dRuby to open up another channel to directly in
 Assuming we are using the [factory_girl][4] gem for fixture creation,
 We create a dRuby service for port discovery and a dRuby service for each fixture instance:
 
-{% highlight ruby %}
+```ruby
 # server/lib/drb_active_record_instance_factory.rb
 
 require 'factory_girl'
@@ -318,11 +315,11 @@ class DRbActiveRecordInstanceFactory
 end
 
 DRb.start_service('druby://localhost:9000', DRbActiveRecordInstanceFactory.new)
-{% endhighlight %}
+```
 
 In tests, we ask for the port of the fixture instance and query its corresponding remote reference:
 
-{% highlight ruby %}
+```ruby
 # client/spec/models/task_spec.rb
 
 describe Task do
@@ -339,7 +336,7 @@ describe Task do
     # test REST web services calls with @remote_task
   end
 end
-{% endhighlight %}
+```
 
 ## Summary
 

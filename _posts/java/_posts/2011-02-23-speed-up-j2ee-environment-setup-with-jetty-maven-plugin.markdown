@@ -1,19 +1,18 @@
 ---
-layout: post
 title: Speed Up J2EE Environment Setup With Jetty Maven Plugin
 categories: java
 ---
 
 Setting up a J2EE development environment is typically complex and full of repetition. It wastes a lot of programmers' time before they can happily get the app up and running. They need to configure the IDE, set up the database, configure the server, deploy app to the server, etc.. What's worse, they have to repeat all the setup steps or a subset of the setup steps if they have multiple workspaces. I am not saying all of these steps are unnecessary. But can we just think for a moment why this is causing pain? How can we be [DRY][2] in environment setup?
 
-<!--more-->
-
 Let's take a look at where other web frameworks such as [Rails][7] shine. If you carefully think about how you get a Rails app running, you will be surprised to find out almost no configuration is needed. And it's so automatic! Here is how it rolls:
 
-	> git clone <some_app>
-	> cd <some_app>
-	> bundle install
-	> rails server
+```
+> git clone <some_app>
+> cd <some_app>
+> bundle install
+> rails server
+```
 
 Boom! Your app is up with just 2 commands (ignoring the step to download the source)! The last command is especially interesting. It is to start up the Rails server with the app loaded. Can we do the same in the Java world? Of course, Maven + Jetty Maven Plugin.
 
@@ -25,7 +24,7 @@ Jetty is a web server and javax.servlet container. One of its greatest features 
 
 To run a single web app, it is as simple as including the Jetty Maven Plugin as a plugin dependency in your pom file and run the "*mvn jetty:run*" command: 
 
-{% highlight xml %}
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
@@ -43,7 +42,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	</plugins>
 </build>
 </project>
-{% endhighlight %}
+```
 
 There are lots of useful [settings][5] that you can fine-tune Jetty, such as "scanIntervalSeconds" for the time interval of automatic hot redeploy, "systemProperties" for System properties of the execution of the plugin, and "jettyEnvXml" for the file that defines JNDI bindings.
 
@@ -51,7 +50,7 @@ There are lots of useful [settings][5] that you can fine-tune Jetty, such as "sc
 
 In the case that you are defining data source using JNDI, you need to describe the data source in a "jetty-env.xml" file and refer it in the Jetty Maven Plugin. The jetty-env.xml file may look something like this:
 
-{% highlight xml %}
+```xml
 <?xml version="1.0"?>
 <!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
@@ -67,11 +66,11 @@ In the case that you are defining data source using JNDI, you need to describe t
 		</Arg>
 	</New>
 </Configure>
-{% endhighlight %}
+```
 
 The pom.xml now becomes:
 
-{% highlight xml %}
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
@@ -87,12 +86,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<version>7.2.2.v20101205</version>
 			<webAppConfig>
 				<jettyEnvXml>${basedir}/src/over/here/jetty-env.xml</jettyEnvXml>
-			</webAppConfig>		
+			</webAppConfig>
 		</plugin>
 	</plugins>
 </build>
 </project>
-{% endhighlight %}
+```
 
 ## Running multiple web apps
 
@@ -116,11 +115,11 @@ If we wanna deploy both servers with the Jetty Maven Plugin, we need to either g
 	- servers/
 	  - pom.xml
 
-The servers project is basically an empty server with nothing but a web.xml. In its pom file, we define the redirection path and make sure it loads up settings such as JNDI for each web app: 
+The servers project is basically an empty server with nothing but a web.xml. In its pom file, we define the redirection path and make sure it loads up settings such as JNDI for each web app:
 
-{% highlight xml %}
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">	
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <parent>
 	<groupId>mavenJettyPluginExample</groupId>
@@ -172,7 +171,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	</plugins>
 </build>
 </project>
-{% endhighlight %}
+```
 
 The "resourceBase" of each web app is set to its corresponding target folder. That means we have to compile the web app before running them. The "contextPath" is to tell Jetty the path of the web app. The list of "configurationClasses" is to tell Jetty to load corresponding configurations including the jetty-env.xml file for JNDI definition. 
 

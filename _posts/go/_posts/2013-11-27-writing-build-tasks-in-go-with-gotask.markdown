@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Write Build Tasks in Go with Gotask
 categories: go
 ---
@@ -9,8 +8,6 @@ The de facto build tool for Go is [make](http://www.gnu.org/software/make/).
 Make is simple, classic and gets the work done. But it falls when build tasks are becoming complex.
 Another drawback with make is that it's completely isolated from the host language: there's no way to import and make use of any Go code.
 Build tools like [ant](http://ant.apache.org/) or [maven](http://maven.apache.org/what-is-maven.html) also suffer for similar reasons.
-
-<!--more-->
 
 ## External DSL vs. Internal DSL
 
@@ -27,20 +24,20 @@ The conclusion, without surprise, was Go is not good at building complex and gen
 However, we don't necessary need to bend the Go syntax in order to make an idiomatic build tool.
 An everyday Go example is [`go test`](http://golang.org/pkg/testing/). Consider the following test function in a file called `time_test.go`:
 
-{% highlight go %}
+```go
 func TestTimeConsuming(t *testing.T) {
     if testing.Short() {
         t.Skip("skipping test in short mode.")
     }
     ...
 }
-{% endhighlight %}
+```
 
 Running `go test` will pick up this test file and execute the test function.
 It feels very DSLish yet we're not bending the syntax like we usually do for internal DSLs.
 The trick behind `go test` is convention over confication:
 if you create a file called `xxx_test.go` and name the test function `TestXxx`, where `xxx` is the test name,
-your test will be run. 
+your test will be run.
 
 We could do something similar for an idiomatic build tool in Go: introducing [gotask](https://github.com/jingweno/gotask).
 
@@ -48,7 +45,7 @@ We could do something similar for an idiomatic build tool in Go: introducing [go
 
 Consider the following task function in a file called `sayhello_task.go`:
 
-{% highlight go %}
+```go
 // +build gotask
 
 package main
@@ -76,11 +73,11 @@ func TaskSayHello(t *tasking.T) {
         t.Logf("Hello %s\n", user.Name)
     }
 }
-{% endhighlight %}
+```
 
 Running `gotask -h` will display all the tasks:
 
-{% highlight text %}
+```
 $ gotask -h
 NAME:
    gotask - Build tool in Go
@@ -101,11 +98,11 @@ GLOBAL OPTIONS:
    --debug              run in debug mode
    --version            print the version
    --help, -h           show help
-{% endhighlight %}
+```
 
 Running `gotask say-hello -h` will display usage for a task:
 
-{% highlight text %}
+```
 $ gotask say-hello -h
 NAME:
    say-hello - Say hello to current user
@@ -119,30 +116,29 @@ DESCRIPTION:
 OPTIONS:
    --verbose, -v        run in verbose mode
    --debug              run in debug mode
-{% endhighlight %}
+```
 
 To execute the task, type:
 
-{% highlight text %}
+```
 $ gotask say-hello
 Hello Owen Ou
-{% endhighlight %}
-
+```
 To execute the task in verbose mode, type:
 
-{% highlight text %}
+```
 $ gotask say-hello -v
 Hello Owen Ou, the time now is 2013-11-20 15:32:00.73771438 -0800 PST
-{% endhighlight %}
+```
 
-Yes, that's [gotask](https://github.com/jingweno/gotask), an idiomatic way of writing build tasks in Go. 
+Yes, that's [gotask](https://github.com/jingweno/gotask), an idiomatic way of writing build tasks in Go.
 
 ### Convention over Configuration
 
 Similar to defining a Go test, you follow the `gotask` convention to describe your build tasks.
 You create a file called `TASK_NAME_task.go` and name the task function in the format of
 
-{% highlight go %}
+```go
 // +build gotask
 
 package main
@@ -160,7 +156,7 @@ import "github.com/jingweno/gotask/tasking"
 func TaskXxx(t *tasking.T) {
   ...
 }
-{% endhighlight %}
+```
 
 where `Xxx` can be any alphanumeric string (but the first letter must not be in [a-z]) and serves to identify the task name.
 By default, `gotask` will dasherize the `Xxx` part of the task function name and use it as the task name.
@@ -182,11 +178,11 @@ Section OPTIONS contains the definition of the command line flags it takes.
 `gotask` is able to generate a task scaffolding to quickly get you started for writing build tasks by using the `--generate` or `-g` flag.
 The generated task is named as `pkg_task.go` where `pkg` is the name of the package that `gotask` is run:
 
-{% highlight text %}
+```
 // in a folder where package example is defined
 $ gotask -g
 create example_task.go
-{% endhighlight %}
+```
 
 ### Compiling Tasks
 
@@ -194,17 +190,17 @@ create example_task.go
 This is useful when you need to distribute your build executables.
 For the above `say-hello` task, you can compile it into a binary using `--compile` or `-c`:
 
-{% highlight text %}
+```
 $ gotask -c
 $ ./examples.task say-hello
 Hello Owen Ou
-{% endhighlight %}
+```
 
 ## Conclusion
 
 With `gotask`, you're able to write idiomatic Go code for build tasks.
 In the future, I would hope `gotask` can be part of the [Go toolchain](http://golang.org/src/cmd/go), so that you can simply type `go task` without installing another tool.
 If you're a Go committer reading this blog post and are convinced that `gotask` worths being port to the Go toolchain, feel free to ping me. I'm happy to help out with the integration :).
-If you're a user of `gotask` and would like to help out with the development, the project page is [here](https://github.com/jingweno/gotask).  
+If you're a user of `gotask` and would like to help out with the development, the project page is [here](https://github.com/jingweno/gotask).
 
 Happy tasking!
