@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ten Things You Didn't Know Git And GitHub Could Do
 categories: git github
 ---
@@ -18,22 +17,22 @@ increase your day-to-day productivity.
 On your source code browsing page, press **t** to enter the fuzzy file
 finder mode:
 
-![GitHub Shortcuts File Finder]({% asset_path "github_shortcut_file_finder.png" %})
+![GitHub Shortcuts File Finder]({% asset_path "github_shortcut_file_finder.png" %}){: .align-center}
 
 On your repository's home page, press **w** to quickly filter
 branches:
 
-![GitHub Shortcuts Filter Branch]({% asset_path "github_shortcut_filter_branch.png" %})
+![GitHub Shortcuts Filter Branch]({% asset_path "github_shortcut_filter_branch.png" %}){: .align-center}
 
 On any GitHub page, press **?** to show the list of shortcuts applied to a particular page:
 
-![GitHub Shortcuts]({% asset_path "github_shortcuts.png" %})
+![GitHub Shortcuts]({% asset_path "github_shortcuts.png" %}){: .align-center}
 
 ### ignoring whitespace: ?w=1
 
 Add **?w=1** any diff URL to trim whitespace:
 
-![GitHub Trim Whitespace]({% asset_path "github_trim_whitespace.png" %})
+![GitHub Trim Whitespace]({% asset_path "github_trim_whitespace.png" %}){: .align-center}
 
 ### commits by range: master@{time}..master
 
@@ -45,7 +44,7 @@ of commits since yesterday by using format like **master@{1.day.ago}...master**.
 [https://github.com/rails/rails/compare/master@{1.day.ago}...master](https://github.com/rails/rails/compare/master@{1.day.ago}...master),
 for example, gets all commits since yesterday for the Rails project:
 
-![GitHub Advanced Compare View]({% asset_path "github_advanced_compare_view.png" %})
+![GitHub Advanced Compare View]({% asset_path "github_advanced_compare_view.png" %}){: .align-center}
 
 ### commits by author: ?author=github_handle
 
@@ -54,7 +53,7 @@ You can filter commits by author in the commit view by appending param
 [https://github.com/dynjs/dynjs/commits/master?author=jingweno](https://github.com/dynjs/dynjs/commits/master?author=jingweno)
 shows a list of my commits to the [Dynjs](http://dynjs.org/) project:
 
-![GitHub Filter Commits By Author]({% asset_path "github_filter_by_author.png" %})
+![GitHub Filter Commits By Author]({% asset_path "github_filter_by_author.png" %}){: .align-center}
 
 ### .diff & .patch
 
@@ -64,14 +63,14 @@ link [https://github.com/rails/rails/compare/master@{1.day.ago}...master.patch](
 gets the patch for all the commits since yesterday in the Rails
 project:
 
-![GitHub Diff Patch]({% asset_path "github_diff_patch.png" %})
+![GitHub Diff Patch]({% asset_path "github_diff_patch.png" %}){: .align-center}
 
 ### email reply
 
 You can comment directly by replying to the email received from GitHub
 instead of commenting on the website. GitHub will route your reply correctly:
 
-![GitHub Reply Email]({% asset_path "github_email_reply.png" %})
+![GitHub Reply Email]({% asset_path "github_email_reply.png" %}){: .align-center}
 
 ### line linking
 
@@ -79,14 +78,14 @@ In any file view, when you click one line or multiple lines by pressing
 **SHIFT**, the URL will change to reflect your selections. This is very
 handy for sharing the link to a chunk of code with your teammates:
 
-![GitHub Line Linking]({% asset_path "github_line_linking.png" %})
+![GitHub Line Linking]({% asset_path "github_line_linking.png" %}){: .align-center}
 
 ### subscribing peoples
 
 Mentioning users in pull requests, issues or any comment will subscribe them to all
 subsequent notifications:
 
-![GitHub Subscribe Peoples]({% asset_path "github_subscribe_peoples.png" %})
+![GitHub Subscribe Peoples]({% asset_path "github_subscribe_peoples.png" %}){: .align-center}
 
 ### autolink
 
@@ -96,7 +95,7 @@ or issue number from another repository with the format of
 **user/repo@sha1** or **user/repo#1** respectively. The following is an
 example of autolinking a sha in a comment:
 
-![GitHub Auto Link]({% asset_path "github_auto_link.png" %})
+![GitHub Auto Link]({% asset_path "github_auto_link.png" %}){: .align-center}
 
 ### hub
 
@@ -112,17 +111,17 @@ Detail of all other commands is available on its project
 
 To view changes in history for README.md, for example, type
 
-{% highlight text %}
+```
 > git log -p README.md
-{% endhighlight %}
+```
 
 ### git log -S'PATTERN'
 
 To search for changes that matches the pattern "stupid" in history, for example, type
 
-{% highlight text %}
+```
 > git log -S'stupid'
-{% endhighlight %}
+```
 
 Combining with "-p" shows the changes with the search pattern.
 
@@ -130,9 +129,9 @@ Combining with "-p" shows the changes with the search pattern.
 
 To interactively stage and unstage changes, type
 
-{% highlight text %}
+```
 > git add -p
-{% endhighlight %}
+```
 
 Updated 2013-01-18: From [@tjwallace](https://twitter.com/tjwallace), git checkout and git reset also support the --patch (-p)
 option for the interactive mode.
@@ -144,9 +143,9 @@ Updated 2013-03-17: From
 
 This command removes remote file copy only. For example, typing
 
-{% highlight text %}
+```
 > git rm --cached database.yml
-{% endhighlight %}
+```
 
 removes database.yml that is already checked in but leaving the local copy untouched.
 This is intensively handy for removing ignored files that are already pushed without removing the local copies.
@@ -156,9 +155,9 @@ This is intensively handy for removing ignored files that are already pushed wit
 This command returns all the commits in a branch that are not in HEAD. For example,
 assuming you are on a feature branch, typing
 
-{% highlight text %}
+```
 > git log ..master
-{% endhighlight %}
+```
 
 gets all commits that are in master but not merged into the current
 feature branch yet.
@@ -169,9 +168,9 @@ This command returns a list of branches that are merged or not yet merged
 to current branch. It's a useful check before any merging happens. For
 example, on a featrue branch, typing
 
-{% highlight text %}
+```
 > git branch --no-merged
-{% endhighlight %}
+```
 
 returns a list of branchs that are not yet merged to the feature branch.
 
@@ -179,9 +178,9 @@ returns a list of branchs that are not yet merged to the feature branch.
 
 This returns which branch contains a specified sha key, for example, typing
 
-{% highlight text %}
+```
 > git branch --contains 2f8e2b
-{% endhighlight %}
+```
 
 shows all branches containing the commit 2f832b. It is very helpful for
 verifying whether a git cherry-pick is done correctly for instance.

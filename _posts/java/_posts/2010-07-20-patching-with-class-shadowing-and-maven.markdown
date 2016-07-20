@@ -1,12 +1,9 @@
 ---
-layout: post
 title: Patching with Class Shadowing and Maven
 categories: java
 ---
 
 Before we start, you may speculate about the usefulness of [class shadowing][1]. Class shadowing can be used as a trick to patch or replace behaviours of  classes at runtime, taking advantage of the first-come first-served  algorithm of Java’s class loader. If there are more than one class with  the same fully qualified name in the Java class loader, the first one that shows up always take precedence over the rest.
-
-<!--more-->
 
 This is extremely useful in some cases. For example, in order to make some out-of-the-box (OOTB) methods extensible without directly changing the source, or to provide backward-compatibility support, class  shadowing is a good technique to separate the OOTB code and the  customized code. By creating a patch jar against the OOTB jar and  putting it before the OOTB jar on classpath, classes with the same  qualified name are merged at runtime.
 
@@ -22,11 +19,11 @@ It tells the class loader that patch.jar is loaded before ootb.jar, hence any cl
 
 Here is an example we are going to build. HelloWorldProxy is a *proxy* artifact that exports its classpath in such an order that classes in HelloWorldPatch are replacing classes in HelloWorld. HelloWorldTest depends on HelloWorldProxy and doesn’t know which implementation (HelloWorld or HelloWorldPatch) HelloWorldProxy is exporting. The dependency graph is as followed:
 
-![example dependency]({% asset_path "maven_example_dep.png" %}){: width="447" height="245"}
+![example dependency]({% asset_path "maven_example_dep.png" %}){: width="447" height="245" .align-center}
 
 In the pom.xml of HelloWorldProxy, it has two dependencies and we put HelloWorldPatch before HelloWorld, since we would like to see classes in HelloWorldPatch replacing the ones in HelloWorld. As of Maven 2.0.9, the ordering of dependencies on the classpath is [preserved][5]. The code snippet is as followed:
 
-{% highlight xml %}
+```xml
 <dependencies>
     <dependency>
         <groupId>HelloWorld</groupId>
@@ -43,11 +40,11 @@ In the pom.xml of HelloWorldProxy, it has two dependencies and we put HelloWorld
         <scope>compile</scope>
     </dependency>
 </dependencies>
-{% endhighlight %}
+```
 
 We also need to make sure HelloWorldProxy exports the two jars in the  Class-Path attribute of the MANIFEST.MF file with the correct ordering.  The key is to set the [addClasspath][6] flag to true in the maven-jar-plugin:
 
-{% highlight xml %}
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-jar-plugin</artifactId>
@@ -60,17 +57,17 @@ We also need to make sure HelloWorldProxy exports the two jars in the  Class-Pat
         </archive>
     </configuration>
 </plugin>
-{% endhighlight %}
+```
 
 Run “mvn package” in HelloWorldProxy and take a look at the generated MANIFEST.MF:
 
-![manifest]({% asset_path "maven_manifest.png" %}){: width="594" height="102"}
+![manifest]({% asset_path "maven_manifest.png" %}){: width="594" height="102" .align-center}
 
 Voila! That’s what we expect! HelloWorldPatch takes precedence over HelloWorld on HelloWorldProxy’s classpath!
 
 Now HelloWorldTest can safely depends on HelloWorldProxy and expects that HelloWorldProxy will export HelloWorldPatch’s implementations at  runtime:
 
-{% highlight xml %}
+```xml
 <dependency>
     <groupId>HelloWorld</groupId>
     <artifactId>HelloWorldProxy</artifactId>
@@ -78,7 +75,7 @@ Now HelloWorldTest can safely depends on HelloWorldProxy and expects that HelloW
     <type>jar</type>
     <scope>compile</scope>
 </dependency>
-{% endhighlight %}
+```
 
 The source of this example is available on GitHub <http://github.com/jingweno/patching_with_class_shadowing_and_maven>. You can also view it directly with CodeFaces <http://codefaces.org/http://github.com/jingweno/patching_with_class_shadowing_and_maven>.
 

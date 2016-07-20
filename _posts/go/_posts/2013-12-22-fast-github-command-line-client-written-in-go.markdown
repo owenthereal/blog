@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Fast GitHub Command Line Client Written in Go
 categories: go
 ---
@@ -8,22 +7,20 @@ About [nine months ago](https://github.com/jingweno/gh/commit/d5615fcb6f9c983fbf
 a fast command line wrapper around git with extra features and commands that make working with GitHub easier.
 Today, I'm very glad to announce its [1.0.0](https://github.com/jingweno/gh/releases/tag/v1.0.0) release has landed!
 
-<!--more-->
-
 ## What is gh?
 
 `gh` is a command line client to GitHub.
 It's designed to run as fast as possible with easy installation across operating systems.
 Here is a typical workflow of contributing to OSS on GitHub by cloning a repository, forking it and making a pull request with `gh`:
 
-{% highlight text %}
+```
 $ gh clone rails/rails
 $ gh fork
 
 # make some changes
 
 $ gh pull-request -m "Implemented feature X" -b rails:master -h jingweno:feature
-{% endhighlight %}
+```
 
 ## Hub in Go
 
@@ -49,7 +46,7 @@ dependencies, is a very appealing platform for building command line tools. Let'
 For **equivalent functionalities**, `gh` performs in general 5 to 10 times better than `hub`.
 Here's the result of comparing `gh` version `1.0.0` with `hub` version `1.11.0` on my machine:
 
-{% highlight text %}
+```
 $ time hub version > /dev/null
 hub version > /dev/null  0.13s user 0.05s system 95% cpu 0.183 total
 
@@ -61,7 +58,7 @@ hub browse > /dev/null  0.15s user 0.08s system 90% cpu 0.250 total
 
 $ time gh browse > /dev/null
 gh browse > /dev/null  0.02s user 0.02s system 84% cpu 0.051 total
-{% endhighlight %}
+```
 
 Note that there's almost no perfect benchmark, especially for a command line program like `gh`.
 The numbers above is to show `gh` is in general more responsive.

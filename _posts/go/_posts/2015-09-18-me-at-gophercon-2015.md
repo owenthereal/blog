@@ -1,5 +1,4 @@
 ---
-layout: post
 title: My Lightening Talk At GopherCon 2015
 categories: go
 ---

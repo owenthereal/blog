@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Adaptive Implementations with Eclipse's Optional Plugin Dependencies
 categories: eclipse osgi
 ---
@@ -12,7 +11,7 @@ Let's get started with an example: When a HTML file is clicked, it should be ope
 
 * First, we need to add the WTP UI component as an *optional* dependency.
 
-	![push method]({% asset_path "optional_dependencies.png" %}){: width="304" height="307"}
+	![push method]({% asset_path "optional_dependencies.png" %}){: width="304" height="307" .align-center}
 
 	The MANIFEST.MF should look something like this:
 
@@ -23,10 +22,10 @@ Let's get started with an example: When a HTML file is clicked, it should be ope
 * Create a HTML editor if WTP is installed on the client, otherwise fallback to text editor. Wait...here we might have more than one solution:
 
 First of all, we might consider directly initializing the HTML editor class from WTP and if it doesn't exist, initialize the text editor. However, [BundleLoader][5] won't let this happen since it throws out ClassNotFoundException if a class doesn't exist (in the case of WTP not being installed on the client), and this exception can't be caught in client implementations.
-	
+
 Secondly, we might also consider initializing the HTML editor class through reflection. In this way, we can catch our own ClassNotFoundException and fallback to create a text editor.
-	
-{% highlight java %}
+
+```java
 public TextEditor createHTMLTextEditor() {
 	try {
 		Class cls = Class
@@ -42,13 +41,13 @@ public TextEditor createHTMLTextEditor() {
 
 	return new TextEditor();
 }
-{% endhighlight %}
-						
+```
+
 However...this is not quite "OSGI". Actually, Equinox provides [APIs][6] to retrieve extension configurations and initialize their implemented classes. It uses the same way to initialize classes like what we are doing here.
 
 We can ask Equinox for all the registered editor extensions and find out whether WTP's HTML editor is one of them. If yes, just initialize it. Otherwise, create the text editor that is available to all clients.
 
-{% highlight java %}
+```java
 private static final String HTML_EDITOR_ID = "org.eclipse.wst.sse.ui.StructuredTextEditor";
 
 private static final String ATTRIBUTE_CLASS = "class";
@@ -77,7 +76,7 @@ public TextEditor createHTMLTextEditor() {
 
 	return new TextEditor();
 }
-{% endhighlight %}
+```
 
 Now we see how flexible it is to provide an adaptive Implementation with Eclipse's optional plugin dependencies. With this power, we can also support something like upgrading a system without ruining the old working legacy components. A tips can be found [here][7].
 

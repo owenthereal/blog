@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Planning for CodeFaces 1.1.1
 categories: codefaces
 ---

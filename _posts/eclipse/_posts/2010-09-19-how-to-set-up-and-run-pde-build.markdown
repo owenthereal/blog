@@ -1,5 +1,4 @@
 ---
-layout: post
 title: How to set up and run PDE build
 categories: eclipse
 ---

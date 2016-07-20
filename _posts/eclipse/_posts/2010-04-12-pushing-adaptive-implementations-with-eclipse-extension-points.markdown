@@ -1,20 +1,17 @@
 ---
-layout: post
 title: "Pushing Adaptive Implementations with Eclipse's Extension Points"
 categories: eclipse osgi
 ---
 
 A week ago, I blogged about [implementing adaptive components using Eclipse's optional plugin dependencies][1]. In that post, I gave an example on displaying HTML files with different editors based on client's environment: open the HTML file with the HTML editor from [WTP][2] if the plugin is installed, otherwise fallback to open with the default text editor. The final solution was to query the existence of the WTP editor through [Equinox][3].
 
-<!--more-->
-
 However, the implementation is far from enjoyable: our main plugin knows everything about WTP! In other words, in order to specify the query, our main plugin has to know about WTP, hence containing environment-specific implementations. The following graph shows the dependency:
-	
-![pull method]({% asset_path "pull.png" %}){: width="300" height="200"}
+
+![pull method]({% asset_path "pull.png" %}){: width="300" height="200" .align-center}
 
 The reason causing this environment-specific coupling is that our main plugin uses the **pull** method to retrieve the HTML editor implementations from WTP (code snippet goes [here][1]). To solve this, we can [inverse the control][4] and have another plugin to **push** specific implementations to the main plugin.
 
-![push method]({% asset_path "push.png" %}){: width="400" height="252"}
+![push method]({% asset_path "push.png" %}){: width="400" height="252", .align-center}
 
 Equinox has already offered a very powerful tool for this purpose: [extension points][5]. In the dependency graph above, we separate the concerns by creating an adaptor plugin between the main plugin and the WTP plugin. We declare its dependency on WTP as optional to make sure the plugin will be installed on clients even if the WTP dependency is missing. If somehow WTP is installed in the future, the adaptor will automatically hook it up. Besides, we define an extension point in the main plugin so that the adaptor plugin knows what to contribute and where to contribute.
 
@@ -22,7 +19,7 @@ Here are steps to implement:
 
 * Create an extension point in the main plugin to allow editor contributions. We confine that the contributing editors should be an instance of ITextEditor. The schema looks something like this:
 
-{% highlight xml %}
+```xml
 <element name="extension">
   <complextype>
     <sequence>
@@ -46,11 +43,11 @@ Here are steps to implement:
     </attribute>
   </complextype>
 </element>
-{% endhighlight %}
+```
 
 * Create a factory class in the main plugin that knows how to create an ITextEditor after reading the extensions. We also need to reconcile that only one editor extension is initialized (in the case of multiple contributions):
 
-{% highlight java %}
+```java
 public class SourceEditorFactory {
 	private static IConfigurationElement cachedConfigurationElement;
 
@@ -90,18 +87,18 @@ public class SourceEditorFactory {
 		return null;
 	}
 }
-{% endhighlight %}
+```
 
 You might have noticed that lines 15 to 20 silently catch all exceptions and return the default text editor if there are any errors when initializing the extension. It ensures that even if WTP is not installed on the client, there is a fallback implementation.
 
 * Declare an extension in the adaptor plugin which refers to the HTML editor from WTP.
 
-{% highlight xml %}
+```xml
 <extension point="com.luxoft.eclipse.fit.runner.fitSourceEditor">
   <sourceeditor class="org.eclipse.wst.sse.ui.StructuredTextEditor" 
 		id="com.luxoft.eclipse.fit.runner.optional.wtpHTMLEditor"/>
 </extension>
-{% endhighlight %}
+```
 
 For more details, please check out [the source][6]. 
 

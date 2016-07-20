@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Agile is an adjective, not a noun!
 categories: agile
 ---

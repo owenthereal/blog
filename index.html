@@ -1,35 +1,14 @@
 ---
-layout: default
+layout: archive
+author_profile: true
 ---
 
-{% include author.html %}
+{% include base_path %}
 
-<section class="posts postindex wrapper">
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts }}</h3>
 
-	{% for post in paginator.posts %}
-		<article class="post {% if post.featured == true %} featured {% endif %}">
-			<header>
-				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
-				<h2>
-					{% for category in post.categories %}
-					{{ category }} 
-					{% endfor %}
-				</h2>
-				<h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
-				<span>
-					Posted on <i class="fa fa-clock-o"></i><time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>.
-				</span>
-				<div class="excerpt">
-					{% if post.content contains '<!--more-->' %}
-						{{ post.content | split:'<!--more-->' | first }}
-					{% else %}
-						{{ post.content }}
-					{% endif %}
-				</div>
-			</header>
-		</article>
-	{% endfor %}
+{% for post in paginator.posts %}
+  {% include archive-single.html %}
+{% endfor %}
 
-	{% include pagination.html %}
-
-</section>
+{% include paginator.html %}

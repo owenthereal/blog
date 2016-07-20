@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Git Up Perforce with git-p4
 categories: git perforce
 ---
@@ -10,9 +9,7 @@ However, the case that I run into frequently is where there is a corporate stand
 
 Git is particularly good at this aspect which provides tons of [bridges][1] to other VCS (That's another good reason for preferring Git over Mercurial :-)). Lately I have been using the [git-p4][2] bridge to synchronize codes between a centralized Perforce repository and a local Git repository. This post is a tutorial on how to set this up.
 
-<!--more-->
-
-![git-p4 bridge]({% asset_path "git-p4.jpeg" %})
+![git-p4 bridge]({% asset_path "git-p4.jpeg" %}){: .align-center}
 
 ## Setting up the Perforce command line client
 
@@ -21,11 +18,13 @@ The git-p4 bridge requires the [p4 command line client][3] properly set up. Ther
 1. Install the p4 command line client (use [MacPort][5] or [Homebrew][6] if you are a Mac guy :-))
 2. Create a .p4settings file in your home directory with the global [environment settings][7] for your Perforce repository. And in your .bashrc, export P4CONFIG=/path/to/your/.p4settings. For example, here is what my settings look like:
 
-		P4PORT=repo_url:repo_port
-		P4USER=user_name
-		P4PASSWD=password
-		P4CLIENT=client_workspace_name
-		P4EDITOR=vim
+```
+P4PORT=repo_url:repo_port
+P4USER=user_name
+P4PASSWD=password
+P4CLIENT=client_workspace_name
+P4EDITOR=vim
+```
 
 3. Run "p4 client" to define the workspace mappings
 4. Run "p4 info" to verify the settings
@@ -40,11 +39,15 @@ The [git-p4][8] bridge is a Python script to enable bidirectional operation betw
 
 1. Clone the Git repository to somewhere
 
-		git clone https://github.com/git/git.git git_source_path
+```
+git clone https://github.com/git/git.git git_source_path
+```
 
 2. Create a soft-link to the git-p4 script in one of your system paths
 
-		ln -s git_source_path/contrib/fast-import/git-p4 /usr/bin/git-p4
+```
+ln -s git_source_path/contrib/fast-import/git-p4 /usr/bin/git-p4
+```
 
 Windows users need to include the [git-p4.bat][10] file in the system path.
 
@@ -65,19 +68,27 @@ There is a [detailed explanation][9] on the usage of git-p4 in Git's source. Her
 
 1. Login with "p4 login" and clone a Perforce project:
 
-		git-p4 clone //depot/path/project
+```
+git-p4 clone //depot/path/project
+```
 
 2. Make some changes to the project and commit locally to Git:
 
-		git commit changed_file
+```
+git commit changed_file
+```
 
 3. In the meantime somebody in the team submitted changes to the remote Perforce repository. Merge it to your local repository:
 
-		git-p4 rebase
+```
+git-p4 rebase
+```
 
 4. Submit your local changes back to Perforce:
 
-		git-p4 submit
+```
+git-p4 submit
+```
 
 ## Ignoring the .gitignore file
 
@@ -87,7 +98,7 @@ Normally we check in a .gitignore file to ignore files that we don't want to che
 
 There is no magic happening with git-p4. What it does is simply invoking the p4 command line tool to download sources to local, and then clone a Git repository out of it. You can simply verify this by typing "git branch -a":
 
-![under the hook of git-p4]({% asset_path "Terminal.jpeg" %})
+![under the hook of git-p4]({% asset_path "Terminal.jpeg" %}){: .align-center}
 
 You may be amazed once again by how flexible the design of Git is which makes it possible to bridge to multiple VCS!
 
