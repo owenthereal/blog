@@ -4,65 +4,85 @@
   "clean_urls": true,
   "error_page": "404.html",
   "redirects": {
-    "https://owenou.com/2011/02/07/agile-is-an-adjective-not-a-noun.html": {
-      "url": "/agile-is-an-adjective-not-a-noun"
+    "/2011/02/07/agile-is-an-adjective-not-a-noun.html": {
+      "url": "/agile-is-an-adjective-not-a-noun",
+      "status": 301
     },
-    "https://owenou.com/2010/09/21/planning_for_codefaces.html": {
-      "url": "/planning_for_codefaces"
+    "/2010/09/21/planning_for_codefaces.html": {
+      "url": "/planning_for_codefaces",
+      "status": 301
     },
-    "https://owenou.com/2009/11/18/running-eclipse-java-compiler-with-ant.html": {
-      "url": "/running-eclipse-java-compiler-with-ant"
+    "/2009/11/18/running-eclipse-java-compiler-with-ant.html": {
+      "url": "/running-eclipse-java-compiler-with-ant",
+      "status": 301
     },
-    "https://owenou.com/2010/04/07/adaptive-implementations-with-eclipses-optional-plugin-dependencies.html": {
-      "url": "/adaptive-implementations-with-eclipses-optional-plugin-dependencies"
+    "/2010/04/07/adaptive-implementations-with-eclipses-optional-plugin-dependencies.html": {
+      "url": "/adaptive-implementations-with-eclipses-optional-plugin-dependencies",
+      "status": 301
     },
-    "https://owenou.com/2010/04/12/pushing-adaptive-implementations-with-eclipse-extension-points.html": {
-      "url": "/pushing-adaptive-implementations-with-eclipse-extension-points"
+    "/2010/04/12/pushing-adaptive-implementations-with-eclipse-extension-points.html": {
+      "url": "/pushing-adaptive-implementations-with-eclipse-extension-points",
+      "status": 301
     },
-    "https://owenou.com/2010/07/08/introducing-eclipse-rap.html": {
-      "url": "/introducing-eclipse-rap"
+    "/2010/07/08/introducing-eclipse-rap.html": {
+      "url": "/introducing-eclipse-rap",
+      "status": 301
     },
-    "https://owenou.com/2010/09/19/how-to-set-up-and-run-pde-build.html": {
-      "url": "/how-to-set-up-and-run-pde-build"
+    "/2010/09/19/how-to-set-up-and-run-pde-build.html": {
+      "url": "/how-to-set-up-and-run-pde-build",
+      "status": 301
     },
-    "https://owenou.com/2011/02/05/running-a-single-junit-test-in-eclipse.html": {
-      "url": "/running-a-single-junit-test-in-eclipse"
+    "/2011/02/05/running-a-single-junit-test-in-eclipse.html": {
+      "url": "/running-a-single-junit-test-in-eclipse",
+      "status": 301
     },
-    "https://owenou.com/2011/03/23/git-up-perforce-with-git-p4.html": {
-      "url": "/git-up-perforce-with-git-p4"
+    "/2011/03/23/git-up-perforce-with-git-p4.html": {
+      "url": "/git-up-perforce-with-git-p4",
+      "status": 301
     },
-    "https://owenou.com/2012/01/13/ten-things-you-didnt-know-git-and-github-could-do.html": {
-      "url": "/ten-things-you-didnt-know-git-and-github-could-do"
+    "/2012/01/13/ten-things-you-didnt-know-git-and-github-could-do.html": {
+      "url": "/ten-things-you-didnt-know-git-and-github-could-do",
+      "status": 301
     },
-    "https://owenou.com/2013/11/27/writing-build-tasks-in-go-with-gotask.html": {
-      "url": "/writing-build-tasks-in-go-with-gotask"
+    "/2013/11/27/writing-build-tasks-in-go-with-gotask.html": {
+      "url": "/writing-build-tasks-in-go-with-gotask",
+      "status": 301
     },
-    "https://owenou.com/2013/12/22/fast-github-command-line-client-written-in-go.html": {
-      "url": "/fast-github-command-line-client-written-in-go"
+    "/2013/12/22/fast-github-command-line-client-written-in-go.html": {
+      "url": "/fast-github-command-line-client-written-in-go",
+      "status": 301
     },
-    "https://owenou.com/2015/09/18/me-at-gophercon-2015.html": {
-      "url": "/me-at-gophercon-2015"
+    "/2015/09/18/me-at-gophercon-2015.html": {
+      "url": "/me-at-gophercon-2015",
+      "status": 301
     },
-    "https://owenou.com/2010/07/05/why-code-navigation-sucks-on-most-scm-web-interface.html": {
-      "url": "/why-code-navigation-sucks-on-most-scm-web-interface"
+    "/2010/07/05/why-code-navigation-sucks-on-most-scm-web-interface.html": {
+      "url": "/why-code-navigation-sucks-on-most-scm-web-interface",
+      "status": 301
     },
-    "https://owenou.com/2009/11/26/judicious-serialization.html": {
-      "url": "/judicious-serialization"
+    "/2009/11/26/judicious-serialization.html": {
+      "url": "/judicious-serialization",
+      "status": 301
     },
-    "https://owenou.com/2010/07/20/patching-with-class-shadowing-and-maven.html": {
-      "url": "/patching-with-class-shadowing-and-maven"
+    "/2010/07/20/patching-with-class-shadowing-and-maven.html": {
+      "url": "/patching-with-class-shadowing-and-maven",
+      "status": 301
     },
-    "https://owenou.com/2011/02/23/speed-up-j2ee-environment-setup-with-jetty-maven-plugin.html": {
-      "url": "/speed-up-j2ee-environment-setup-with-jetty-maven-plugin"
+    "/2011/02/23/speed-up-j2ee-environment-setup-with-jetty-maven-plugin.html": {
+      "url": "/speed-up-j2ee-environment-setup-with-jetty-maven-plugin",
+      "status": 301
     },
-    "https://owenou.com/2011/01/20/loading-path-gotchas-in-rails3.html": {
-      "url": "/loading-path-gotchas-in-rails3"
+    "/2011/01/20/loading-path-gotchas-in-rails3.html": {
+      "url": "/loading-path-gotchas-in-rails3",
+      "status": 301
     },
-    "https://owenou.com/2011/07/20/testing-rest-web-services-with-rails.html": {
-      "url": "/testing-rest-web-services-with-rails"
+    "/2011/07/20/testing-rest-web-services-with-rails.html": {
+      "url": "/testing-rest-web-services-with-rails",
+      "status": 301
     },
-    "https://owenou.com/2011/09/24/poeaa-on-rails.html": {
-      "url": "/poeaa-on-rails"
+    "/2011/09/24/poeaa-on-rails.html": {
+      "url": "/poeaa-on-rails",
+      "status": 301
     }
   },
   "headers": {
