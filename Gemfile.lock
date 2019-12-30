@@ -121,7 +121,7 @@ DEPENDENCIES
   bundler
   jekyll-assets
   minimal-mistakes-jekyll!
-  rake (~> 10.0)
+  rake
 
 RUBY VERSION
    ruby 2.6.5p114
