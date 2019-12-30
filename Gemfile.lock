@@ -120,7 +120,7 @@ GEM
       forwardable-extended (~> 2.6)
     pkg-config (1.1.7)
     public_suffix (1.5.3)
-    rack (2.0.1)
+    rack (2.0.8)
     rake (10.5.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
